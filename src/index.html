@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Thirukkurals</title>
+
+    <script src="libs/angular/angular.js"></script>
+    <script src="libs/angular-route/angular-route.js"></script>
+    <script src="libs/angular-ui/build/angular-ui.js"></script>
+    <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="app.js"></script>
+    <script src="app/home/home-controller.js"></script>
+    <script src="app/services/thirukkurals-repository.js"></script>
+
+</head>
+<body ng-app="thirukkuralApp" ng-controller="homeController">
+testing thirukkural app
+
+{{ Test }}
+
+<div ng-repeat="thirukkural in Thirukkurals">
+    <div>English: {{ thirukkural.English }}</div>
+    <div>EnglishMeaning: {{ thirukkural.EnglishMeaning }}</div>
+</div>
+
+<div ng-view></div>
+</body>
+</html>
