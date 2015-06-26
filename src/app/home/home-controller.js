@@ -5,19 +5,18 @@
 
 angular.module('thirukkuralApp')
 
-.controller('homeController', ['$scope', 'thirukkuralsRepository', function($scope, thirukkuralsRepository){
+.controller('homeController', ['thirukkuralsRepository', function(thirukkuralsRepository){
 
         console.log("homecontroller loading...");
 
-        // var vm = this;
-        $scope.Test = "testing 1 2 3";
+        var vm = this;
 
         var onThirukkuralsByChaptersComplete = function (data) {
-            $scope.Thirukkurals = data;
+            vm.Thirukkurals = data;
         };
 
         var onError = function (errorMessage) {
-            $scope.ErrorMessage = "An error occurred!";
+            vm.ErrorMessage = "An error occurred!";
         };
 
         thirukkuralsRepository.GetThirukkuralsByChapters(1).then(onThirukkuralsByChaptersComplete, onError);

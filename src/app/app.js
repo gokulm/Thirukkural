@@ -7,14 +7,12 @@ angular.module('thirukkuralApp', ['ui.router'])
 
 .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
-        console.log('state loading...');
-
         $stateProvider
             .state('home', {
                 url: '/',
                 templateUrl: 'app/home/home-tpl.html',
                 controller: 'homeController',
-                //controllerAs: 'vm'
+                controllerAs: 'vm'
             });
 
         $urlRouterProvider.otherwise('/');
