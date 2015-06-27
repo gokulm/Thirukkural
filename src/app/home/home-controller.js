@@ -1,13 +1,12 @@
 /**
  * Created by Goldenrod on 6/24/2015.
  */
-'use strict'
 
-angular.module('thirukkuralApp')
+(function () {
 
-.controller('homeController', ['thirukkuralsRepository', function(thirukkuralsRepository){
+    'use strict';
 
-        console.log("homecontroller loading...");
+    var homeController = function (thirukkuralsRepository) {
 
         var vm = this;
 
@@ -20,5 +19,9 @@ angular.module('thirukkuralApp')
         };
 
         thirukkuralsRepository.GetThirukkuralsByChapters(1).then(onThirukkuralsByChaptersComplete, onError);
+    };
 
-    }]);
+    angular.module('thirukkuralApp').controller('homeController', homeController);
+    homeController.$inject = ['thirukkuralsRepository'];
+
+})();

@@ -1,11 +1,12 @@
 /**
  * Created by Goldenrod on 6/24/2015.
  */
-'use strict'
 
-angular.module('thirukkuralApp')
+(function(){
 
-.factory('thirukkuralsRepository', ['$http', function($http){
+    'use strict';
+
+    var thirukkuralsRepository = function($http){
 
         var baseUrl = "http://devl-api.gokulnath.com/";
 
@@ -85,4 +86,9 @@ angular.module('thirukkuralApp')
             GetThirukkuralChaptersByChapterGroup: getThirukkuralChaptersByChapterGroup
         };
 
-    }])
+    };
+
+    angular.module('thirukkuralApp').factory('thirukkuralsRepository', thirukkuralsRepository);
+    thirukkuralsRepository.$inject = ['$http'];
+
+})();
