@@ -23,7 +23,6 @@
     thirukkuralApp.config(['$stateProvider', '$urlRouterProvider', stateProvider]);
 
     thirukkuralApp.run(['$state', function ($route) {
-
-        }])
+    }]);
 
 })();

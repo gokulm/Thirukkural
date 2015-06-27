@@ -6,13 +6,12 @@
 
     'use strict';
 
-    var thirukkuralsRepository = function($http){
+    var thirukkuralsRepository = function($http, thirukkuralUtil){
 
         var baseUrl = "http://devl-api.gokulnath.com/";
 
         var getThirukkuralsByChapters = function (chapterIndex) {
-            //fireFlyService.log("repository: getThirukkuralsByChapters");
-            console.log("trying to get data from the server");
+            thirukkuralUtil.Log("repository: getThirukkuralsByChapters");
             return $http.get(baseUrl + "thirukkuralchapters/" + chapterIndex + "/thirukkurals")
                 .then(function (response) {
                     return response.data;
@@ -89,6 +88,6 @@
     };
 
     angular.module('thirukkuralApp').factory('thirukkuralsRepository', thirukkuralsRepository);
-    thirukkuralsRepository.$inject = ['$http'];
+    thirukkuralsRepository.$inject = ['$http', 'thirukkuralUtil'];
 
 })();
