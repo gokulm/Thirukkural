@@ -1,14 +1,49 @@
-/**
- * Created by Goldenrod on 6/24/2015.
- */
-
 (function(){
 
     'use strict';
 
     var thirukkuralsRepository = function($http, thirukkuralUtil){
 
+        // todo: should be added to a app constants
         var baseUrl = "http://devl-api.gokulnath.com/";
+
+        var getThirukkural = function(index){
+            thirukkuralUtil.Log("repository: getThirukkural");
+            return $http.get(baseUrl + "thirukkurals/" + index)
+                .then(function(response){
+                    return response.data;
+                });
+        };
+
+        var getThirukkuralChapters = function (index) {
+            thirukkuralUtil.Log("repository: getThirukkuralChapters");
+            var url = baseUrl + "thirukkuralchapters/" + (index === null ? "" : index);
+
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        };
+
+        var getThirukkuralSections = function (index) {
+            thirukkuralUtil.Log("repository: getThirukkuralSections");
+            var url = baseUrl + "thirukkuralsections/" + (index === null ? "" : index);
+
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        };
+
+        var getThirukkuralChapterGroups = function (index) {
+            thirukkuralUtil.Log("repository: getThirukkuralChapterGroups");
+            var url = baseUrl + "thirukkuralchaptergroups/" + (index === null ? "" : index);
+
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                });
+        };
 
         var getThirukkuralsByChapters = function (chapterIndex) {
             thirukkuralUtil.Log("repository: getThirukkuralsByChapters");
@@ -18,73 +53,67 @@
                 });
         };
 
-        var getThirukkuralChapters = function () {
-            //fireFlyService.log("repository: getThirukkuralChapters");
-            return $http.get(baseUrl + "ThirukkuralChapters/")
+        var getThirukkuralsBySections = function (sectionIndex) {
+            thirukkuralUtil.Log("repository: getThirukkuralsBySections");
+            return $http.get(baseUrl + "thirukkuralsections/" + sectionIndex + "/thirukkurals")
+                .then(function (response) {
+                    return response.data;
+                });
+        };
+
+        var getThirukkuralsByChapterGroups = function (sectionIndex) {
+            thirukkuralUtil.Log("repository: getThirukkuralsByChapterGroups");
+            return $http.get(baseUrl + "thirukkuralchaptergroups/" + sectionIndex + "/thirukkurals")
                 .then(function (response) {
                     return response.data;
                 });
         };
 
         var getThirukkuralChaptersBySection = function (index) {
-            //fireFlyService.log("repository: getThirukkuralChaptersBySection");
-            return $http.get(baseUrl + "ThirukkuralChaptersBySection/" + index)
+            thirukkuralUtil.Log("repository: getThirukkuralChaptersBySection");
+            return $http.get(baseUrl + "thirukkuralsections/" + index + "/thirukkurals")
                 .then(function (response) {
                     return response.data;
                 });
         };
 
         var getThirukkuralChaptersByChapterGroup = function (index) {
-            //fireFlyService.log("repository: getThirukkuralChaptersByChapterGroup");
-            return $http.get(baseUrl + "ThirukkuralChaptersByChapterGroup/" + index)
-                .then(function (response) {
-                    return response.data;
-                });
-        };
-
-        var getThirukkuralSections = function () {
-            //fireFlyService.log("repository: getThirukkuralSections");
-            return $http.get(baseUrl + "ThirukkuralSections/")
-                .then(function (response) {
-                    return response.data;
-                });
-        };
-
-        var getThirukkuralChapterGroups = function () {
-            //fireFlyService.log("repository: getThirukkuralChapterGroups");
-            return $http.get(baseUrl + "ThirukkuralChapterGroups/")
+            thirukkuralUtil.Log("repository: getThirukkuralChaptersByChapterGroup");
+            return $http.get(baseUrl + "thirukkuralchaptergroups/" + index + "/chapters")
                 .then(function (response) {
                     return response.data;
                 });
         };
 
         var searchThirukkuralsInTamil = function (searchText) {
-            //fireFlyService.log("repository: searchThirukkuralsInTamil");
-            return $http.get(baseUrl + "ThirukkuralsTamilSearch/?searchText=" + searchText)
+            thirukkuralUtil.Log("repository: searchThirukkuralsInTamil");
+            return $http.get(baseUrl + "thirukkuralstamilsearch/?searchText=" + searchText)
                 .then(function (response) {
                     return response.data;
                 });
         };
 
         var searchThirukkuralsInEnglish = function (searchText) {
-            //fireFlyService.log("repository: searchThirukkuralsInEnglish");
-            return $http.get(baseUrl + "ThirukkuralsEnglishSearch/?searchText=" + searchText)
+            thirukkuralUtil.Log("repository: searchThirukkuralsInEnglish");
+            return $http.get(baseUrl + "thirukkuralsenglishsearch/?searchText=" + searchText)
                 .then(function (response) {
                     return response.data;
                 });
         };
 
         return {
-            GetThirukkuralsByChapters: getThirukkuralsByChapters,
+            GetThirukkural: getThirukkural,
             GetThirukkuralChapters: getThirukkuralChapters,
             GetThirukkuralSections: getThirukkuralSections,
-            GetThirukkuralChaptersBySection: getThirukkuralChaptersBySection,
             GetThirukkuralChapterGroups: getThirukkuralChapterGroups,
+            GetThirukkuralsByChapters: getThirukkuralsByChapters,
+            GetThirukkuralsBySections: getThirukkuralsBySections,
+            GetThirukkuralsByChapterGroups: getThirukkuralsByChapterGroups,
+            GetThirukkuralChaptersBySection: getThirukkuralChaptersBySection,
+            GetThirukkuralChaptersByChapterGroup: getThirukkuralChaptersByChapterGroup,
             SearchThirukkuralsInTamil: searchThirukkuralsInTamil,
-            SearchThirukkuralsInEnglish: searchThirukkuralsInEnglish,
-            GetThirukkuralChaptersByChapterGroup: getThirukkuralChaptersByChapterGroup
+            SearchThirukkuralsInEnglish: searchThirukkuralsInEnglish
         };
-
     };
 
     angular.module('thirukkuralApp').factory('thirukkuralsRepository', thirukkuralsRepository);

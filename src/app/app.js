@@ -1,7 +1,3 @@
-/**
- * Created by Goldenrod on 6/24/2015.
- */
-
 (function(){
 
     'use strict';
