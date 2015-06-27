@@ -7,18 +7,38 @@
 
     <title>Thirukkurals</title>
 
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css"/>
+
     <script src="libs/angular/angular.js"></script>
     <script src="libs/angular-route/angular-route.js"></script>
     <script src="libs/angular-ui/build/angular-ui.js"></script>
     <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+    <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+    <script src="libs/angular-ui-utils/ui-utils.min.js"></script>
+
+
     <script src="app/app.js"></script>
     <script src="app/home/home-controller.js"></script>
     <script src="app/services/thirukkurals-repository.js"></script>
     <script src="app/services/thirukkkurals-util.js"></script>
-
 </head>
 <body>
-testing thirukkural app
-<div ui-view></div>
+<div class="container-fluid">
+    <div class="col-lg-12">thirukkurals</div>
+    <div class="col-lg-12">
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a href="#">Kurals</a></li>
+            <li role="presentation"><a href="#">Search</a></li>
+            <li role="presentation"><a href="#">Chapters</a></li>
+            <li role="presentation"><a href="#">Sections</a></li>
+            <li role="presentation"><a href="#">Chapter Groups</a></li>
+        </ul>
+
+        <div ui-view></div>
+    </div>
+    <div class="col-lg-12">Copyright</div>
+</div>
 </body>
 </html>

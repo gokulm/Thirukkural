@@ -1,4 +1,53 @@
-<div ng-repeat="thirukkural in vm.Thirukkurals">
-    <div>English: {{ thirukkural.English }}</div>
-    <div>EnglishMeaning: {{ thirukkural.EnglishMeaning }}</div>
+<div>
+    <!--    <h4>Default</h4>
+        <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></pagination>
+        <pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+        <pagination direction-links="false" boundary-links="true" total-items="totalItems" ng-model="currentPage"></pagination>
+        <pagination direction-links="false" total-items="totalItems" ng-model="currentPage" num-pages="smallnumPages"></pagination>
+        <pre>The selected page no: {{currentPage}}</pre>
+        <button class="btn btn-info" ng-click="setPage(3)">Set current page to: 3</button>
+
+        <hr />
+        <h4>Pager</h4>
+        <pager total-items="totalItems" ng-model="currentPage"></pager>-->
+
+
+    <pagination total-items="vm.bigTotalItems" ng-change="vm.pageChanged()" ng-model="vm.bigCurrentPage"
+                max-size="vm.maxSize" class="pagination-sm" boundary-links="true" rotate="false"
+                num-pages="vm.numPages"></pagination>
+    <pre>Chapter: {{vm.bigCurrentPage}} / {{vm.numPages}}</pre>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            Chapter: {{ vm.ThirukkuralChapter.Index }}
+            <br>
+            <!--todo: fix encoding-->
+            ????????/Chapter/Adhigaram: {{ vm.ThirukkuralChapter.Tamil + "/" + vm.ThirukkuralChapter.English + "/" +
+            vm.ThirukkuralChapter.Transliteration }}
+        </div>
+    </div>
+
+    <div class="panel panel-default" ng-repeat="thirukkural in vm.Thirukkurals">
+        <div class="panel-body">
+            ????? 1<br/>
+            {{ thirukkural.Tamil }}
+            <br/>
+            ??.? ???:<br/>
+            {{ thirukkural.MuVaUrai }}
+            <br/>
+            ?????? ???????? ???:<br/>
+            {{ thirukkural.SolomonPaapaiyaUrai }}
+            <br/>
+            ?????? ???:<br/>
+            {{ thirukkural.KalaignarUrai }}
+            <br/>
+            Couplet 1:<br/>
+            {{ thirukkural.English }}<br/>
+            Explanation: <br/>
+            {{ thirukkural.EnglishMeaning }}<br/>
+            Transliteration:<br/>
+            {{ thirukkural.TamilTransliteration }}
+        </div>
+    </div>
+
 </div>

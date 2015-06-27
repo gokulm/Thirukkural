@@ -2,7 +2,7 @@
 
     'use strict';
 
-    var thirukkuralApp = angular.module('thirukkuralApp', ['ui.router']);
+    var thirukkuralApp = angular.module('thirukkuralApp', ['ui.router', 'ui.bootstrap', 'ui.utils']);
     var stateProvider = function($stateProvider, $urlRouterProvider){
 
         $stateProvider
