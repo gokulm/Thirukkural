@@ -6,11 +6,11 @@
     <th>Transliteration</th>
     <th>Kurals</th>
     </thead>
-    <tr ng-repeat="thirukkuralChapter in vm.ThirukkuralChapters">
-        <td> {{ thirukkuralChapter.Index }} </td>
-        <td> {{ thirukkuralChapter.Tamil }} </td>
-        <td> {{ thirukkuralChapter.English }} </td>
-        <td> {{ thirukkuralChapter.Transliteration }} </td>
-        <td> <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })">Chapters</a> </td>
+    <tr ng-repeat="thirukkuralSection in vm.ThirukkuralSections">
+        <td> {{ thirukkuralSection.Index }} </td>
+        <td> {{ thirukkuralSection.Tamil }} </td>
+        <td> {{ thirukkuralSection.English }} </td>
+        <td> {{ thirukkuralSection.Transliteration }} </td>
+        <td> <a ui-sref="sectionchapters( { index: thirukkuralSection.Index })">Chapters</a> </td>
     </tr>
 </table>

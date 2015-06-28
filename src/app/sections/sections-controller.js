@@ -6,8 +6,8 @@
 
         var vm = this;
 
-        var onThirukkuralChaptersComplete = function (data) {
-            vm.ThirukkuralChapters = data;
+        var onThirukkuralSectionsComplete = function (data) {
+            vm.ThirukkuralSections = data;
         };
 
         var onError = function (errorMessage) {
@@ -19,7 +19,7 @@
         };
 
         var getData = function () {
-            thirukkuralsRepository.GetThirukkuralSections(null).then(onThirukkuralChaptersComplete, onError);
+            thirukkuralsRepository.GetThirukkuralSections(null).then(onThirukkuralSectionsComplete, onError);
         };
 
         init();

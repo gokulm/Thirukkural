@@ -71,7 +71,7 @@
 
         var getThirukkuralChaptersBySection = function (index) {
             thirukkuralsUtil.Log("repository: getThirukkuralChaptersBySection");
-            return $http.get(baseUrl + "thirukkuralsections/" + index + "/thirukkurals")
+            return $http.get(baseUrl + "thirukkuralsections/" + index + "/chapters")
                 .then(function (response) {
                     return response.data;
                 });

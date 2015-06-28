@@ -22,6 +22,8 @@
             thirukkuralsRepository.GetThirukkuralChapters(null).then(onThirukkuralChaptersComplete, onError);
         };
 
+        vm.HasSection = false;
+
         init();
     };
 

@@ -30,6 +30,12 @@
                 controller: 'sectionsController',
                 controllerAs: 'vm'
             })
+            .state('sectionchapters', {
+                url: '/thirukkuralsections/:index/chapters',
+                templateUrl: 'app/chapters/chapters.html',
+                controller: 'sectionChaptersController',
+                controllerAs: 'vm'
+            })
             .state('chaptergroups', {
                 url: '/thirukkuralchaptergroups/:index',
                 templateUrl: 'app/chaptergroups/chaptergroups.html',
