@@ -2,7 +2,7 @@
 
     'use strict';
 
-    var thirukkuralUtil = function ($sce) {
+    var thirukkuralsUtil = function ($sce) {
         var log = function (message) {
             console.log(message);
         };
@@ -17,7 +17,7 @@
         };
     };
 
-    angular.module('thirukkuralApp').factory('thirukkuralUtil', thirukkuralUtil);
-    thirukkuralUtil.$inject = ['$sce'];
+    angular.module('thirukkuralApp').factory('thirukkuralsUtil', thirukkuralsUtil);
+    thirukkuralsUtil.$inject = ['$sce'];
 
 })();

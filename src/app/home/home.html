@@ -22,19 +22,14 @@
             Chapter: {{ vm.ThirukkuralChapter.Index }}
             <br>
             <!--todo: fix encoding-->
-            ????????/Chapter/Adhigaram: {{ vm.ThirukkuralChapter.Tamil + "/" + vm.ThirukkuralChapter.English + "/" +
-            vm.ThirukkuralChapter.Transliteration }}
+            ????????/Chapter/Adhigaram: {{ "$0/$1/$2" | format : [vm.ThirukkuralChapter.Tamil, vm.ThirukkuralChapter.English, vm.ThirukkuralChapter.Transliteration] }}
         </div>
     </div>
 
     <div class="panel panel-default" ng-repeat="thirukkural in vm.Thirukkurals">
         <div class="panel-body">
-            ????? 1<br/>
-            {{ thirukkural.Tamil }}
-            <br/>
-            ??.? ???:<br/>
-            {{ thirukkural.MuVaUrai }}
-            <br/>
+            à®•à¯?à®±à®³à¯? :  {{ thirukkural.Index }}<br/>
+            <div ng-bind-html="thirukkural.Tamil | renderHtml"></div>
             ?????? ???????? ???:<br/>
             {{ thirukkural.SolomonPaapaiyaUrai }}
             <br/>
@@ -42,11 +37,11 @@
             {{ thirukkural.KalaignarUrai }}
             <br/>
             Couplet 1:<br/>
-            {{ thirukkural.English }}<br/>
+            <div ng-bind-html="thirukkural.English | renderHtml"></div>
             Explanation: <br/>
             {{ thirukkural.EnglishMeaning }}<br/>
             Transliteration:<br/>
-            {{ thirukkural.TamilTransliteration }}
+            <div ng-bind-html="thirukkural.TamilTransliteration | renderHtml"></div>
         </div>
     </div>
 
