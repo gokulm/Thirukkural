@@ -23,6 +23,7 @@
                 $state.go('thirukkuralsbychapters', {index: 1});
             }
             else {
+
                 vm.maxSize = 30;
                 vm.bigTotalItems = 1330;
                 vm.bigCurrentPage = $stateParams.index;
@@ -32,6 +33,7 @@
         };
 
         var getData = function () {
+            //console.log("currentPage: " + vm.bigCurrentPage);
             thirukkuralsRepository.GetThirukkuralsByChapters(vm.bigCurrentPage).then(onThirukkuralsByChaptersComplete, onError);
             thirukkuralsRepository.GetThirukkuralChapters(vm.bigCurrentPage).then(onThirukkuralChaptersComplete, onError);
         };

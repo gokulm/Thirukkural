@@ -7,7 +7,7 @@
 
         $stateProvider
             .state('home', {
-                url: '/',
+                url: '/:index',
                 templateUrl: 'app/home/home.html',
                 controller: 'homeController',
                 controllerAs: 'vm'
@@ -17,9 +17,27 @@
                 templateUrl: 'app/home/home.html',
                 controller: 'homeController',
                 controllerAs: 'vm'
+            })
+            .state('chapters', {
+                url: '/thirukkuralchapters/:index',
+                templateUrl: 'app/chapters/chapters.html',
+                controller: 'chaptersController',
+                controllerAs: 'vm'
+            })
+            .state('sections', {
+                url: '/thirukkuralsections/:index',
+                templateUrl: 'app/sections/sections.html',
+                controller: 'sectionsController',
+                controllerAs: 'vm'
+            })
+            .state('chaptergroups', {
+                url: '/thirukkuralchaptergroups/:index',
+                templateUrl: 'app/chaptergroups/chaptergroups.html',
+                controller: 'chapterGroupsController',
+                controllerAs: 'vm'
             });
 
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/:index');
     };
 
     var renderHtml = function ($sce) {

@@ -1,0 +1,16 @@
+<table>
+    <thead>
+    <th>#</th>
+    <th>Tamil</th>
+    <th>English</th>
+    <th>Transliteration</th>
+    <th>Kurals</th>
+    </thead>
+    <tr ng-repeat="thirukkuralChapter in vm.ThirukkuralChapters">
+        <td> {{ thirukkuralChapter.Index }} </td>
+        <td> {{ thirukkuralChapter.Tamil }} </td>
+        <td> {{ thirukkuralChapter.English }} </td>
+        <td> {{ thirukkuralChapter.Transliteration }} </td>
+        <td> <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })">Chapters</a> </td>
+    </tr>
+</table>

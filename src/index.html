@@ -21,6 +21,9 @@
 
     <script src="app/app.js"></script>
     <script src="app/home/home-controller.js"></script>
+    <script src="app/chapters/chapters-controller.js"></script>
+    <script src="app/sections/sections-controller.js"></script>
+    <script src="app/chaptergroups/chaptergroups-controller.js"></script>
     <script src="app/services/thirukkurals-repository.js"></script>
     <script src="app/services/thirukkkurals-util.js"></script>
 </head>
@@ -29,11 +32,12 @@
     <div class="col-lg-12">thirukkurals</div>
     <div class="col-lg-12">
         <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="#">Kurals</a></li>
+            <!--todo: need to fix the active tab-->
+            <li role="presentation" ui-sref-active="active"><a ui-sref="thirukkuralsbychapters( { index: 1 })">Kurals</a></li>
+            <li role="presentation" ui-sref-active="active"> <a ui-sref="chapters">Chapters</a></li>
+            <li role="presentation "ui-sref-active="active"> <a ui-sref="sections">Sections</a></li>
+            <li role="presentation" ui-sref-active="active"> <a ui-sref="chaptergroups">Chapter Groups</a></li>
             <li role="presentation"><a href="#">Search</a></li>
-            <li role="presentation"><a href="#">Chapters</a></li>
-            <li role="presentation"><a href="#">Sections</a></li>
-            <li role="presentation"><a href="#">Chapter Groups</a></li>
         </ul>
 
         <div ui-view></div>

@@ -28,8 +28,11 @@
 
     <div class="panel panel-default" ng-repeat="thirukkural in vm.Thirukkurals">
         <div class="panel-body">
+            <!--todo: need to fix the encoding-->
             à®•à¯?à®±à®³à¯? :  {{ thirukkural.Index }}<br/>
             <div ng-bind-html="thirukkural.Tamil | renderHtml"></div>
+            ?????? ???????? ???:<br/>
+            {{ thirukkural.MuVaUrai }} <br />
             ?????? ???????? ???:<br/>
             {{ thirukkural.SolomonPaapaiyaUrai }}
             <br/>
