@@ -7,7 +7,7 @@
 
         $stateProvider
             .state('home', {
-                url: '/:index',
+                url: '/',
                 templateUrl: 'app/home/home.html',
                 controller: 'homeController',
                 controllerAs: 'vm'
@@ -41,9 +41,21 @@
                 templateUrl: 'app/chaptergroups/chaptergroups.html',
                 controller: 'chapterGroupsController',
                 controllerAs: 'vm'
+            })
+            .state('chaptergroupchapters', {
+                url: '/thirukkuralchaptergroups/:index/chapters',
+                templateUrl: 'app/chapters/chapters.html',
+                controller: 'chapterGroupChaptersController',
+                controllerAs: 'vm'
+            })
+            .state('search', {
+                url: '/search',
+                templateUrl: 'app/search/search.html',
+                controller: 'searchController',
+                controllerAs: 'vm'
             });
 
-        $urlRouterProvider.otherwise('/:index');
+        $urlRouterProvider.otherwise('/');
     };
 
     var renderHtml = function ($sce) {
@@ -54,6 +66,31 @@
 
     thirukkuralApp.config(['$stateProvider', '$urlRouterProvider', stateProvider]);
     thirukkuralApp.filter("renderHtml", ['$sce', renderHtml]);
+
+    thirukkuralApp.directive('script', function () {
+        return {
+            restrict: 'E',
+            scope: false,
+            link: function (scope, elem, attr) {
+                if (attr.type === 'text/javascript-lazy') {
+                    var code = elem.text();
+                    var f = new Function(code);
+                    f();
+                }
+            }
+        };
+    });
+
+    // to rebind the angular model, need to trigger input
+    thirukkuralApp.directive('reBind', function () {
+        return function (scope, elem, attrs) {
+            console.log(elem);
+            elem.bind('blur', function () {
+                console.log("reBind directive");
+                elem.trigger('input');
+            });
+        };
+    });
 
     thirukkuralApp.run(['$state', function ($route) {
     }]);

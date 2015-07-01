@@ -8,7 +8,9 @@
     <title>Thirukkurals</title>
 
     <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="assets/css/app.css"/>
 
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
     <script src="libs/angular/angular.js"></script>
     <script src="libs/angular-route/angular-route.js"></script>
     <script src="libs/angular-ui/build/angular-ui.js"></script>
@@ -25,6 +27,8 @@
     <script src="app/sections/sections-controller.js"></script>
     <script src="app/chaptergroups/chaptergroups-controller.js"></script>
     <script src="app/chapters/sectionchapters-controller.js"></script>
+    <script src="app/chapters/chaptergroupchapters-controller.js"></script>
+    <script src="app/search/search-controller.js"></script>
 
     <script src="app/services/thirukkurals-repository.js"></script>
     <script src="app/services/thirukkkurals-util.js"></script>
@@ -39,7 +43,7 @@
             <li role="presentation" ui-sref-active="active"> <a ui-sref="chapters">Chapters</a></li>
             <li role="presentation "ui-sref-active="active"> <a ui-sref="sections">Sections</a></li>
             <li role="presentation" ui-sref-active="active"> <a ui-sref="chaptergroups">Chapter Groups</a></li>
-            <li role="presentation"><a href="#">Search</a></li>
+            <li role="presentation" ui-sref-active="active"> <a ui-sref="search">Search</a></li>
         </ul>
 
         <div ui-view></div>

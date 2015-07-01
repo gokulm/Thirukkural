@@ -87,7 +87,7 @@
 
         var searchThirukkuralsInTamil = function (searchText) {
             thirukkuralsUtil.Log("repository: searchThirukkuralsInTamil");
-            return $http.get(baseUrl + "thirukkuralstamilsearch/?searchText=" + searchText)
+            return $http.get(baseUrl + "thirukkuralstamilsearch/" + searchText)
                 .then(function (response) {
                     return response.data;
                 });
@@ -95,7 +95,7 @@
 
         var searchThirukkuralsInEnglish = function (searchText) {
             thirukkuralsUtil.Log("repository: searchThirukkuralsInEnglish");
-            return $http.get(baseUrl + "thirukkuralsenglishsearch/?searchText=" + searchText)
+            return $http.get(baseUrl + "thirukkuralsenglishsearch/" + searchText)
                 .then(function (response) {
                     return response.data;
                 });

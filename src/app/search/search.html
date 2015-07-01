@@ -1,0 +1,69 @@
+
+<script type="text/javascript-lazy">
+
+
+    $(function () {
+
+        $("#transliterateTextarea").change(function () {
+            console.log("transliteration changed... ");
+        });
+
+        window.google.load('elements', '1', {packages: 'transliteration', "callback": onLoad});
+
+        function onLoad() {
+
+            var options = {
+                sourceLanguage: window.google.elements.transliteration.LanguageCode.ENGLISH,
+                destinationLanguage: [window.google.elements.transliteration.LanguageCode.TAMIL],
+                shortcutKey: 'ctrl+g',
+                transliterationEnabled: true
+            };
+
+            var control = new window.google.elements.transliteration.TransliterationControl(options);
+            control.makeTransliteratable(['transliterateTextarea']);
+
+        }
+    });
+
+</script>
+
+
+<div>
+    <input type="text" placeholder="Tamil" ng-model="searchEntity.SearchTamilText" id="transliterateTextarea"
+           ng-show="searchEntity.IsTransliterationEnabled" re-Bind />
+    <input type="text" placeholder="English" ng-model="searchEntity.SearchEnglishText"
+           ng-hide="searchEntity.IsTransliterationEnabled"/>
+    <input type="checkbox" ng-model="searchEntity.IsTransliterationEnabled"
+           ng-click="vm.EnableTransliterate(searchEntity)"/>
+    <input type="button" value="Search" ng-click="vm.SearchThirukkurals(searchEntity)"/>
+</div>
+
+<div ng-repeat="thirukkural in vm.Thirukkurals " class="thirukkuralBlock">
+    <div>
+        Tamil:
+        <div ng-bind-html="thirukkural.Tamil | highlight:searchEntity.SearchTamilText | renderHtml "></div>
+    </div>
+
+    <div>Kalaignar Urai:
+        <br/>
+        <div ng-bind-html="thirukkural.KalaignarUrai | highlight:searchEntity.SearchTamilText | renderHtml "></div>
+    </div>
+    <div>Mu Va Urai:
+        <br/>
+        <div ng-bind-html="thirukkural.MuVaUrai | highlight:searchEntity.SearchTamilText | renderHtml "></div>
+    </div>
+    <div>Solomon Paapaiya Urai:
+        <br/>
+        <div ng-bind-html="thirukkural.SolomonPaapaiyaUrai | highlight:searchEntity.SearchTamilText | renderHtml "></div>
+    </div>
+    <div>Tamil Transliteration:
+        <br/>
+        {{ thirukkural.TamilTransliteration }}
+    </div>
+    <div>English:
+        <div ng-bind-html="thirukkural.English | highlight:searchEntity.SearchEnglishText | renderHtml"></div>
+    </div>
+    <div>EnglishMeaning:
+        <div ng-bind-html="thirukkural.EnglishMeaning | highlight:searchEntity.SearchEnglishText | renderHtml"></div>
+    </div>
+</div>

@@ -4,6 +4,12 @@
     </div>
 </div>
 
+<div class="panel panel-default" ng-show="vm.HasChapterGroup">
+    <div class="panel-body">
+        பால்/Chapter Group/Iyal: {{ "$0/$1/$2" | format : [vm.ThirukkuralChapterGroup.Tamil, vm.ThirukkuralChapterGroup.English, vm.ThirukkuralChapterGroup.Transliteration] }}
+    </div>
+</div>
+
 <table>
     <thead>
     <th>#</th>

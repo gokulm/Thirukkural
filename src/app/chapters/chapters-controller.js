@@ -23,6 +23,7 @@
         };
 
         vm.HasSection = false;
+        vm.HasChapterGroup = false;
 
         init();
     };
