@@ -2,7 +2,7 @@
 
     'use strict';
 
-    var homeController = function ($scope, $stateParams, $state, thirukkuralsUtil, thirukkuralsRepository) {
+    var homeController = function ($scope, $stateParams, $state, thirukkuralsUtil, thirukkuralsRepository, locale) {
 
         var vm = this;
 
@@ -30,13 +30,20 @@
 
                 getData();
             }
+
+
         };
 
         var getData = function () {
-            //console.log("currentPage: " + vm.bigCurrentPage);
             thirukkuralsRepository.GetThirukkuralsByChapters(vm.bigCurrentPage).then(onThirukkuralsByChaptersComplete, onError);
             thirukkuralsRepository.GetThirukkuralChapters(vm.bigCurrentPage).then(onThirukkuralChaptersComplete, onError);
         };
+
+        locale.setLocale('english');
+
+        locale.ready('common').then(function () {
+            vm.sampleText = locale.getString('common.helloWorld');
+        });
 
         vm.setPage = function (pageNo) {
             vm.bigCurrentPage = pageNo;
@@ -50,6 +57,6 @@
     };
 
     angular.module('thirukkuralApp').controller('homeController', homeController);
-    homeController.$inject = ['$scope', '$stateParams', '$state', 'thirukkuralsUtil', 'thirukkuralsRepository'];
+    homeController.$inject = ['$scope', '$stateParams', '$state', 'thirukkuralsUtil', 'thirukkuralsRepository', 'locale'];
 
 })();

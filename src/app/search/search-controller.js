@@ -22,7 +22,9 @@
         vm.EnableTransliterate = function(searchEntity){
             if (searchEntity.IsTransliterationEnabled) {
                 vm.IsTransliterationEnabled = true;
+                searchEntity.SearchEnglishText = "";
             } else {
+                searchEntity.SearchTamilText = "";
                 vm.IsTransliterationEnabled = false;
             }
         };
@@ -31,11 +33,9 @@
             thirukkuralsUtil.Log(searchEntity);
             //thirukkuralsUtil.Log("scopeSearchEntity: " + $scope.searchEntity);
             if (searchEntity.IsTransliterationEnabled) {
-                //vm.SearchText = searchEntity.SearchTamilText;
                 thirukkuralsRepository.SearchThirukkuralsInTamil(searchEntity.SearchTamilText)
                     .then(onSearchComplete, onError);
             } else {
-                //vm.SearchText = searchEntity.SearchEnglishText;
                 thirukkuralsRepository.SearchThirukkuralsInEnglish(searchEntity.SearchEnglishText)
                     .then(onSearchComplete, onError);
             }

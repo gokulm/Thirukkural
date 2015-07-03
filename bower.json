@@ -9,7 +9,8 @@
     "angular-ui": "~0.4.0",
     "angular-ui-router": "~0.2.15",
     "ui.bootstrap": "~0.13.0",
-    "angular-ui-utils": "~0.2.3"
+    "angular-ui-utils": "~0.2.3",
+    "angular-localization": "~1.2.1"
   },
   "analytics": false
 }

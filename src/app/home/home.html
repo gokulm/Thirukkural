@@ -11,11 +11,13 @@
         <h4>Pager</h4>
         <pager total-items="totalItems" ng-model="currentPage"></pager>-->
 
+    <h1>{{ vm.sampleText }}</h1>
+    <span i18n="common.helloWorldElement"></span>
+
 
     <pagination total-items="vm.bigTotalItems" ng-change="vm.pageChanged()" ng-model="vm.bigCurrentPage"
                 max-size="vm.maxSize" class="pagination-sm" boundary-links="true" rotate="false"
                 num-pages="vm.numPages"></pagination>
-    <pre>Chapter: {{vm.bigCurrentPage}} / {{vm.numPages}}</pre>
 
     <div class="panel panel-default">
         <div class="panel-body">

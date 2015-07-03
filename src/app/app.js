@@ -2,7 +2,7 @@
 
     'use strict';
 
-    var thirukkuralApp = angular.module('thirukkuralApp', ['ui.router', 'ui.bootstrap', 'ui.utils']);
+    var thirukkuralApp = angular.module('thirukkuralApp', ['ui.router', 'ui.bootstrap', 'ui.utils', 'ngLocalize']);
     var stateProvider = function ($stateProvider, $urlRouterProvider) {
 
         $stateProvider
@@ -81,18 +81,38 @@
         };
     });
 
+    // todo: check whether this is the right way to handle this
     // to rebind the angular model, need to trigger input
     thirukkuralApp.directive('reBind', function () {
-        return function (scope, elem, attrs) {
-            console.log(elem);
-            elem.bind('blur', function () {
-                console.log("reBind directive");
-                elem.trigger('input');
+        return function (scope, elem) {
+            $(elem).bind('blur', function () {
+                var elementScope = angular.element($(elem)).scope();
+                scope.$apply(function(){
+                    elementScope.searchEntity.SearchTamilText = $(elem).val().trim();
+                });
             });
         };
     });
 
+    thirukkuralApp.value('localeConf', {
+        basePath: 'assets/languages',
+        defaultLocale: 'tamil',
+        sharedDictionary: 'common',
+        fileExtension: '.lang.json',
+        persistSelection: true,
+        cookieName: 'COOKIE_LOCALE_LANG',
+        observableAttrs: new RegExp('^data-(?!ng-|i18n)'),
+        delimiter: '::'
+    });
+
+    thirukkuralApp.value('localeSupported', [
+        'english',
+        'tamil'
+    ]);
+
     thirukkuralApp.run(['$state', function ($route) {
     }]);
+
+
 
 })();

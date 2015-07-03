@@ -1,7 +1,6 @@
 
 <script type="text/javascript-lazy">
 
-
     $(function () {
 
         $("#transliterateTextarea").change(function () {
@@ -11,7 +10,6 @@
         window.google.load('elements', '1', {packages: 'transliteration', "callback": onLoad});
 
         function onLoad() {
-
             var options = {
                 sourceLanguage: window.google.elements.transliteration.LanguageCode.ENGLISH,
                 destinationLanguage: [window.google.elements.transliteration.LanguageCode.TAMIL],
@@ -21,7 +19,6 @@
 
             var control = new window.google.elements.transliteration.TransliterationControl(options);
             control.makeTransliteratable(['transliterateTextarea']);
-
         }
     });
 
@@ -30,15 +27,15 @@
 
 <div>
     <input type="text" placeholder="Tamil" ng-model="searchEntity.SearchTamilText" id="transliterateTextarea"
-           ng-show="searchEntity.IsTransliterationEnabled" re-Bind />
+           ng-show="searchEntity.IsTransliterationEnabled" re-bind />
     <input type="text" placeholder="English" ng-model="searchEntity.SearchEnglishText"
            ng-hide="searchEntity.IsTransliterationEnabled"/>
     <input type="checkbox" ng-model="searchEntity.IsTransliterationEnabled"
            ng-click="vm.EnableTransliterate(searchEntity)"/>
-    <input type="button" value="Search" ng-click="vm.SearchThirukkurals(searchEntity)"/>
+    <input type="button" value="Search" class="btn btn-primary" ng-click="vm.SearchThirukkurals(searchEntity)"/>
 </div>
 
-<div ng-repeat="thirukkural in vm.Thirukkurals " class="thirukkuralBlock">
+<div ng-repeat="thirukkural in vm.Thirukkurals" class="thirukkuralBlock">
     <div>
         Tamil:
         <div ng-bind-html="thirukkural.Tamil | highlight:searchEntity.SearchTamilText | renderHtml "></div>
