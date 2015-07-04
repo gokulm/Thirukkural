@@ -3,6 +3,7 @@
     'use strict';
 
     var thirukkuralApp = angular.module('thirukkuralApp', ['ui.router', 'ui.bootstrap', 'ui.utils', 'ngLocalize']);
+
     var stateProvider = function ($stateProvider, $urlRouterProvider) {
 
         $stateProvider
@@ -48,6 +49,7 @@
                 controller: 'chapterGroupChaptersController',
                 controllerAs: 'vm'
             })
+            // todo: need to change url on search
             .state('search', {
                 url: '/search',
                 templateUrl: 'app/search/search.html',
@@ -112,7 +114,5 @@
 
     thirukkuralApp.run(['$state', function ($route) {
     }]);
-
-
 
 })();

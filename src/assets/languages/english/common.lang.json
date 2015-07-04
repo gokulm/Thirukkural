@@ -1,4 +1,11 @@
 {
-  "helloWorld": "Hello World english",
-  "helloWorldElement": "Hello World english from element"
+  "WebsiteHeader" : "Thirukkural",
+  "TagLine" : "Ulagap Podhu Marai",
+  "Kural": "Kural",
+  "MuVaExplanation": "Mu. Varadharasanar's Explanation",
+  "SolomonPaapaiyaExplanation": "Solomon Paapaiya's Explanation",
+  "KalaignarExplanation": "Kalaignar's Explanation",
+  "Couplet": "Couplet",
+  "EnglishExplanation": "English Explanation",
+  "Transliteration": "Transliteration"
 }

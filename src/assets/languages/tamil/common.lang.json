@@ -1,3 +1,11 @@
 {
-  "helloWorld": "Hello World Vanakkam in Tamil"
+  "WebsiteHeader" : "திருக்குறள்",
+  "TagLine" : "உலகப் பொது மறை",
+  "Kural": "குறள்",
+  "MuVaExplanation": "மு.வ உரை",
+  "SolomonPaapaiyaExplanation": "சாலமன் பாப்பையா உரை",
+  "KalaignarExplanation": "கலைஞர் உரை",
+  "Couplet": "Couplet",
+  "EnglishExplanation": "English Explanation",
+  "Transliteration": "Transliteration"
 }

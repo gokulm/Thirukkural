@@ -30,8 +30,6 @@
 
                 getData();
             }
-
-
         };
 
         var getData = function () {
@@ -39,11 +37,11 @@
             thirukkuralsRepository.GetThirukkuralChapters(vm.bigCurrentPage).then(onThirukkuralChaptersComplete, onError);
         };
 
-        locale.setLocale('english');
+ /*       locale.setLocale('english');
 
         locale.ready('common').then(function () {
             vm.sampleText = locale.getString('common.helloWorld');
-        });
+        });*/
 
         vm.setPage = function (pageNo) {
             vm.bigCurrentPage = pageNo;
