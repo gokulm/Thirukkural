@@ -19,7 +19,6 @@
         };
 
         var init = function () {
-
             var index = $stateParams.index == undefined ? 1 : $stateParams.index;
             getData(index);
         };

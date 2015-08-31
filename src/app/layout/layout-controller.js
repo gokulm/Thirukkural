@@ -23,6 +23,7 @@
             thirukkuralsUtil.Log('language changed: ' + code);
         };
 
+
         init();
     };
 

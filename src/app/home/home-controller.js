@@ -2,7 +2,7 @@
 
     'use strict';
 
-    var homeController = function ($scope, $stateParams, $state, thirukkuralsUtil, thirukkuralsRepository, locale) {
+    var homeController = function ($scope, $stateParams, $state, thirukkuralsUtil, thirukkuralsRepository) {
 
         var vm = this;
 
@@ -55,6 +55,6 @@
     };
 
     angular.module('thirukkuralApp').controller('homeController', homeController);
-    homeController.$inject = ['$scope', '$stateParams', '$state', 'thirukkuralsUtil', 'thirukkuralsRepository', 'locale'];
+    homeController.$inject = ['$scope', '$stateParams', '$state', 'thirukkuralsUtil', 'thirukkuralsRepository'];
 
 })();

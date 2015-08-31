@@ -25,7 +25,7 @@ module.exports = function (grunt) {
                 //src: 'assets/css/app.less',
                 //dest: 'assets/css/app.css',
                 files: {
-                    "src/assets/css/app.css": "src/assets/css/app.less"
+                    "src/assets/css/app.css": "src/assets/css/*.less"
                 }
             }
         }
@@ -38,7 +38,6 @@ module.exports = function (grunt) {
 
     // Default task(s).
     grunt.registerTask('default', ['uglify', 'clean', 'less']);
-
     //grunt.registerTask('clean', ['clean']);
 
 };
