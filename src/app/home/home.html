@@ -1,4 +1,3 @@
-<div>
     <!--    <h4>Default</h4>
         <pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></pagination>
         <pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
@@ -11,48 +10,52 @@
         <h4>Pager</h4>
         <pager total-items="totalItems" ng-model="currentPage"></pager>-->
 
+
+
     <pagination total-items="vm.bigTotalItems" ng-change="vm.pageChanged()" ng-model="vm.bigCurrentPage"
                 max-size="vm.maxSize" class="pagination-sm" boundary-links="true" rotate="false"
                 num-pages="vm.numPages"></pagination>
 
-    <div class="panel panel-default">
+    <h3>{{ vm.ThirukkuralChapter.Index }}. {{ vm.ThirukkuralChapter.Tamil }}</h3>
+
+  <!--  <div class="panel panel-default">
         <div class="panel-body">
             Chapter: {{ vm.ThirukkuralChapter.Index }}
             <br>
-            <!--todo: fix encoding-->
+            &lt;!&ndash;todo: fix encoding&ndash;&gt;
             ????????/Chapter/Adhigaram: {{ "$0/$1/$2" | format : [vm.ThirukkuralChapter.Tamil,
             vm.ThirukkuralChapter.English, vm.ThirukkuralChapter.Transliteration] }}
         </div>
-    </div>
+    </div>-->
 
     <div class="panel panel-default" ng-repeat="thirukkural in vm.Thirukkurals">
         <div class="panel-body">
             <div class="kuralProperty">
-                <div class="kuralPropertyHeading"><span i18n="common.Kural"></span> {{thirukkural.Index}}:</div>
+                <div class="kuralPropertyHeading"><h5> <span i18n="common.Kural"></span> {{thirukkural.Index}}: </h5></div>
                 <div ng-bind-html="thirukkural.Tamil | renderHtml"></div>
             </div>
             <div class="kuralProperty">
-                <div class="kuralPropertyHeading"><span i18n="common.MuVaExplanation"></span>:</div>
+                <div class="kuralPropertyHeading"><h5><span i18n="common.MuVaExplanation"></span>:</h5> </div>
                 <div>{{thirukkural.MuVaUrai}}</div>
             </div>
             <div class="kuralProperty">
-                <div class="kuralPropertyHeading"><span i18n="common.SolomonPaapaiyaExplanation"></span>:</div>
+                <div class="kuralPropertyHeading"><h5> <span i18n="common.SolomonPaapaiyaExplanation"></span>:</h5></div>
                 <div>{{thirukkural.SolomonPaapaiyaUrai}}</div>
             </div>
             <div class="kuralProperty">
-                <div class="kuralPropertyHeading"><span i18n="common.KalaignarExplanation"></span>:</div>
+                <div class="kuralPropertyHeading"><h5><span i18n="common.KalaignarExplanation"></span>:</h5></div>
                 <div>{{thirukkural.KalaignarUrai}}</div>
             </div>
             <div class="kuralProperty">
-                <div class="kuralPropertyHeading"><span i18n="common.Couplet"></span>:</div>
+                <div class="kuralPropertyHeading"><h5><span i18n="common.Couplet"></span>:</h5></div>
                 <div ng-bind-html="thirukkural.English | renderHtml"></div>
             </div>
             <div class="kuralProperty">
-                <div class="kuralPropertyHeading"><span i18n="common.EnglishExplanation"></span>:</div>
+                <div class="kuralPropertyHeading"><h5><span i18n="common.EnglishExplanation"></span>:</h5></div>
                 <div>{{thirukkural.EnglishMeaning}}</div>
             </div>
             <div class="kuralProperty">
-                <div class="kuralPropertyHeading"><span i18n="common.Transliteration"></span>:</div>
+                <div class="kuralPropertyHeading"><h5><span i18n="common.Transliteration"></span>:</h5></div>
                 <div ng-bind-html="thirukkural.TamilTransliteration | renderHtml"></div>
             </div>
         </div>

@@ -24,7 +24,7 @@
             }
             else {
 
-                vm.maxSize = 30;
+                vm.maxSize = 25;
                 vm.bigTotalItems = 1330;
                 vm.bigCurrentPage = $stateParams.index;
 
