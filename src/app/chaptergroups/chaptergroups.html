@@ -1,4 +1,5 @@
-<table>
+
+<table class="table table-bordered tableThirukkural">
     <thead>
     <th>#</th>
     <th>Tamil</th>
@@ -9,7 +10,7 @@
     <tr ng-repeat="thirukkuralChapterGroup in vm.ThirukkuralChapterGroups">
         <td> {{ thirukkuralChapterGroup.Index }} </td>
         <td> {{ thirukkuralChapterGroup.Tamil }} </td>
-        <td> {{ thirukkuralChapterGroupt.English }} </td>
+        <td> {{ thirukkuralChapterGroup.English }} </td>
         <td> {{ thirukkuralChapterGroup.Transliteration }} </td>
         <td> <a ui-sref="chaptergroupchapters( { index: thirukkuralChapterGroup.Index })">Chapters</a> </td>
     </tr>
