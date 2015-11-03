@@ -4,25 +4,36 @@
 
     var layoutController = function (locale, thirukkuralsUtil) {
 
-        var vm = this;
+        var self = this;
 
         var init = function(){
 
             // todo: find value from cookie and set it
-            locale.setLocale('tamil');
+            //locale.setLocale('tamil');
+            setLanguage('tamil');
         };
 
-        vm.AllowedLanguages = [
+        self.AllowedLanguages = [
             {code: 'english', value: 'English'},
             {code: 'tamil', value: 'Tamil'},
             //{ code: 'englishTamil', value: 'English & Tamil' }
         ];
 
-        vm.SetLocale = function (code) {
-            locale.setLocale(code);
+        self.SetLocale = function (code) {
+            //locale.setLocale(code);
+            setLanguage(code);
             thirukkuralsUtil.Log('language changed: ' + code);
         };
 
+        self.IsTamil = function(){
+            return self.LocaleCode == 'tamil';
+        }
+
+        function setLanguage(code){
+            locale.setLocale(code);
+            self.LocaleCode = code;
+        };
+ ;
 
         init();
     };

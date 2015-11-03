@@ -11,13 +11,13 @@
                 url: '/',
                 templateUrl: 'app/home/home.html',
                 controller: 'homeController',
-                controllerAs: 'vm'
+                controllerAs: 'home'
             })
             .state('thirukkuralsbychapters', {
                 url: '/thirukkuralchapters/:index/thirukkurals',
                 templateUrl: 'app/home/home.html',
                 controller: 'homeController',
-                controllerAs: 'vm'
+                controllerAs: 'home'
             })
             .state('chapters', {
                 url: '/thirukkuralchapters/:index',

@@ -38,7 +38,7 @@
     <script src="app/services/thirukkurals-repository.js"></script>
     <script src="app/services/thirukkkurals-util.js"></script>
 </head>
-<body ng-controller="layoutController as vm">
+<body ng-controller="layoutController as layout">
 <div class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -57,8 +57,8 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download" aria-expanded="false"><span class="brand" i18n="common.Language"></span> <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="download">
-                        <li ng-repeat="lang in vm.AllowedLanguages">
-                            <a href ng-click="vm.SetLocale(lang.code)">{{lang.value}}</a>
+                        <li ng-repeat="lang in layout.AllowedLanguages">
+                            <a href ng-click="layout.SetLocale(lang.code)">{{lang.value}}</a>
                         </li>
                     </ul>
                 </li>
