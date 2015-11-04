@@ -58,6 +58,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download" aria-expanded="false"><span class="brand" i18n="common.Language"></span> <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="download">
                         <li ng-repeat="lang in layout.AllowedLanguages">
+                            <!--todo: languages should be locale-->
                             <a href ng-click="layout.SetLocale(lang.code)">{{lang.value}}</a>
                         </li>
                     </ul>

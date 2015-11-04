@@ -14,8 +14,8 @@
         };
 
         self.AllowedLanguages = [
-            {code: 'english', value: 'English'},
             {code: 'tamil', value: 'Tamil'},
+            {code: 'english', value: 'English'},
             //{ code: 'englishTamil', value: 'English & Tamil' }
         ];
 

@@ -13,5 +13,9 @@
   "Sections": "பால்கள்",
   "ChapterGroups": "இயல்கள்",
   "Search": "தேடல்",
-  "Language": "மொழி"
+  "Language": "மொழி",
+  "Chapter": "அதிகாரம்",  
+  "ChapterGroup": "இயல்",
+  "ChapterTransliteration": "Adhigaaram",
+  "ChapterGroupTransliteration": "Iyal"
 }

@@ -46,15 +46,15 @@
                 <div class="kuralPropertyHeading"><h5><span i18n="common.KalaignarExplanation"></span>:</h5></div>
                 <div>{{thirukkural.KalaignarUrai}}</div>
             </div>
-            <div class="kuralProperty" ng-if="!layout.IsTamil()">
+            <div class="kuralProperty" ng-hide="layout.IsTamil()">
                 <div class="kuralPropertyHeading"><h5><span i18n="common.Couplet"></span>:</h5></div>
                 <div ng-bind-html="thirukkural.English | renderHtml"></div>
             </div>
-            <div class="kuralProperty" ng-if="!layout.IsTamil()">
+            <div class="kuralProperty" ng-hide="layout.IsTamil()">
                 <div class="kuralPropertyHeading"><h5><span i18n="common.EnglishExplanation"></span>:</h5></div>
                 <div>{{thirukkural.EnglishMeaning}}</div>
             </div>
-            <div class="kuralProperty" ng-if="!layout.IsTamil()">
+            <div class="kuralProperty" ng-hide="layout.IsTamil()">
                 <div class="kuralPropertyHeading"><h5><span i18n="common.Transliteration"></span>:</h5></div>
                 <div ng-bind-html="thirukkural.TamilTransliteration | renderHtml"></div>
             </div>
