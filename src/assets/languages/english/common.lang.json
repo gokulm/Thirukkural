@@ -17,5 +17,7 @@
   "Chapter": "Chapter",
   "ChapterGroup": "Chapter Group",
   "ChapterTransliteration": "Adhigaaram",
-  "ChapterGroupTransliteration": "Iyal"
+  "ChapterGroupTransliteration": "Iyal",  
+  "Section": "Section",
+  "SectionTransliteration": "Paal"
 }
