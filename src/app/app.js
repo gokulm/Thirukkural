@@ -112,7 +112,8 @@
         'tamil'
     ]);
 
-    thirukkuralApp.run(['$state', function ($route) {
+    thirukkuralApp.run(['$state', '$rootScope', function ($state, $rootScope) {
+        $rootScope.$state = $state;
     }]);
 
 })();

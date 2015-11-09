@@ -2,7 +2,7 @@
 
     'use strict';
 
-    var layoutController = function (locale, thirukkuralsUtil) {
+    var layoutController = function ($rootScope, locale, thirukkuralsUtil) {
 
         var self = this;
 
@@ -27,18 +27,40 @@
 
         self.IsTamil = function(){
             return self.LocaleCode == 'tamil';
-        }
+        };
+
+        self.IsActiveMenu = function(menu){
+            //return $rootScope.$state.current.name === menu ? "active" : "";
+            //return menu;
+            //return $rootScope.$state.$current.name;
+            //return $rootScope.$state.$current.name === menu ? "active" : "";
+
+            if($rootScope.$state.$current.name == menu)
+            {
+                return "active";
+            }
+
+            return "";
+        };
+
+        self.ActiveMenu = function(){
+            //return $rootScope.$state.current.name === menu ? "active" : "";
+            //return menu;
+            return $rootScope.$state.$current.name;/**/
+            //return $rootScope.$state.$current.name === menu ? "active" : "";
+
+
+        };
 
         function setLanguage(code){
             locale.setLocale(code);
             self.LocaleCode = code;
         };
- ;
 
         init();
     };
 
     angular.module('thirukkuralApp').controller('layoutController', layoutController);
-    layoutController.$inject = ['locale', 'thirukkuralsUtil'];
+    layoutController.$inject = ['$rootScope', 'locale', 'thirukkuralsUtil'];
 
 })();
