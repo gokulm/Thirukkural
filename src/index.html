@@ -46,12 +46,12 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
             <ul class="nav navbar-nav">
-                <li role="presentation" ng-class="layout.IsActiveMenu('thirukkuralsbychapters')"><a ui-sref="thirukkuralsbychapters( { index: 1 })"><span class="brand" i18n="common.Kurals"></span> {{ layout.ActiveMenu() }}</a>
+                <li role="presentation" ng-class="layout.IsActiveMenu(['thirukkuralsbychapters'])"><a ui-sref="thirukkuralsbychapters( { index: 1 })"><span class="brand" i18n="common.Kurals"></span></a>
                 </li>
-                <li role="presentation" ng-class="layout.IsActiveMenu('chapters')"><a ui-sref="chapters"><span class="brand" i18n="common.Chapters"></span></a></li>
-                <li role="presentation" ng-class="layout.IsActiveMenu('sections')"><a ui-sref="sections"><span class="brand" i18n="common.Sections"></span></a></li>
-                <li role="presentation" ng-class="layout.IsActiveMenu('chaptergroups')"><a ui-sref="chaptergroups"><span class="brand" i18n="common.ChapterGroups"></span></a></li>
-                <li role="presentation" ng-class="layout.IsActiveMenu('search')"><a ui-sref="search"><span class="brand" i18n="common.Search"></span></a></li>
+                <li role="presentation" ng-class="layout.IsActiveMenu(['chapters', 'sectionchapters', 'chaptergroupchapters'])"><a ui-sref="chapters"><span class="brand" i18n="common.Chapters"></span></a></li>
+                <li role="presentation" ng-class="layout.IsActiveMenu(['sections'])"><a ui-sref="sections"><span class="brand" i18n="common.Sections"></span></a></li>
+                <li role="presentation" ng-class="layout.IsActiveMenu(['chaptergroups'])"><a ui-sref="chaptergroups"><span class="brand" i18n="common.ChapterGroups"></span></a></li>
+                <li role="presentation" ng-class="layout.IsActiveMenu(['search'])"><a ui-sref="search"><span class="brand" i18n="common.Search"></span></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">

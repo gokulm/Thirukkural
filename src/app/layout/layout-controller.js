@@ -29,28 +29,24 @@
             return self.LocaleCode == 'tamil';
         };
 
-        self.IsActiveMenu = function(menu){
-            //return $rootScope.$state.current.name === menu ? "active" : "";
-            //return menu;
-            //return $rootScope.$state.$current.name;
-            //return $rootScope.$state.$current.name === menu ? "active" : "";
+        self.IsActiveMenu = function(menus){
 
-            if($rootScope.$state.$current.name == menu)
-            {
-                return "active";
-            }
+            var menuClass = null;
 
-            return "";
+            menus.forEach(function(menu){
+               if($rootScope.$state.$current.name === menu)
+               {
+                   menuClass = "active";
+                   return;
+               }
+            });
+
+            return menuClass;
         };
 
-        self.ActiveMenu = function(){
-            //return $rootScope.$state.current.name === menu ? "active" : "";
-            //return menu;
-            return $rootScope.$state.$current.name;/**/
-            //return $rootScope.$state.$current.name === menu ? "active" : "";
-
-
-        };
+        //self.ActiveMenu = function(){
+        //    return $rootScope.$state.$current.name;
+        //};
 
         function setLanguage(code){
             locale.setLocale(code);
