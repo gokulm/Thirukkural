@@ -26,12 +26,12 @@
 
 
 <div>
-    <input type="text" placeholder="Tamil" ng-model="searchEntity.SearchTamilText" id="transliterateTextarea"
+    <input type="text" placeholder="Tamil" ng-hide="!layout.IsTamil()" ng-model="searchEntity.SearchTamilText" id="transliterateTextarea"
            ng-show="searchEntity.IsTransliterationEnabled" re-bind />
-    <input type="text" placeholder="English" ng-model="searchEntity.SearchEnglishText"
+    <input type="text" placeholder="English" ng-hide="layout.IsTamil()" ng-model="searchEntity.SearchEnglishText"
            ng-hide="searchEntity.IsTransliterationEnabled"/>
-    <input type="checkbox" ng-model="searchEntity.IsTransliterationEnabled"
-           ng-click="vm.EnableTransliterate(searchEntity)"/>
+    <!--<input type="checkbox" ng-model="searchEntity.IsTransliterationEnabled"-->
+           <!--ng-click="vm.EnableTransliterate(searchEntity)"/>-->
     <input type="button" value="Search" class="btn btn-primary" ng-click="vm.SearchThirukkurals(searchEntity)"/>
 </div>
 

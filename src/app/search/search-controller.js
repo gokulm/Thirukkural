@@ -2,7 +2,7 @@
     
     'use strict';
 
-    var searchController = function ($scope, $stateParams, $state, thirukkuralsUtil, thirukkuralsRepository) {
+    var searchController = function ($scope, $stateParams, $state, thirukkuralsUtil, thirukkuralsRepository, locale) {
 
         var vm = this;
 
@@ -31,6 +31,7 @@
 
         vm.SearchThirukkurals = function (searchEntity) {
             thirukkuralsUtil.Log(searchEntity);
+            thirukkuralsUtil.Log(locale.getLocale());
             //thirukkuralsUtil.Log("scopeSearchEntity: " + $scope.searchEntity);
             if (searchEntity.IsTransliterationEnabled) {
                 thirukkuralsRepository.SearchThirukkuralsInTamil(searchEntity.SearchTamilText)
@@ -46,7 +47,7 @@
     };
 
     angular.module('thirukkuralApp').controller('searchController', searchController);
-    searchController.$inject = ['$scope', '$stateParams', '$state', 'thirukkuralsUtil', 'thirukkuralsRepository'];
+    searchController.$inject = ['$scope', '$stateParams', '$state', 'thirukkuralsUtil', 'thirukkuralsRepository', 'locale'];
 
 
 })();

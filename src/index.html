@@ -62,7 +62,7 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download" aria-expanded="false"><span class="brand" i18n="common.Language"></span> <span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="download">
-                        <li ng-repeat="lang in layout.AllowedLanguages" data-toggle="collapse" data-target="#navbar" >
+                        <li ng-repeat="lang in layout.AllowedLanguages" data-toggle="collapse" data-target=".navbar-collapse.in" >
                             <!--todo: languages should be locale-->
                             <a href ng-click="layout.SetLocale(lang.code)">{{lang.value}}</a>
                         </li>

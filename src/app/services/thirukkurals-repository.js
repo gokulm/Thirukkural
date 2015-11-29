@@ -101,6 +101,22 @@
                 });
         };
 
+        function startsWith(searchText) {
+            thirukkuralsUtil.Log("repository: startsWith");
+            return $http.get(baseUrl + "thirukkuralsstartswith/" + searchText)
+                .then(function (response) {
+                    return response.data;
+                });
+        };
+
+        function endsWith(searchText) {
+            thirukkuralsUtil.Log("repository: endsWith");
+            return $http.get(baseUrl + "thirukkuralsendswith/" + searchText)
+                .then(function (response) {
+                    return response.data;
+                });
+        };
+
         return {
             GetThirukkural: getThirukkural,
             GetThirukkuralChapters: getThirukkuralChapters,
@@ -112,7 +128,9 @@
             GetThirukkuralChaptersBySection: getThirukkuralChaptersBySection,
             GetThirukkuralChaptersByChapterGroup: getThirukkuralChaptersByChapterGroup,
             SearchThirukkuralsInTamil: searchThirukkuralsInTamil,
-            SearchThirukkuralsInEnglish: searchThirukkuralsInEnglish
+            SearchThirukkuralsInEnglish: searchThirukkuralsInEnglish,
+            StartsWith: startsWith,
+            EndsWith: endsWith
         };
     };
 

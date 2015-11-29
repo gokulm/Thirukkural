@@ -37,7 +37,7 @@
                if($rootScope.$state.$current.name === menu)
                {
                    menuClass = "active";
-                   return;
+                   return; // exit for loop
                }
             });
 
