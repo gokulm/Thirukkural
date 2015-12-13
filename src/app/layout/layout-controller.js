@@ -44,10 +44,6 @@
             return menuClass;
         };
 
-        //self.ActiveMenu = function(){
-        //    return $rootScope.$state.$current.name;
-        //};
-
         function setLanguage(code){
             locale.setLocale(code);
             self.LocaleCode = code;

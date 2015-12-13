@@ -96,6 +96,27 @@
         };
     });
 
+    thirukkuralApp.directive('onloadDirective', function($rootScope, $document){
+        return {
+            restrict: 'A',
+            link: function(elem, attrs){
+                $(window).load(function() {
+                    //get element
+                    var myElement = elem;
+                    console.log(elem);
+                    console.log("width" + $document[0].body.clientWidth);
+                    if (myElement.width() > 100 && myElement.width() < 500) {
+
+                        $rootScope.customWidth = "> 100 and < 500";
+                        console.log("testing 22");
+                    } else {
+                        console.log("testing");
+                        $rootScope.customWidth = "> 500";
+                    }
+                });
+            }
+        } });
+
     thirukkuralApp.value('localeConf', {
         basePath: 'assets/languages',
         defaultLocale: 'tamil',
