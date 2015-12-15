@@ -6,11 +6,11 @@
 
         var self = this;
 
-        var onThirukkuralsByChaptersComplete = function (data) {
+        function onThirukkuralsByChaptersComplete(data) {
             self.Thirukkurals = data;
         };
 
-        var onThirukkuralChaptersComplete = function (data) {
+        function onThirukkuralChaptersComplete(data) {
             self.ThirukkuralChapter = data;
         };
 

@@ -17,7 +17,9 @@
                 max-size="home.maxSize" class="pagination-sm" boundary-links="true" rotate="false"
                 num-pages="home.numPages"></pagination>
 
-    <h3>{{ home.ThirukkuralChapter.Index }}. {{ home.ThirukkuralChapter.Tamil }} </h3>
+    <div class="thirukurralChapterHeader">
+        <h4 class="thirukurralChapterHeaderText">{{ home.ThirukkuralChapter.Index }}. {{ home.ThirukkuralChapter.Tamil }} </h4>
+    </div>
 
     <div class="panel panel-default" ng-repeat="thirukkural in home.Thirukkurals">
         <div class="panel-body">
