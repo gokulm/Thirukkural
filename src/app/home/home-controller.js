@@ -12,6 +12,7 @@
 
         function onThirukkuralChaptersComplete(data) {
             self.ThirukkuralChapter = data;
+            self.ThirukkuralChapterIndexAndName = data.Index + ". " + data.Tamil;
         };
 
         var onError = function (errorMessage) {
@@ -48,9 +49,6 @@
         self.pageChanged = function () {
             $state.go('thirukkuralsbychapters', {index: self.bigCurrentPage});
         };
-
-        self.CustomWidth = $rootScope.customWidth;
-        console.log($rootScope.customWidth);
 
         init();
 

@@ -2,7 +2,7 @@
 
     'use strict';
 
-    var thirukkuralApp = angular.module('thirukkuralApp', ['ui.router', 'ui.bootstrap', 'ui.utils', 'ngLocalize']);
+    var thirukkuralApp = angular.module('thirukkuralApp', ['ui.router', 'ui.bootstrap', 'ui.utils', 'ngLocalize', 'angular-loading-bar']);
 
     var stateProvider = function ($stateProvider, $urlRouterProvider) {
 
@@ -96,7 +96,7 @@
         };
     });
 
-    thirukkuralApp.directive('onloadDirective', function($rootScope, $document){
+  /*  thirukkuralApp.directive('onloadDirective', function($rootScope, $document){
         return {
             restrict: 'A',
             link: function(elem, attrs){
@@ -115,7 +115,7 @@
                     }
                 });
             }
-        } });
+        } });*/
 
     thirukkuralApp.value('localeConf', {
         basePath: 'assets/languages',
@@ -135,6 +135,10 @@
 
     thirukkuralApp.run(['$state', '$rootScope', function ($state, $rootScope) {
         $rootScope.$state = $state;
+    }]);
+
+    thirukkuralApp.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+        //cfpLoadingBarProvider.includeSpinner = false;
     }]);
 
 })();
