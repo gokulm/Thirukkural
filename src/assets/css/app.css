@@ -63,5 +63,8 @@ h5 {
 .panel {
   border-radius: 0;
 }
+/*.table td, .table th {
+  min-width: 30px;
+}*/
 /*# sourceMappingURL=src/assets/css/app.css.map */
 /*# sourceMappingURL=src/assets/css/app.less.map */

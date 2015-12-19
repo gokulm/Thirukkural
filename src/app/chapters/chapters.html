@@ -10,19 +10,19 @@
     </div>
 </div>
 
-<table class="table table-bordered tableThirukkural">
+<table class="table table-bordered table-striped tableThirukkural">
     <thead>
     <th>#</th>
-    <th><span class="brand" i18n="common.Chapter"></span></th>
+    <th><span class="brand" i18n="common.ChapterInTamil"></span></th>
     <th ng-hide="layout.IsTamil()"><span class="brand" i18n="common.Chapter"></span></th>
     <th ng-hide="layout.IsTamil()"><span class="brand" i18n="common.ChapterTransliteration"></span></th>
     <th></th>
     </thead>
     <tr ng-repeat="thirukkuralChapter in vm.ThirukkuralChapters">
-        <td> {{ thirukkuralChapter.Index }} </td>
-        <td> {{ thirukkuralChapter.Tamil }} </td>
-        <td ng-hide="layout.IsTamil()"> {{ thirukkuralChapter.English }} </td>
-        <td ng-hide="layout.IsTamil()"> {{ thirukkuralChapter.Transliteration }} </td>
-        <td> <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })"><span class="brand" i18n="common.Kurals"></span></a> </td>
+        <td class="col-sm-1 col-md-1">{{ ::thirukkuralChapter.Index }}</td>
+        <td class="col-md-3"> {{ ::thirukkuralChapter.Tamil }} </td>
+        <td class="col-md-3" ng-hide="layout.IsTamil()"> {{ ::thirukkuralChapter.English }} </td>
+        <td class="col-md-3" ng-hide="layout.IsTamil()"> {{ ::thirukkuralChapter.Transliteration }} </td>
+        <td class="col-md-8"> <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })"><span class="brand" i18n="common.Kurals"></span></a> </td>
     </tr>
 </table>
