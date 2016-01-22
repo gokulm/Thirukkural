@@ -10,19 +10,55 @@
     </div>
 </div>
 
-<table class="table table-bordered table-striped tableThirukkural">
+<table class="table table-bordered table-striped tableThirukkural" ng-if="layout.IsTamil()">
     <thead>
-    <th>#</th>
     <th><span class="brand" i18n="common.ChapterInTamil"></span></th>
-    <th ng-hide="layout.IsTamil()"><span class="brand" i18n="common.Chapter"></span></th>
-    <th ng-hide="layout.IsTamil()"><span class="brand" i18n="common.ChapterTransliteration"></span></th>
     <th></th>
     </thead>
     <tr ng-repeat="thirukkuralChapter in vm.ThirukkuralChapters">
-        <td class="col-sm-1 col-md-1">{{ ::thirukkuralChapter.Index }}</td>
-        <td class="col-md-3"> {{ ::thirukkuralChapter.Tamil }} </td>
-        <td class="col-md-3" ng-hide="layout.IsTamil()"> {{ ::thirukkuralChapter.English }} </td>
-        <td class="col-md-3" ng-hide="layout.IsTamil()"> {{ ::thirukkuralChapter.Transliteration }} </td>
-        <td class="col-md-8"> <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })"><span class="brand" i18n="common.Kurals"></span></a> </td>
+        <td class="col-md-8"> {{ thirukkuralChapter.Index + ". " + thirukkuralChapter.Tamil }} </td>
+        <td class="col-md-4"> <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })"><span class="brand" i18n="common.Kurals"></span></a> </td>
     </tr>
 </table>
+
+<div ng-if="!layout.IsTamil()">
+
+    <div class="visible-xs" ng-repeat="thirukkuralChapter in vm.ThirukkuralChapters">
+        <div class="thirukurralChapterHeader">
+            <h4 class="thirukurralChapterHeaderText">{{ ::thirukkuralChapter.Index }}.</h4>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="adhigaramProperty">
+                    <span class="brand adhigaramPropertyHeading" i18n="common.ChapterInTamil"></span>: {{ ::thirukkuralChapter.Tamil }}
+                </div>
+                <div class="adhigaramProperty">
+                    <span class="brand adhigaramPropertyHeading" i18n="common.Chapter"></span>: {{ ::thirukkuralChapter.English }}
+                </div>
+                <div class="adhigaramProperty">
+                    <span class="brand adhigaramPropertyHeading" i18n="common.ChapterTransliteration"></span>: {{ ::thirukkuralChapter.Transliteration }}
+                </div>
+                <div class="adhigaramProperty">
+                    <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })"><span class="brand" i18n="common.Kurals"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped tableThirukkural visible-md visible-sm visible-lg">
+        <thead>
+        <th>#</th>
+        <th><span class="brand" i18n="common.ChapterInTamil"></span></th>
+        <th><span class="brand" i18n="common.Chapter"></span></th>
+        <th><span class="brand" i18n="common.ChapterTransliteration"></span></th>
+        <th></th>
+        </thead>
+        <tr ng-repeat="thirukkuralChapter in vm.ThirukkuralChapters">
+            <td class="col-md-1">{{ ::thirukkuralChapter.Index }}</td>
+            <td class="col-md-3"> {{ ::thirukkuralChapter.Tamil }} </td>
+            <td class="col-md-3"> {{ ::thirukkuralChapter.English }} </td>
+            <td class="col-md-3"> {{ ::thirukkuralChapter.Transliteration }} </td>
+            <td class="col-md-8"> <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })"><span class="brand" i18n="common.Kurals"></span></a> </td>
+        </tr>
+    </table>
+</div>

@@ -46,6 +46,12 @@ h5 {
 .kuralProperty .kuralPropertyHeading {
   font-weight: bold;
 }
+.adhigaramProperty {
+  margin-bottom: 10px;
+}
+.adhigaramProperty .adhigaramPropertyHeading {
+  font-weight: bold;
+}
 .tableThirukkural {
   background-color: #FFFFFF;
 }
