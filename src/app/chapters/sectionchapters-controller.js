@@ -7,6 +7,7 @@
         var vm = this;
 
         var onThirukkuralSectionComplete = function (data) {
+            thirukkuralsUtil.Log(data);
             vm.ThirukkuralSection = data;
         };
 
