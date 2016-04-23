@@ -1,14 +1,15 @@
-<div class="panel panel-default" ng-show="vm.HasSection">
-    <div class="panel-body">
-        பால்/Section/Paal: {{ "$0/$1/$2" | format : [vm.ThirukkuralSection.Tamil, vm.ThirukkuralSection.English, vm.ThirukkuralSection.Transliteration] }}
-    </div>
+<div class="thirukurralSectionChapterGroupHeader" ng-show="vm.HasSection">
+    <h4 class="headerText" ng-if="!layout.IsTamil()"> {{ "$0 | $1 | $2" | format : [vm.ThirukkuralSection.Tamil, vm.ThirukkuralSection.English, vm.ThirukkuralSection.Transliteration] }}</h4>
+    <h4 class="headerText" ng-if="layout.IsTamil()"> {{ ::vm.ThirukkuralSection.Tamil }}</h4>
 </div>
 
-<div class="panel panel-default" ng-show="vm.HasChapterGroup">
-    <div class="panel-body">
-        பால்/Chapter Group/Iyal: {{ "$0/$1/$2" | format : [vm.ThirukkuralChapterGroup.Tamil, vm.ThirukkuralChapterGroup.English, vm.ThirukkuralChapterGroup.Transliteration] }}
-    </div>
+<div class="thirukurralSectionChapterGroupHeader" ng-show="vm.HasChapterGroup">
+    <h4 class="headerText" ng-if="!layout.IsTamil()"> {{ "$0 | $1 | $2" | format : [vm.ThirukkuralChapterGroup.Tamil, vm.ThirukkuralChapterGroup.English, vm.ThirukkuralChapterGroup.Transliteration] }}</h4>
+    <h4 class="headerText" ng-if="layout.IsTamil()"> {{ ::vm.ThirukkuralChapterGroup.Tamil }}</h4>
 </div>
+
+<!--todo: refactor the layout-->
+
 
 <table class="table table-bordered table-striped tableThirukkural" ng-if="layout.IsTamil()">
     <thead>

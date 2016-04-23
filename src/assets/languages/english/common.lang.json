@@ -17,8 +17,10 @@
   "Chapter": "Chapter",
   "ChapterInTamil": "அதிகாரம்",  
   "ChapterGroup": "Chapter Group",
+  "ChapterGroupInTamil": "இயல்",
   "ChapterTransliteration": "Adhigaaram",
   "ChapterGroupTransliteration": "Iyal",  
   "Section": "Section",
+  "SectionInTamil": "பால்",
   "SectionTransliteration": "Paal"
 }

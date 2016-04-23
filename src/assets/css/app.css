@@ -66,6 +66,12 @@ h5 {
 .thirukurralChapterHeader .thirukurralChapterHeaderText {
   padding-left: 10px;
 }
+.thirukurralSectionChapterGroupHeader {
+  margin-bottom: 8px;
+}
+.thirukurralSectionChapterGroupHeader .headerText {
+  padding-left: 10px;
+}
 .panel {
   border-radius: 0;
 }
