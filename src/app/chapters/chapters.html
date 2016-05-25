@@ -13,23 +13,25 @@
 
 <table class="table table-bordered table-striped tableThirukkural" ng-if="layout.IsTamil()">
     <thead>
+    <th>#</th>
     <th><span class="brand" i18n="common.ChapterInTamil"></span></th>
     <th></th>
     </thead>
     <tr ng-repeat="thirukkuralChapter in vm.ThirukkuralChapters">
-        <td class="col-md-8"> {{ thirukkuralChapter.Index + ". " + thirukkuralChapter.Tamil }} </td>
-        <td class="col-md-4"> <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })"><span class="brand" i18n="common.Kurals"></span></a> </td>
+        <td class="col-md-1">{{ thirukkuralChapter.Index }}</td>
+        <td class="col-md-4"> {{ thirukkuralChapter.Tamil }} </td>
+        <td class="col-md-7"> <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })"><span class="brand" i18n="common.Kurals"></span></a> </td>
     </tr>
 </table>
 
 <div ng-if="!layout.IsTamil()">
 
     <div class="visible-xs" ng-repeat="thirukkuralChapter in vm.ThirukkuralChapters">
-        <div class="thirukurralChapterHeader">
-            <h4 class="thirukurralChapterHeaderText">{{ ::thirukkuralChapter.Index }}.</h4>
-        </div>
         <div class="panel panel-default">
             <div class="panel-body">
+                <div class="adhigaramProperty">
+                    <span class="brand adhigaramPropertyHeading">#</span>: {{ ::thirukkuralChapter.Index }}
+                </div>
                 <div class="adhigaramProperty">
                     <span class="brand adhigaramPropertyHeading" i18n="common.ChapterInTamil"></span>: {{ ::thirukkuralChapter.Tamil }}
                 </div>
@@ -59,7 +61,7 @@
             <td class="col-md-3"> {{ ::thirukkuralChapter.Tamil }} </td>
             <td class="col-md-3"> {{ ::thirukkuralChapter.English }} </td>
             <td class="col-md-3"> {{ ::thirukkuralChapter.Transliteration }} </td>
-            <td class="col-md-8"> <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })"><span class="brand" i18n="common.Kurals"></span></a> </td>
+            <td class="col-md-2"> <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })"><span class="brand" i18n="common.Kurals"></span></a> </td>
         </tr>
     </table>
 </div>

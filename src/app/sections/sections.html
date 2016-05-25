@@ -3,12 +3,14 @@
 
 <table class="table table-bordered table-striped tableThirukkural" ng-if="layout.IsTamil()">
     <thead>
+    <th>#</th>
     <th><span class="brand" i18n="common.SectionInTamil"></span></th>
     <th></th>
     </thead>
     <tr ng-repeat="thirukkuralSection in vm.ThirukkuralSections">
-        <td class="col-md-8"> {{ thirukkuralSection.Index + ". " + thirukkuralSection.Tamil }} </td>
-        <td class="col-md-4"> <a ui-sref="sectionchapters( { index: thirukkuralSection.Index })"><span class="brand" i18n="common.Chapters"></span></a>  </td>
+        <td class="col-md-1"> {{ ::thirukkuralSection.Index }} </td>
+        <td class="col-md-4"> {{ thirukkuralSection.Tamil }} </td>
+        <td class="col-md-7"> <a ui-sref="sectionchapters( { index: thirukkuralSection.Index })"><span class="brand" i18n="common.Chapters"></span></a>  </td>
     </tr>
 </table>
 
@@ -16,11 +18,14 @@
 <div ng-if="!layout.IsTamil()">
 
     <div class="visible-xs" ng-repeat="thirukkuralSection in vm.ThirukkuralSections">
-        <div class="thirukurralChapterHeader">
-            <h4 class="thirukurralChapterHeaderText">{{ ::thirukkuralSection.Index }}.</h4>
-        </div>
+        <!--<div class="thirukurralChapterHeader">-->
+            <!--<h4 class="thirukurralChapterHeaderText">{{ ::thirukkuralSection.Index }}.</h4>-->
+        <!--</div>-->
         <div class="panel panel-default">
             <div class="panel-body">
+                <div class="adhigaramProperty">
+                    <span class="brand adhigaramPropertyHeading">#</span>: {{ ::thirukkuralSection.Index }}
+                </div>
                 <div class="adhigaramProperty">
                     <span class="brand adhigaramPropertyHeading" i18n="common.SectionInTamil"></span>: {{ ::thirukkuralSection.Tamil }}
                 </div>
