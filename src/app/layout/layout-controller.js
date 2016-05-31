@@ -2,26 +2,29 @@
 
     'use strict';
 
-    var layoutController = function ($rootScope, locale, thirukkuralsUtil) {
+    var layoutController = function ($rootScope, locale, thirukkuralsUtil, $cookies) {
 
         var self = this;
 
         var init = function(){
-
-            // todo: find value from cookie and set it
-            //locale.setLocale('tamil');
-            setLanguage('tamil');
+            var langFromCookie = $cookies.get('language');
+            if(langFromCookie){
+                setLanguage(langFromCookie);
+            }
+            else {
+                $cookies.put('language', 'tamil');
+                setLanguage('tamil');
+            }
         };
 
         self.AllowedLanguages = [
             {code: 'tamil', value: 'Tamil'},
-            {code: 'english', value: 'English & Tamil'},
-            //{ code: 'englishTamil', value: 'English & Tamil' }
+            {code: 'english', value: 'English & Tamil'}
         ];
 
         self.SetLocale = function (code) {
-            //locale.setLocale(code);
             setLanguage(code);
+            $cookies.put('language', code);
             thirukkuralsUtil.Log('language changed: ' + code);
         };
 
@@ -30,9 +33,7 @@
         };
 
         self.IsActiveMenu = function(menus){
-
             var menuClass = null;
-
             menus.forEach(function(menu){
                if($rootScope.$state.$current.name === menu)
                {
@@ -53,6 +54,6 @@
     };
 
     angular.module('thirukkuralApp').controller('layoutController', layoutController);
-    layoutController.$inject = ['$rootScope', 'locale', 'thirukkuralsUtil'];
+    layoutController.$inject = ['$rootScope', 'locale', 'thirukkuralsUtil', '$cookies'];
 
 })();
