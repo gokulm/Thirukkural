@@ -89,6 +89,9 @@ footer a:visited,
 footer a:hover {
   color: #fff;
 }
+.highlight {
+  background-color: yellow;
+}
 /*.table td, .table th {
   min-width: 30px;
 }*/

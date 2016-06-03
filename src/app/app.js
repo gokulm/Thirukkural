@@ -96,6 +96,20 @@
         };
     });
 
+    thirukkuralApp.directive('highLight', function ($timeout) {
+
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                console.log("entering highlight...")
+                $timeout(function () {
+                    console.log(scope.SearchText);
+                    element.highlight(scope.SearchText);
+                });
+            }
+        };
+    });
+
   /*  thirukkuralApp.directive('onloadDirective', function($rootScope, $document){
         return {
             restrict: 'A',

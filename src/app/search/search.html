@@ -25,16 +25,51 @@
 </script>
 
 
-<div>
-    <input type="text" placeholder="Tamil" ng-hide="!layout.IsTamil()" ng-model="searchEntity.SearchTamilText" id="transliterateTextarea"
-           ng-show="searchEntity.IsTransliterationEnabled" re-bind />
-    <input type="text" placeholder="English" ng-hide="layout.IsTamil()" ng-model="searchEntity.SearchEnglishText"
-           ng-hide="searchEntity.IsTransliterationEnabled"/>
-    <!--<input type="checkbox" ng-model="searchEntity.IsTransliterationEnabled"-->
-           <!--ng-click="vm.EnableTransliterate(searchEntity)"/>-->
-    <input type="button" value="Search" class="btn btn-primary" ng-click="vm.SearchThirukkurals(searchEntity)"/>
+<div ng-hide="!layout.IsTamil()">
+    <input type="text" placeholder="Tamil" ng-model="searchEntity.SearchTamilText" id="transliterateTextarea" re-bind />
+    <input type="button" value="Search" class="btn btn-primary" ng-click="vm.SearchThirukkuralsInTamil(searchEntity)"/>
+</div>
+<div ng-hide="layout.IsTamil()">
+    <input type="text" placeholder="English" ng-hide="layout.IsTamil()" ng-model="searchEntity.SearchEnglishText" />
+    <input type="button" value="Search" class="btn btn-primary" ng-click="vm.SearchThirukkuralsInEnglish(searchEntity)"/>
 </div>
 
+
+<div class="panel panel-default" ng-repeat="thirukkural in vm.Thirukkurals" high-light>
+    <div class="panel-body">
+        <div class="kuralProperty">
+            <div class="kuralPropertyHeading"><span i18n="common.Kural"></span> {{thirukkural.Index}}:</div>
+            <div ng-bind-html="thirukkural.Tamil | renderHtml"></div>
+        </div>
+        <div class="kuralProperty">
+            <div class="kuralPropertyHeading"><span i18n="common.MuVaExplanation"></span>: </div>
+            <div>{{thirukkural.MuVaUrai}}</div>
+        </div>
+        <div class="kuralProperty">
+            <div class="kuralPropertyHeading"> <span i18n="common.SolomonPaapaiyaExplanation"></span>:</div>
+            <div>{{thirukkural.SolomonPaapaiyaUrai}}</div>
+        </div>
+        <div class="kuralProperty">
+            <div class="kuralPropertyHeading"><span i18n="common.KalaignarExplanation"></span>:</div>
+            <div>{{thirukkural.KalaignarUrai}}</div>
+        </div>
+        <div class="kuralProperty" ng-hide="layout.IsTamil()">
+            <div class="kuralPropertyHeading"><span i18n="common.Couplet"></span>:</div>
+            <div ng-bind-html="thirukkural.English | renderHtml"></div>
+        </div>
+        <div class="kuralProperty" ng-hide="layout.IsTamil()">
+            <div class="kuralPropertyHeading"><span i18n="common.EnglishExplanation"></span>:</div>
+            <div>{{thirukkural.EnglishMeaning}}</div>
+        </div>
+        <div class="kuralProperty" ng-hide="layout.IsTamil()">
+            <div class="kuralPropertyHeading"><span i18n="common.Transliteration"></span>:</div>
+            <div ng-bind-html="thirukkural.TamilTransliteration | renderHtml"></div>
+        </div>
+    </div>
+</div>
+
+
+<!--
 <div ng-repeat="thirukkural in vm.Thirukkurals" class="thirukkuralBlock">
     <div>
         Tamil:
@@ -64,3 +99,4 @@
         <div ng-bind-html="thirukkural.EnglishMeaning | highlight:searchEntity.SearchEnglishText | renderHtml"></div>
     </div>
 </div>
+-->

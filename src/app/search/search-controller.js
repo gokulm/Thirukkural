@@ -29,17 +29,20 @@
             }
         };
 
-        vm.SearchThirukkurals = function (searchEntity) {
+        vm.SearchThirukkuralsInTamil = function (searchEntity) {
             thirukkuralsUtil.Log(searchEntity);
             thirukkuralsUtil.Log(locale.getLocale());
-            //thirukkuralsUtil.Log("scopeSearchEntity: " + $scope.searchEntity);
-            if (searchEntity.IsTransliterationEnabled) {
-                thirukkuralsRepository.SearchThirukkuralsInTamil(searchEntity.SearchTamilText)
-                    .then(onSearchComplete, onError);
-            } else {
-                thirukkuralsRepository.SearchThirukkuralsInEnglish(searchEntity.SearchEnglishText)
-                    .then(onSearchComplete, onError);
-            }
+            $scope.SearchText = searchEntity.SearchTamilText;
+            thirukkuralsRepository.SearchThirukkuralsInTamil(searchEntity.SearchTamilText)
+                .then(onSearchComplete, onError);
+        };
+
+        vm.SearchThirukkuralsInEnglish = function (searchEntity) {
+            thirukkuralsUtil.Log(searchEntity);
+            thirukkuralsUtil.Log(locale.getLocale());
+            $scope.SearchText = searchEntity.SearchEnglishText;
+            thirukkuralsRepository.SearchThirukkuralsInEnglish(searchEntity.SearchEnglishText)
+                .then(onSearchComplete, onError);
         };
 
 
