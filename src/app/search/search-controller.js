@@ -32,9 +32,26 @@
         vm.SearchThirukkuralsInTamil = function (searchEntity) {
             thirukkuralsUtil.Log(searchEntity);
             thirukkuralsUtil.Log(locale.getLocale());
+            if(!searchEntity)
+                return;
+
             $scope.SearchText = searchEntity.SearchTamilText;
-            thirukkuralsRepository.SearchThirukkuralsInTamil(searchEntity.SearchTamilText)
-                .then(onSearchComplete, onError);
+
+
+            switch(searchEntity.SearchType){
+                case "StartsWith":
+                    thirukkuralsRepository.StartsWith(searchEntity.SearchTamilText)
+                    .then(onSearchComplete, onError);
+                    break;
+                case "EndsWith":
+                    thirukkuralsRepository.EndsWith(searchEntity.SearchTamilText)
+                        .then(onSearchComplete, onError);
+                    break;
+                default:
+                    thirukkuralsRepository.SearchThirukkuralsInTamil(searchEntity.SearchTamilText)
+                        .then(onSearchComplete, onError);
+                    break;
+            }
         };
 
         vm.SearchThirukkuralsInEnglish = function (searchEntity) {

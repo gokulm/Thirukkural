@@ -24,16 +24,29 @@
 
 </script>
 
-
-<div ng-hide="!layout.IsTamil()">
-    <input type="text" placeholder="Tamil" ng-model="searchEntity.SearchTamilText" id="transliterateTextarea" re-bind />
-    <input type="button" value="Search" class="btn btn-primary" ng-click="vm.SearchThirukkuralsInTamil(searchEntity)"/>
+<div class="col-lg-12 form-group" style="padding: 10px; margin-bottom: 10px; background-color: #cdcdcd">
+    <div ng-hide="!layout.IsTamil()">
+        <div class="row">
+            <div class="col-md-10">
+                <input type="text" placeholder="Tamil" ng-model="searchEntity.SearchTamilText" id="transliterateTextarea" class="form-control" re-bind />
+            </div>
+            <div class="col-md-2">
+                <input type="button" value="Search" class="btn btn-primary form-control"  ng-click="vm.SearchThirukkuralsInTamil(searchEntity)"/>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 10px">
+            <div class="col-md-12">
+                <label class="radio-inline"><input type="radio" name="searchType" ng-model="searchEntity.SearchType" value="Contains" checked /><span i18n="common.MuVaExplanation"></span> </label>
+                <label class="radio-inline"><input type="radio" name="searchType" value="StartsWith" ng-model="searchEntity.SearchType" /><span i18n="common.SolomonPaapaiyaExplanation"></span></label>
+                <label class="radio-inline"> <input type="radio" name="searchType" value="EndsWith" ng-model="searchEntity.SearchType" /><span i18n="common.KalaignarExplanation"></span></label>
+            </div>
+        </div>
+    </div>
+    <div ng-hide="layout.IsTamil()">
+        <input type="text" placeholder="English" ng-hide="layout.IsTamil()" ng-model="searchEntity.SearchEnglishText" />
+        <input type="button" value="Search" class="btn btn-primary" ng-click="vm.SearchThirukkuralsInEnglish(searchEntity)"/>
+    </div>
 </div>
-<div ng-hide="layout.IsTamil()">
-    <input type="text" placeholder="English" ng-hide="layout.IsTamil()" ng-model="searchEntity.SearchEnglishText" />
-    <input type="button" value="Search" class="btn btn-primary" ng-click="vm.SearchThirukkuralsInEnglish(searchEntity)"/>
-</div>
-
 
 <div class="panel panel-default" ng-repeat="thirukkural in vm.Thirukkurals" high-light>
     <div class="panel-body">
