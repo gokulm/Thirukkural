@@ -35,8 +35,10 @@
             if(!searchEntity)
                 return;
 
-            $scope.SearchText = searchEntity.SearchTamilText;
+            if(!searchEntity.SearchTamilText)
+                return;
 
+            $scope.SearchText = searchEntity.SearchTamilText;
 
             switch(searchEntity.SearchType){
                 case "StartsWith":

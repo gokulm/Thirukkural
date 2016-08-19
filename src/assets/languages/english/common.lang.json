@@ -25,5 +25,7 @@
   "SectionTransliteration": "Paal",
   "StartsWith": "StartsWith",
   "EndsWith": "EndsWith",
-  "Contains": "Contains"
+  "Contains": "Contains",
+  "SearchButtonText" : "Search",
+  "SearchPlaceholder" : "Search"
 }

@@ -28,15 +28,16 @@
     <div ng-hide="!layout.IsTamil()">
         <div class="row">
             <div class="col-md-10">
-                <input type="text" placeholder="Tamil" ng-model="searchEntity.SearchTamilText" id="transliterateTextarea" class="form-control" re-bind />
+                <input type="text" data-i18n-attr="{placeholder: 'common.SearchPlaceholder'}" ng-model="searchEntity.SearchTamilText"
+                       id="transliterateTextarea" class="form-control" re-bind />
             </div>
             <div class="col-md-2">
-                <input type="button" value="Search" class="btn btn-primary form-control"  ng-click="vm.SearchThirukkuralsInTamil(searchEntity)"/>
+                <input type="button" class="btn btn-primary form-control" data-i18n-attr="{value: 'common.SearchButtonText'}" ng-click="vm.SearchThirukkuralsInTamil(searchEntity)"/>
             </div>
         </div>
-        <div class="row" style="margin-top: 10px">
+        <div class="row" style="margin-top: 10px" ng-init='searchEntity.SearchType="Contains"'>
             <div class="col-md-12">
-                <label class="radio-inline"><input type="radio" name="searchType" ng-model="searchEntity.SearchType" value="Contains" checked /><span i18n="common.Contains"></span> </label>
+                <label class="radio-inline"><input type="radio" name="searchType" ng-model="searchEntity.SearchType" value="Contains" /><span i18n="common.Contains"></span> </label>
                 <label class="radio-inline"><input type="radio" name="searchType" value="StartsWith" ng-model="searchEntity.SearchType" /><span i18n="common.StartsWith"></span></label>
                 <label class="radio-inline"> <input type="radio" name="searchType" value="EndsWith" ng-model="searchEntity.SearchType" /><span i18n="common.EndsWith"></span></label>
             </div>
