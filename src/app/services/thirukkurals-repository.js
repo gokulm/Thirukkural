@@ -5,13 +5,14 @@
     var thirukkuralsRepository = function($http, thirukkuralsUtil){
 
         // todo: should be added to a app constants
-        var baseUrl = "http://devl-api.gokulnath.com/";
+        // var baseUrl = "http://devl-api.gokulnath.com/";
+        var baseUrl = "http://localhost:55130/";
 
         var getThirukkural = function(index){
             thirukkuralsUtil.Log("repository: getThirukkural");
             return $http.get(baseUrl + "thirukkurals/" + index)
                 .then(function(response){
-                    return response.data;
+                    return response.data.Data;
                 });
         };
 
@@ -21,7 +22,7 @@
 
             return $http.get(url)
                 .then(function (response) {
-                    return response.data;
+                    return response.data.Data;
                 });
         };
 
@@ -31,7 +32,7 @@
 
             return $http.get(url)
                 .then(function (response) {
-                    return response.data;
+                    return response.data.Data;
                 });
         };
 
@@ -41,7 +42,7 @@
 
             return $http.get(url)
                 .then(function (response) {
-                    return response.data;
+                    return response.data.Data;
                 });
         };
 
@@ -49,7 +50,7 @@
             thirukkuralsUtil.Log("repository: getThirukkuralsByChapters");
             return $http.get(baseUrl + "thirukkuralchapters/" + chapterIndex + "/thirukkurals")
                 .then(function (response) {
-                    return response.data;
+                    return response.data.Data;
                 });
         };
 
@@ -57,7 +58,7 @@
             thirukkuralsUtil.Log("repository: getThirukkuralsBySections");
             return $http.get(baseUrl + "thirukkuralsections/" + sectionIndex + "/thirukkurals")
                 .then(function (response) {
-                    return response.data;
+                    return response.data.Data;
                 });
         };
 
@@ -65,7 +66,7 @@
             thirukkuralsUtil.Log("repository: getThirukkuralsByChapterGroups");
             return $http.get(baseUrl + "thirukkuralchaptergroups/" + sectionIndex + "/thirukkurals")
                 .then(function (response) {
-                    return response.data;
+                    return response.data.Data;
                 });
         };
 
@@ -73,7 +74,7 @@
             thirukkuralsUtil.Log("repository: getThirukkuralChaptersBySection");
             return $http.get(baseUrl + "thirukkuralsections/" + index + "/chapters")
                 .then(function (response) {
-                    return response.data;
+                    return response.data.Data;
                 });
         };
 
@@ -81,7 +82,7 @@
             thirukkuralsUtil.Log("repository: getThirukkuralChaptersByChapterGroup");
             return $http.get(baseUrl + "thirukkuralchaptergroups/" + index + "/chapters")
                 .then(function (response) {
-                    return response.data;
+                    return response.data.Data;
                 });
         };
 
@@ -89,7 +90,7 @@
             thirukkuralsUtil.Log("repository: searchThirukkuralsInTamil");
             return $http.get(baseUrl + "thirukkuralstamilsearch/" + searchText)
                 .then(function (response) {
-                    return response.data;
+                    return response.data.Data;
                 });
         };
 
@@ -97,7 +98,7 @@
             thirukkuralsUtil.Log("repository: searchThirukkuralsInEnglish");
             return $http.get(baseUrl + "thirukkuralsenglishsearch/" + searchText)
                 .then(function (response) {
-                    return response.data;
+                    return response.data.Data;
                 });
         };
 
@@ -105,7 +106,7 @@
             thirukkuralsUtil.Log("repository: startsWith");
             return $http.get(baseUrl + "thirukkuralsstartswith/" + searchText)
                 .then(function (response) {
-                    return response.data;
+                    return response.data.Data;
                 });
         };
 
@@ -113,7 +114,7 @@
             thirukkuralsUtil.Log("repository: endsWith");
             return $http.get(baseUrl + "thirukkuralsendswith/" + searchText)
                 .then(function (response) {
-                    return response.data;
+                    return response.data.Data;
                 });
         };
 
