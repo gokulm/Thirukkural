@@ -5,8 +5,8 @@
     var thirukkuralsRepository = function($http, thirukkuralsUtil){
 
         // todo: should be added to a app constants
-        // var baseUrl = "http://devl-api.gokulnath.com/";
-        var baseUrl = "http://localhost:55130/";
+        var baseUrl = "http://api.gokulnath.com/";
+        // var baseUrl = "http://localhost:55130/";
 
         var getThirukkural = function(index){
             thirukkuralsUtil.Log("repository: getThirukkural");

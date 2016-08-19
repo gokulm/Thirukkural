@@ -22,5 +22,8 @@
   "ChapterGroupTransliteration": "Iyal",  
   "Section": "Section",
   "SectionInTamil": "பால்",
-  "SectionTransliteration": "Paal"
+  "SectionTransliteration": "Paal",
+  "StartsWith": "StartsWith",
+  "EndsWith": "EndsWith",
+  "Contains": "Contains"
 }
