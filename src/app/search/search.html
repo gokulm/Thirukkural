@@ -51,8 +51,14 @@
         </div>
     </div>
     <div ng-hide="layout.IsTamil()">
-        <input type="text" placeholder="English" ng-hide="layout.IsTamil()" ng-model="searchEntity.SearchEnglishText" />
-        <input type="button" value="Search" class="btn btn-primary" ng-click="vm.SearchThirukkuralsInEnglish(searchEntity)"/>
+        <div class="row">
+            <div class="col-md-10">
+                <input type="text" placeholder="English" ng-hide="layout.IsTamil()" class="form-control" ng-model="searchEntity.SearchEnglishText" />
+            </div>
+            <div class="col-md-2">
+                <input type="button" value="Search" class="btn btn-primary form-control" ng-click="vm.SearchThirukkuralsInEnglish(searchEntity)"/>
+            </div>
+        </div>
     </div>
 </div>
 </div>
@@ -85,7 +91,7 @@
         </div>
         <div class="kuralProperty" ng-hide="layout.IsTamil()">
             <div class="kuralPropertyHeading"><span i18n="common.Transliteration"></span>:</div>
-            <div ng-bind-html="thirukkural.TamilTransliteration | renderHtml"></div>    
+            <div ng-bind-html="thirukkural.TamilTransliteration | renderHtml"></div>
         </div>
     </div>
 </div>
