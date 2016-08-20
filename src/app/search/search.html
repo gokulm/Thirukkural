@@ -24,7 +24,8 @@
 
 </script>
 
-<div class="col-lg-12 form-group" style="padding: 10px; margin-bottom: 10px; background-color: #cdcdcd">
+<div class="row">
+<div class="col-lg-12 form-group" style="padding: 10px; margin-bottom: 10px; background-color: #d5e0ec">
     <div ng-hide="!layout.IsTamil()">
         <div class="row">
             <div class="col-md-10">
@@ -37,9 +38,15 @@
         </div>
         <div class="row" style="margin-top: 10px" ng-init='searchEntity.SearchType="Contains"'>
             <div class="col-md-12">
-                <label class="radio-inline"><input type="radio" name="searchType" ng-model="searchEntity.SearchType" value="Contains" /><span i18n="common.Contains"></span> </label>
-                <label class="radio-inline"><input type="radio" name="searchType" value="StartsWith" ng-model="searchEntity.SearchType" /><span i18n="common.StartsWith"></span></label>
+                <div class="col-md-3">
+                    <label class="radio-inline"><input type="radio" name="searchType" ng-model="searchEntity.SearchType" value="Contains" /><span i18n="common.Contains"></span> </label>
+                    </div>
+                <div class="col-md-3">
+                    <label class="radio-inline"><input type="radio" name="searchType" value="StartsWith" ng-model="searchEntity.SearchType" /><span i18n="common.StartsWith"></span></label>
+                    </div>
+                <div class="col-md-6">
                 <label class="radio-inline"> <input type="radio" name="searchType" value="EndsWith" ng-model="searchEntity.SearchType" /><span i18n="common.EndsWith"></span></label>
+                    </div>
             </div>
         </div>
     </div>
@@ -48,8 +55,9 @@
         <input type="button" value="Search" class="btn btn-primary" ng-click="vm.SearchThirukkuralsInEnglish(searchEntity)"/>
     </div>
 </div>
-
-<div class="panel panel-default" ng-repeat="thirukkural in vm.Thirukkurals" high-light>
+</div>
+<div class="row">
+<div class="panel panel-default" ng-repeat="thirukkural in vm.Thirukkurals" ng-show="vm.HasRecords" high-light>
     <div class="panel-body">
         <div class="kuralProperty">
             <div class="kuralPropertyHeading"><span i18n="common.Kural"></span> {{thirukkural.Index}}:</div>
@@ -77,40 +85,13 @@
         </div>
         <div class="kuralProperty" ng-hide="layout.IsTamil()">
             <div class="kuralPropertyHeading"><span i18n="common.Transliteration"></span>:</div>
-            <div ng-bind-html="thirukkural.TamilTransliteration | renderHtml"></div>
+            <div ng-bind-html="thirukkural.TamilTransliteration | renderHtml"></div>    
         </div>
     </div>
 </div>
-
-
-<!--
-<div ng-repeat="thirukkural in vm.Thirukkurals" class="thirukkuralBlock">
-    <div>
-        Tamil:
-        <div ng-bind-html="thirukkural.Tamil | highlight:searchEntity.SearchTamilText | renderHtml "></div>
-    </div>
-
-    <div>Kalaignar Urai:
-        <br/>
-        <div ng-bind-html="thirukkural.KalaignarUrai | highlight:searchEntity.SearchTamilText | renderHtml "></div>
-    </div>
-    <div>Mu Va Urai:
-        <br/>
-        <div ng-bind-html="thirukkural.MuVaUrai | highlight:searchEntity.SearchTamilText | renderHtml "></div>
-    </div>
-    <div>Solomon Paapaiya Urai:
-        <br/>
-        <div ng-bind-html="thirukkural.SolomonPaapaiyaUrai | highlight:searchEntity.SearchTamilText | renderHtml "></div>
-    </div>
-    <div>Tamil Transliteration:
-        <br/>
-        {{ thirukkural.TamilTransliteration }}
-    </div>
-    <div>English:
-        <div ng-bind-html="thirukkural.English | highlight:searchEntity.SearchEnglishText | renderHtml"></div>
-    </div>
-    <div>EnglishMeaning:
-        <div ng-bind-html="thirukkural.EnglishMeaning | highlight:searchEntity.SearchEnglishText | renderHtml"></div>
+    <div class="panel panel-default" ng-hide="vm.HasRecords">
+        <div class="panel-body">
+            <span i18n="common.NoRecords"></span>
+        </div>
     </div>
 </div>
--->

@@ -27,5 +27,6 @@
   "EndsWith": "முடியும் குறள்",
   "Contains": "உள்ள குறள்",
   "SearchButtonText" : "தேடு",
-  "SearchPlaceholder" : "நட்பு என்னும் குறள் தேட, Natpu டைப் செய்து ஸ்பேஸ்பார் அழுத்துங்கள்"
+  "SearchPlaceholder" : "நட்பு உள்ள குறள் தேட, Natpu டைப் செய்து ஸ்பேஸ்பார் அழுத்துங்கள்",
+  "NoRecords" : "0 குறள்கள்"
 }

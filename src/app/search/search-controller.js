@@ -5,9 +5,14 @@
     var searchController = function ($scope, $stateParams, $state, thirukkuralsUtil, thirukkuralsRepository, locale) {
 
         var vm = this;
+        vm.HasRecords = true;
 
         var onSearchComplete = function (data) {
             vm.Thirukkurals = data;
+            if(data.length > 0)
+                vm.HasRecords = true;
+            else
+                vm.HasRecords = false;
         };
 
         var onError = function (errorMessage) {

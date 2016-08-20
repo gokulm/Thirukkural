@@ -27,5 +27,6 @@
   "EndsWith": "EndsWith",
   "Contains": "Contains",
   "SearchButtonText" : "Search",
-  "SearchPlaceholder" : "Search"
+  "SearchPlaceholder" : "Search",
+  "NoRecords" : "No Kurals"
 }
