@@ -11,20 +11,18 @@ module.exports = function (grunt) {
             beforeBuild: ['<%=config.cleanDir%>'],
             afterBuild: ['<%=config.afterBuildClean%>']
         },
-       /* less: {
-            development: {
+        less: {
+            release: {
                 options: {
                     strictMath: true,
-                    sourceMap: true,
+                    sourceMap: false,
                     outputSourceFiles: true
                 },
-                //src: 'assets/css/app.less',
-                //dest: 'assets/css/app.css',
                 files: {
-                    "src/assets/css/app.css": '<%= config.appLessFile %>'
+                    "<%=config.cssFilesDest%>/app.css": '<%= config.appLessFiles %>'
                 }
             }
-        },*/
+        },
         concat: {
             appFiles: {
                 src: [ '<%=config.appJsFiles%>' ],
@@ -33,17 +31,32 @@ module.exports = function (grunt) {
             vendorFiles: {
                 src: [ '<%=config.appVendorJsFiles%>' ],
                 dest: '<%=config.appVendorJsFilesDest%>.js'
+            },
+            cssFiles: {
+                src: ['<%=config.cssVendorFiles%>'],
+                dest: '<%=config.cssFilesDest%>vendor.min.css'
             }
         },
         uglify: {
             options: {
                 banner: '/* <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
-            appFiles: {
+            appJsFiles: {
                 src: '<%=config.appJsFilesDest%>.js',
                 dest: '<%=config.appJsFilesDest%>.min.js'
             }
         },
+        cssmin: {
+            options: {
+                shorthandCompacting: false,
+                roundingPrecision: -1
+            },
+            target: {
+                files: {
+                    '<%=config.cssFilesDest%>app.min.css' : ['<%=config.cssFilesDest%>app.css']
+                 }
+            }
+        }
     };
 
     grunt.initConfig(grunt.util._.extend(taskConfig, userConfig));
@@ -54,7 +67,7 @@ module.exports = function (grunt) {
     //grunt.loadNpmTasks('grunt-contrib-less');
 
     // Default task(s).
-    grunt.registerTask('default', ['clean:beforeBuild', 'concat', 'uglify', 'clean:afterBuild']);
+    grunt.registerTask('default', ['clean:beforeBuild', 'concat', 'less', 'uglify', 'cssmin', 'clean:afterBuild']);
     // grunt.registerTask('default', ['concat', 'uglify', 'clean', 'less']);
     //grunt.registerTask('clean', ['clean']);
 

@@ -8,11 +8,13 @@ module.exports = {
 
     config: {
         cleanDir: '<%=buildDir%>/*',
-        afterBuildClean: '<%=buildDir%>/scripts/app.js',
+        afterBuildClean: ['<%=buildDir%>/scripts/app.js', '<%=buildDir%>/assets/css/app.css'],
         appJsFiles: ['src/app/**/*.js'],
         appVendorJsFiles: ['src/libs/**/*.js'],
-        appLessFile: ['src/assets/css/app.less'],
+        appLessFiles: ['src/assets/css/*.less'],
         appJsFilesDest: '<%=buildDir%>scripts/app',
         appVendorJsFilesDest: '<%=buildDir%>scripts/vendor',
+        cssVendorFiles: ['src/libs/bootstrap/dist/css/bootstrap.min.css', 'src/libs/angular-loading-bar/build/loading-bar.min.css'],
+        cssFilesDest: ['<%=buildDir%>/assets/css/']
     }
 };
