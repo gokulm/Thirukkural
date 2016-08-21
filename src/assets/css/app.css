@@ -86,18 +86,12 @@ footer {
 }
 footer a:active,
 footer a:visited,
-footer a:hover {
+footer a:hover,
+footer a:link {
   color: #fff;
 }
 .highlight {
   background-color: yellow;
 }
-.footer a:active,
-.footer a:visited {
-  color: #ffffff;
-}
-/*.table td, .table th {
-  min-width: 30px;
-}*/
 /*# sourceMappingURL=src/assets/css/app.css.map */
 /*# sourceMappingURL=src/assets/css/app.less.map */

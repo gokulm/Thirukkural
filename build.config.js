@@ -3,13 +3,16 @@
  */
 module.exports = {
 
-    buildDir: 'target/',
-    buildDebugDir: '<%=buildDir%>debug/',
+    buildDir: 'release/',
+    buildDebugDir: 'debug/',
 
-    appFiles: {
-        js: ['src/**/*.js'],
-        less: ['src/assets/css/app.less']
-    },
-    appJsFilesDest: '<%=buildDebugDir %>app.js',
-    appJsFilesMinifiedDest: '<%=buildDebugDir %>app.min.js'
+    config: {
+        cleanDir: '<%=buildDir%>/*',
+        afterBuildClean: '<%=buildDir%>/scripts/app.js',
+        appJsFiles: ['src/app/**/*.js'],
+        appVendorJsFiles: ['src/libs/**/*.js'],
+        appLessFile: ['src/assets/css/app.less'],
+        appJsFilesDest: '<%=buildDir%>scripts/app',
+        appVendorJsFilesDest: '<%=buildDir%>scripts/vendor',
+    }
 };

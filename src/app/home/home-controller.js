@@ -42,6 +42,7 @@
             thirukkuralsRepository.GetThirukkuralChapters(self.bigCurrentPage).then(onThirukkuralChaptersComplete, onError);
         };
 
+        // todo: create the functions separately and assign them to self.setPage = pageNo;
         self.setPage = function (pageNo) {
             self.bigCurrentPage = pageNo;
         };

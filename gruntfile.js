@@ -8,9 +8,10 @@ module.exports = function (grunt) {
     var taskConfig = {
         pkg: grunt.file.readJSON('package.json'),
         clean: {
-            release: ['ToBeCleaned/*']
+            beforeBuild: ['<%=config.cleanDir%>'],
+            afterBuild: ['<%=config.afterBuildClean%>']
         },
-        less: {
+       /* less: {
             development: {
                 options: {
                     strictMath: true,
@@ -20,23 +21,27 @@ module.exports = function (grunt) {
                 //src: 'assets/css/app.less',
                 //dest: 'assets/css/app.css',
                 files: {
-                    "src/assets/css/app.css": '<%= appFiles.less %>'
+                    "src/assets/css/app.css": '<%= config.appLessFile %>'
                 }
             }
-        },
+        },*/
         concat: {
-            js: {
-                src: [ '<%= appFiles.js %>' ],
-                dest: '<%= appJsFilesDest %>'
+            appFiles: {
+                src: [ '<%=config.appJsFiles%>' ],
+                dest: '<%=config.appJsFilesDest%>.js'
+            },
+            vendorFiles: {
+                src: [ '<%=config.appVendorJsFiles%>' ],
+                dest: '<%=config.appVendorJsFilesDest%>.js'
             }
         },
         uglify: {
             options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+                banner: '/* <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
-            build: {
-                src: '<%= appJsFilesDest %>',
-                dest: '<%= appJsFilesMinifiedDest %>'
+            appFiles: {
+                src: '<%=config.appJsFilesDest%>.js',
+                dest: '<%=config.appJsFilesDest%>.min.js'
             }
         },
     };
@@ -49,7 +54,8 @@ module.exports = function (grunt) {
     //grunt.loadNpmTasks('grunt-contrib-less');
 
     // Default task(s).
-    grunt.registerTask('default', ['concat', 'uglify', 'clean', 'less']);
+    grunt.registerTask('default', ['clean:beforeBuild', 'concat', 'uglify', 'clean:afterBuild']);
+    // grunt.registerTask('default', ['concat', 'uglify', 'clean', 'less']);
     //grunt.registerTask('clean', ['clean']);
 
 };
