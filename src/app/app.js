@@ -96,40 +96,16 @@
         };
     });
 
-    thirukkuralApp.directive('highLight', function ($timeout) {
-
+    thirukkuralApp.directive('highLight', ['$timeout', function ($timeout) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs) {
-                console.log("entering highlight...")
                 $timeout(function () {
-                    console.log(scope.SearchText);
                     element.highlight(scope.SearchText);
                 });
             }
         };
-    });
-
-  /*  thirukkuralApp.directive('onloadDirective', function($rootScope, $document){
-        return {
-            restrict: 'A',
-            link: function(elem, attrs){
-                $(window).load(function() {
-                    //get element
-                    var myElement = elem;
-                    console.log(elem);
-                    console.log("width" + $document[0].body.clientWidth);
-                    if (myElement.width() > 100 && myElement.width() < 500) {
-
-                        $rootScope.customWidth = "> 100 and < 500";
-                        console.log("testing 22");
-                    } else {
-                        console.log("testing");
-                        $rootScope.customWidth = "> 500";
-                    }
-                });
-            }
-        } });*/
+    }]);
 
     thirukkuralApp.value('localeConf', {
         basePath: 'assets/languages',
