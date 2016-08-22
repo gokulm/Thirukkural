@@ -56,6 +56,21 @@ module.exports = function (grunt) {
                     '<%=config.cssFilesDest%>app.min.css' : ['<%=config.cssFilesDest%>app.css']
                  }
             }
+        },
+        copy: {
+            htmlFiles: {
+                files: [
+                    { expand: true, cwd: 'src/', src: ['<%=config.appHtmlFiles%>'], dest: '<%=config.appHtmlFilesDest%>' },
+                    { expand: true, cwd: 'src/', src: ['<%=config.appOtherAssets%>'], dest: '<%=config.appOtherAssetsDest%>' }
+                ]
+            }
+        },
+        processhtml: {
+            build: {
+                files: {
+                    '<%=buildDir%>index.html' : ['<%=config.cleanDir%>index.html']
+                }
+            }
         }
     };
 
@@ -67,9 +82,7 @@ module.exports = function (grunt) {
     //grunt.loadNpmTasks('grunt-contrib-less');
 
     // Default task(s).
-    grunt.registerTask('default', ['clean:beforeBuild', 'concat', 'less', 'uglify', 'cssmin', 'clean:afterBuild']);
-    // grunt.registerTask('default', ['concat', 'uglify', 'clean', 'less']);
-    //grunt.registerTask('clean', ['clean']);
+    grunt.registerTask('default', ['clean:beforeBuild', 'concat', 'less', 'uglify', 'cssmin', 'clean:afterBuild', 'copy', 'processhtml']);
 
 };
 
