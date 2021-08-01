@@ -1,0 +1,43 @@
+    <pagination total-items="home.bigTotalItems" ng-change="home.pageChanged()" ng-model="home.bigCurrentPage"
+                previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                max-size="home.maxSize" class="pagination-sm" boundary-links="true" rotate="false"
+                num-pages="home.numPages"></pagination>
+
+    <div class="thirukurralChapterHeader">
+        <h4 class="thirukurralChapterHeaderText">{{ home.ThirukkuralChapterIndexAndName }}</h4>
+    </div>
+
+    <div class="panel panel-default" ng-repeat="thirukkural in home.Thirukkurals">
+        <div class="panel-body">
+            <div class="kuralProperty">
+                <div class="kuralPropertyHeading"><span i18n="common.Kural"></span> {{thirukkural.Index}}:</div>
+                <div ng-bind-html="thirukkural.Tamil | renderHtml"></div>
+            </div>
+            <div class="kuralProperty">
+                <div class="kuralPropertyHeading"><span i18n="common.MuVaExplanation"></span>: </div>
+                <div>{{thirukkural.MuVaUrai}}</div>
+            </div>
+            <div class="kuralProperty">
+                <div class="kuralPropertyHeading"> <span i18n="common.SolomonPaapaiyaExplanation"></span>:</div>
+                <div>{{thirukkural.SolomonPaapaiyaUrai}}</div>
+            </div>
+            <div class="kuralProperty">
+                <div class="kuralPropertyHeading"><span i18n="common.KalaignarExplanation"></span>:</div>
+                <div>{{thirukkural.KalaignarUrai}}</div>
+            </div>
+            <div class="kuralProperty" ng-hide="layout.IsTamil()">
+                <div class="kuralPropertyHeading"><span i18n="common.Couplet"></span>:</div>
+                <div ng-bind-html="thirukkural.English | renderHtml"></div>
+            </div>
+            <div class="kuralProperty" ng-hide="layout.IsTamil()">
+                <div class="kuralPropertyHeading"><span i18n="common.EnglishExplanation"></span>:</div>
+                <div>{{thirukkural.EnglishMeaning}}</div>
+            </div>
+            <div class="kuralProperty" ng-hide="layout.IsTamil()">
+                <div class="kuralPropertyHeading"><span i18n="common.Transliteration"></span>:</div>
+                <div ng-bind-html="thirukkural.TamilTransliteration | renderHtml"></div>
+            </div>
+        </div>
+    </div>
+
+</div>

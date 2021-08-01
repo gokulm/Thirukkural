@@ -1,0 +1,17 @@
+{
+  "name": "thirukkural",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "~1.4.1",
+    "angular-route": "~1.4.1",
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.5",
+    "angular-ui": "~0.4.0",
+    "angular-ui-router": "~0.2.15",
+    "ui.bootstrap": "~0.13.0",
+    "angular-ui-utils": "~0.2.3",
+    "angular-localization": "~1.2.1",
+    "angular-loading-bar": "~0.8.0"
+  },
+  "analytics": false
+}

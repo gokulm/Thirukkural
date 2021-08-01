@@ -1,0 +1,79 @@
+import React from 'react';
+import axios from 'axios';
+
+class Home extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      isLoaded: false,
+      items: []
+    };
+  }
+
+  componentDidMount() {
+    axios.get("https://api.gokulnath.com/thirukkuralchapters/1/thirukkurals")
+      .then(
+        result => {
+          console.log(result);
+          this.setState({
+            isLoaded: true,
+            items: result.data.Data
+          });
+        },
+        error => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
+
+  render() {
+    const { error, isLoaded, items } = this.state;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>
+    } else {
+      return (
+        <div>
+          {
+            items.map(thirukkural => (
+              <div class="panel-body">
+                <div class="kuralProperty">
+                  <div class="kuralPropertyHeading">குறள் {thirukkural.Index}:</div>
+                </div>
+                <div class="kuralProperty">
+                  <div class="kuralPropertyHeading">மு.வ உரை: </div>
+                  <div>{thirukkural.MuVaUrai}</div>
+                </div>
+                <div class="kuralProperty">
+                  <div class="kuralPropertyHeading"> சாலமன் பாப்பையா உரை:</div>
+                  <div>{thirukkural.SolomonPaapaiyaUrai}</div>
+                </div>
+                <div class="kuralProperty">
+                  <div class="kuralPropertyHeading">கலைஞர் உரை:</div>
+                  <div>{thirukkural.KalaignarUrai}</div>
+                </div>
+                <div class="kuralProperty" ng-hide="layout.IsTamil()">
+                  <div class="kuralPropertyHeading">Couplet:</div>
+                </div>
+                <div class="kuralProperty" ng-hide="layout.IsTamil()">
+                  <div class="kuralPropertyHeading">English Explanation:</div>
+                  <div>{thirukkural.EnglishMeaning}</div>
+                </div>
+                <div class="kuralProperty" ng-hide="layout.IsTamil()">
+                  <div class="kuralPropertyHeading">Transliteration:</div>
+                </div>
+              </div>))
+          }
+        </div>
+      );
+    }
+  }
+}
+
+export default Home;

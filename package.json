@@ -1,28 +1,40 @@
 {
-  "name": "thirukkural.gokulnath.com",
-  "version": "0.0.1",
-  "description": "Thirukkural",
-  "title": "Thirukkural",
-  "repository": {
-    "type": "N/A",
-    "url": "N/A"
+  "name": "thirukkural",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
   },
-  "author": {
-    "name": "Gokulnath Murugesan"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-bower-task": "^0.4.0",
-    "grunt-concat": "^0.1.6",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-concat": "^0.5.1",
-    "grunt-contrib-copy": "^0.8.0",
-    "grunt-contrib-cssmin": "^1.0.1",
-    "grunt-contrib-jshint": "^0.11.2",
-    "grunt-contrib-less": "^1.0.1",
-    "grunt-contrib-uglify": "^0.9.1",
-    "grunt-processhtml": "^0.4.0",
-    "load-grunt-tasks": "^3.2.0",
-    "time-grunt": "^1.4.0"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
