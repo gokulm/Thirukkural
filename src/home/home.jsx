@@ -1,38 +1,56 @@
 import React from 'react';
 import axios from 'axios';
+import DataService from '../dataService'
 
 class Home extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       error: null,
       isLoaded: false,
-      items: []
+      items: [],
+      chapterIndices: Array.from({ length: 133 }, (_, i) => i + 1)
     };
   }
 
   componentDidMount() {
-    axios.get("https://api.gokulnath.com/thirukkuralchapters/1/thirukkurals")
-      .then(
-        result => {
-          console.log(result);
-          this.setState({
-            isLoaded: true,
-            items: result.data.Data
-          });
-        },
-        error => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
+    new DataService().getThirukkurals(1).then(
+      result => {
+        console.log(result);
+        this.setState({
+          isLoaded: true,
+          items: result.data.Data
+        });
+      },
+      error => {
+        this.setState({
+          isLoaded: true,
+          error
+        });
+      }
+    )
+    // axios.get("https://api.gokulnath.com/thirukkuralchapters/1/thirukkurals")
+    //   .then(
+    //     result => {
+    //       console.log(result);
+    //       this.setState({
+    //         isLoaded: true,
+    //         items: result.data.Data
+    //       });
+    //     },
+    //     error => {
+    //       this.setState({
+    //         isLoaded: true,
+    //         error
+    //       });
+    //     }
+    //   )
   }
 
   render() {
-    const { error, isLoaded, items } = this.state;
+    const { error, isLoaded, items, chapterIndices } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -40,11 +58,18 @@ class Home extends React.Component {
     } else {
       return (
         <div>
+          {/* {chapterIndices.map(index => (
+            <div>{index}</div>
+          ))} */}
+
           {
+
+
             items.map(thirukkural => (
               <div class="panel-body">
                 <div class="kuralProperty">
                   <div class="kuralPropertyHeading">குறள் {thirukkural.Index}:</div>
+                  <div dangerouslySetInnerHTML={{ __html: thirukkural.Tamil }} />
                 </div>
                 <div class="kuralProperty">
                   <div class="kuralPropertyHeading">மு.வ உரை: </div>
@@ -60,6 +85,7 @@ class Home extends React.Component {
                 </div>
                 <div class="kuralProperty" ng-hide="layout.IsTamil()">
                   <div class="kuralPropertyHeading">Couplet:</div>
+                  <div dangerouslySetInnerHTML={{ __html: thirukkural.English }} />
                 </div>
                 <div class="kuralProperty" ng-hide="layout.IsTamil()">
                   <div class="kuralPropertyHeading">English Explanation:</div>
@@ -67,6 +93,7 @@ class Home extends React.Component {
                 </div>
                 <div class="kuralProperty" ng-hide="layout.IsTamil()">
                   <div class="kuralPropertyHeading">Transliteration:</div>
+                  <div dangerouslySetInnerHTML={{ __html: thirukkural.TamilTransliteration }} />
                 </div>
               </div>))
           }

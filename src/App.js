@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import Home from './home/home'
+import Chapters from './chapters'
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -11,6 +11,10 @@ import {
 function App() {
 
   const routes = [
+    {
+      path: "/home",
+      component: Home
+    },
     {
       path: "/home",
       component: Home
@@ -35,13 +39,19 @@ function App() {
                   <div>
                     <ul>
                       <li>
-                        <Link to="/home">Home Test Link</Link>
+                        <Link to="/home">Home</Link>
+                      </li>
+                      <li>
+                        <Link to="/chapters">Chapters</Link>
                       </li>
                     </ul>
                   </div>
                   <Switch>
                     <Route path="/home">
                       <Home />
+                    </Route> 
+                    <Route path="/chapters">
+                      <Chapters />
                     </Route>
                   </Switch>
                 </Router>
