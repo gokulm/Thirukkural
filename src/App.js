@@ -49,10 +49,13 @@ function App() {
                   <Switch>
                     <Route path="/home">
                       <Home />
-                    </Route> 
-                    <Route path="/chapters">
+                    </Route>
+                    <Route exact path="/chapters">
                       <Chapters />
                     </Route>
+                    <Route path="/chapters/:chapterIndex/kurals" component={Home} />
+                      {/* <Home />
+                    </Route> */}
                   </Switch>
                 </Router>
               </div>

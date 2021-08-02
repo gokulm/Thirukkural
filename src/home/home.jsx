@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import DataService from '../dataService'
 
 class Home extends React.Component {
@@ -16,7 +15,11 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    new DataService().getThirukkurals(1).then(
+    let chapterIndex = 1;
+    if (this.props.match) {
+      chapterIndex = this.props.match.params.chapterIndex;
+    }
+    new DataService().getThirukkurals(chapterIndex).then(
       result => {
         console.log(result);
         this.setState({
@@ -31,26 +34,10 @@ class Home extends React.Component {
         });
       }
     )
-    // axios.get("https://api.gokulnath.com/thirukkuralchapters/1/thirukkurals")
-    //   .then(
-    //     result => {
-    //       console.log(result);
-    //       this.setState({
-    //         isLoaded: true,
-    //         items: result.data.Data
-    //       });
-    //     },
-    //     error => {
-    //       this.setState({
-    //         isLoaded: true,
-    //         error
-    //       });
-    //     }
-    //   )
   }
 
   render() {
-    const { error, isLoaded, items, chapterIndices } = this.state;
+    const { error, isLoaded, items } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {

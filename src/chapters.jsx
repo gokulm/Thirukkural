@@ -1,5 +1,8 @@
 import React from 'react';
 import DataService from './dataService'
+import {
+    Link
+  } from "react-router-dom";
 
 class Chapters extends React.Component {
 
@@ -54,7 +57,9 @@ class Chapters extends React.Component {
                                 <td class="col-md-3"> {thirukkural.Tamil} </td>
                                 <td class="col-md-3"> {thirukkural.English} </td>
                                 <td class="col-md-3"> {thirukkural.Transliteration} </td>
-                                <td class="col-md-2"> <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })"><span class="brand" i18n="common.Kurals"></span></a> </td>
+                                <td class="col-md-2">
+                                    <Link to={`/chapters/${thirukkural.Index}/kurals`}>Kurals</Link>
+                                </td>
                             </tr>
                         )
                         )}
