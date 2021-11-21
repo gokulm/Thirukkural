@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import Search from './search';
 
-function App() {
+const App = (props: any) => {
 
   const routes = [
     {
@@ -34,17 +34,17 @@ function App() {
 
   return (
     <div>
-      <div class="container">
-        <div class="navbar-collapse collapse" id="navbar">
+      <div className="container">
+        <div className="navbar-collapse collapse" id="navbar">
         </div>
       </div>
-      <div class="page-header">header</div>
+      <div className="page-header">header</div>
 
-      <div class="container">
+      <div className="container">
 
-        <div class="row">
-          <div class="box">
-            <div class="col-lg-12">
+        <div className="row">
+          <div className="box">
+            <div className="col-lg-12">
               <div ui-view>
                 <Router>
                   <div>
@@ -62,10 +62,10 @@ function App() {
                   </div>
 
                   <Switch>
-          {routes.map((route, i) => (
-            <RouteWithSubRoutes key={i} {...route} />
-          ))}
-        </Switch>
+                    {routes.map((route, i) => (
+                      <RouteWithSubRoutes key={i} {...route} />
+                    ))}
+                  </Switch>
 
                   {/* <Switch>
                     <Route path="/home">
@@ -86,9 +86,9 @@ function App() {
       </div>
 
       <footer>
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12 text-center footer">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12 text-center footer">
               <a href="http://gokulnath.com/#contact" target="_blank">Contact</a> ::
               <a href="http://blogs.gokulnath.com//2010/05/15/Thirukural.aspx" target="_blank">About</a>
             </div>
@@ -99,7 +99,7 @@ function App() {
   );
 }
 
-function RouteWithSubRoutes(route) {
+function RouteWithSubRoutes(route: any) {
   return (
     <Route
       path={route.path}
