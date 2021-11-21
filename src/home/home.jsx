@@ -1,5 +1,6 @@
 import React from 'react';
 import DataService from '../dataService'
+import Kurals from '../kurals';
 
 class Home extends React.Component {
 
@@ -49,7 +50,9 @@ class Home extends React.Component {
             <div>{index}</div>
           ))} */}
 
-          {
+          <Kurals thirukkurals={items} />
+
+          {/* {
 
 
             items.map(thirukkural => (
@@ -83,7 +86,7 @@ class Home extends React.Component {
                   <div dangerouslySetInnerHTML={{ __html: thirukkural.TamilTransliteration }} />
                 </div>
               </div>))
-          }
+          } */}
         </div>
       );
     }

@@ -8,6 +8,10 @@ class DataService {
     getChapters() {
         return axios.get(`https://api.gokulnath.com/thirukkuralchapters/`);
     }
+
+    searchEnglish(searchText) {
+        return axios.get(`https://api.gokulnath.com/thirukkuralsenglishsearch/${searchText}`);
+    }
 }
 
 export default DataService;

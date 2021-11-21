@@ -7,6 +7,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Search from './search';
 
 function App() {
 
@@ -16,8 +17,18 @@ function App() {
       component: Home
     },
     {
-      path: "/home",
-      component: Home
+      path: "/chapters",
+      component: Chapters,
+      exact: true
+    },
+    {
+      path: "/chapters/:chapterIndex/kurals",
+      component: Home,
+      exact: true
+    },
+    {
+      path: "/search",
+      component: Search
     }
   ];
 
@@ -44,9 +55,19 @@ function App() {
                       <li>
                         <Link to="/chapters">Chapters</Link>
                       </li>
+                      <li>
+                        <Link to="/search">Search</Link>
+                      </li>
                     </ul>
                   </div>
+
                   <Switch>
+          {routes.map((route, i) => (
+            <RouteWithSubRoutes key={i} {...route} />
+          ))}
+        </Switch>
+
+                  {/* <Switch>
                     <Route path="/home">
                       <Home />
                     </Route>
@@ -54,9 +75,8 @@ function App() {
                       <Chapters />
                     </Route>
                     <Route path="/chapters/:chapterIndex/kurals" component={Home} />
-                      {/* <Home />
-                    </Route> */}
-                  </Switch>
+                    <Route path="/search" component={Search} />
+                  </Switch> */}
                 </Router>
               </div>
             </div>
@@ -76,6 +96,17 @@ function App() {
         </div>
       </footer>
     </div>
+  );
+}
+
+function RouteWithSubRoutes(route) {
+  return (
+    <Route
+      path={route.path}
+      render={props => (
+        <route.component {...props} routes={route.routes} />
+      )}
+    />
   );
 }
 
