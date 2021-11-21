@@ -99,7 +99,7 @@ const App = (props: any) => {
   );
 }
 
-function RouteWithSubRoutes(route: any) {
+const RouteWithSubRoutes = (route: any) => {
   return (
     <Route
       path={route.path}
