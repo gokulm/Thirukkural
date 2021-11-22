@@ -1,5 +1,3 @@
-import Home from './home/home'
-import Chapters from './chapters'
 import './App.scss';
 import {
   BrowserRouter as Router,
@@ -7,30 +5,12 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Search from './search';
+import { useTranslation } from "react-i18next";
+import { routes } from './common/routes';
 
 const App = (props: any) => {
+  const { t } = useTranslation();
 
-  const routes = [
-    {
-      path: "/home",
-      component: Home
-    },
-    {
-      path: "/chapters",
-      component: Chapters,
-      exact: true
-    },
-    {
-      path: "/chapters/:chapterIndex/kurals",
-      component: Home,
-      exact: true
-    },
-    {
-      path: "/search",
-      component: Search
-    }
-  ];
 
   return (
     <>
@@ -44,12 +24,13 @@ const App = (props: any) => {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
+              <Link to="/home" className="navbar-brand">{t('WebsiteHeader')}</Link>
             </div>
             {/* <div className="navbar-collapse collapse"> */}
             <div className="navbar-collapse">
               <ul className="nav navbar-nav">
                 <li>
-                  <Link to="/home">Home</Link>
+                  <Link to="/home">{t('WebsiteHeader')}</Link>
                 </li>
                 <li>
                   <Link to="/chapters">Chapters</Link>
