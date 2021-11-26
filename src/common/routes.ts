@@ -1,6 +1,6 @@
 import Chapters from "../views/chapters";
 import Home from "../views/home";
-import Search from "../search";
+import Search from "../views/search";
 
 export const routes = [
     {

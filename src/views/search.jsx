@@ -1,6 +1,6 @@
 import React from 'react';
-import DataService from './common/dataService'
-import Kurals from './components/kurals';
+import DataService from '../common/dataService'
+import Kurals from '../components/kurals';
 import {
     Link
 } from "react-router-dom";
