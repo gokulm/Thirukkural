@@ -2,13 +2,11 @@ import './App.scss';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
-} from "react-router-dom";
+  Route} from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { routes } from './common/routes';
-import { Col, Container, Dropdown, Nav, Navbar, NavDropdown, Row } from 'react-bootstrap';
-import i18n from './common/i18n';
+import { routes } from '../common/routes';
+import { Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
+import i18n from '../common/i18n';
 import { useState } from 'react';
 
 const App = (props: any) => {

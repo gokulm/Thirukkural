@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { IKural } from '../common/interfaces';
-import DataService from '../dataService'
-import Kurals from '../kurals';
+import DataService from '../common/dataService'
+import Kurals from '../components/kurals';
 
 const Home = (props: any) => {
 

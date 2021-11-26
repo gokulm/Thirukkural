@@ -1,5 +1,5 @@
-import Chapters from "../chapters";
-import Home from "../home/home";
+import Chapters from "../views/chapters";
+import Home from "../views/home";
 import Search from "../search";
 
 export const routes = [
@@ -20,5 +20,9 @@ export const routes = [
     {
       path: "/search",
       component: Search
+    },
+    {
+      path: "/",
+      component: Home
     }
   ];
