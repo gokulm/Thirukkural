@@ -16,39 +16,39 @@ const Kurals = (props: IProps) => {
             {
                 props.thirukkurals.map(thirukkural => (
                     <>
-                    <Card>
-                        <Card.Body>
-                            <div className="kuralProperty">
-                                <div className="kuralPropertyHeading">{t('Kural')} {thirukkural.Index}:</div>
-                                <div dangerouslySetInnerHTML={{ __html: thirukkural.Tamil }} />
-                            </div>
-                            <div className="kuralProperty">
-                                <div className="kuralPropertyHeading">{t('MuVaExplanation')}:</div>
-                                <div>{thirukkural.MuVaUrai}</div>
-                            </div>
-                            <div className="kuralProperty">
-                                <div className="kuralPropertyHeading">{t('SolomonPaapaiyaExplanation')}:</div>
-                                <div>{thirukkural.SolomonPaapaiyaUrai}</div>
-                            </div>
-                            <div className="kuralProperty">
-                                <div className="kuralPropertyHeading">{t('KalaignarExplanation')}:</div>
-                                <div>{thirukkural.KalaignarUrai}</div>
-                            </div>
-                            <div className="kuralProperty" ng-hide="layout.IsTamil()">
-                                <div className="kuralPropertyHeading">{t('Couplet')}:</div>
-                                <div dangerouslySetInnerHTML={{ __html: thirukkural.English }} />
-                            </div>
-                            <div className="kuralProperty" ng-hide="layout.IsTamil()">
-                                <div className="kuralPropertyHeading">{t('EnglishExplanation')}:</div>
-                                <div>{thirukkural.EnglishMeaning}</div>
-                            </div>
-                            <div className="kuralProperty" ng-hide="layout.IsTamil()">
-                                <div className="kuralPropertyHeading">{t('Transliteration')}:</div>
-                                <div dangerouslySetInnerHTML={{ __html: thirukkural.TamilTransliteration }} />
-                            </div>
-                        </Card.Body>
-                    </Card>
-                    <br />
+                        <Card>
+                            <Card.Body>
+                                <div className="kuralProperty">
+                                    <div className="kuralPropertyHeading">{t('Kural')} {thirukkural.Index}:</div>
+                                    <div dangerouslySetInnerHTML={{ __html: thirukkural.Tamil }} />
+                                </div>
+                                <div className="kuralProperty">
+                                    <div className="kuralPropertyHeading">{t('MuVaExplanation')}:</div>
+                                    <div>{thirukkural.MuVaUrai}</div>
+                                </div>
+                                <div className="kuralProperty">
+                                    <div className="kuralPropertyHeading">{t('SolomonPaapaiyaExplanation')}:</div>
+                                    <div>{thirukkural.SolomonPaapaiyaUrai}</div>
+                                </div>
+                                <div className="kuralProperty">
+                                    <div className="kuralPropertyHeading">{t('KalaignarExplanation')}:</div>
+                                    <div>{thirukkural.KalaignarUrai}</div>
+                                </div>
+                                <div className="kuralProperty" ng-hide="layout.IsTamil()">
+                                    <div className="kuralPropertyHeading">{t('Couplet')}:</div>
+                                    <div dangerouslySetInnerHTML={{ __html: thirukkural.English }} />
+                                </div>
+                                <div className="kuralProperty" ng-hide="layout.IsTamil()">
+                                    <div className="kuralPropertyHeading">{t('EnglishExplanation')}:</div>
+                                    <div>{thirukkural.EnglishMeaning}</div>
+                                </div>
+                                <div className="kuralProperty" ng-hide="layout.IsTamil()">
+                                    <div className="kuralPropertyHeading">{t('Transliteration')}:</div>
+                                    <div dangerouslySetInnerHTML={{ __html: thirukkural.TamilTransliteration }} />
+                                </div>
+                            </Card.Body>
+                        </Card>
+                        <br />
                     </>
                 ))
             }

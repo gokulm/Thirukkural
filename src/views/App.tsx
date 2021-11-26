@@ -28,7 +28,7 @@ const App = (props: any) => {
   return (
     <>
       <Router>
-        <Navbar collapseOnSelect className="navbar-default ">
+        <Navbar collapseOnSelect expand="lg" className="navbar-default ">
           <Container>
             <Navbar.Brand href="/home">{t('WebsiteHeader')}</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
