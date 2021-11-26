@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import DataService from './dataService'
 import { Link } from "react-router-dom";
+import { IChapter } from './common/interfaces';
 
-interface IChapter {
-    Index: number,
-    Tamil: string,
-    English: string,
-    Transliteration: string
-}
+// interface IChapter {
+//     Index: number,
+//     Tamil: string,
+//     English: string,
+//     Transliteration: string
+// }
 
 const Chapters = (props: any) => {
     const [data, setData] = useState([] as IChapter[]);
@@ -17,7 +18,7 @@ const Chapters = (props: any) => {
     useEffect(() => {
         DataService.getChapters().then(
             result => {
-                console.log(result);
+                // console.log(result);
                 setData(result.data.Data as IChapter[])
                 setIsLoaded(true);
             },
