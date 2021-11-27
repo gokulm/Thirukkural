@@ -2,19 +2,14 @@ import React, { useEffect, useState } from 'react';
 import DataService from '../common/dataService'
 import { Link } from "react-router-dom";
 import { IChapter } from '../common/interfaces';
-import { Table } from 'react-bootstrap';
-
-// interface IChapter {
-//     Index: number,
-//     Tamil: string,
-//     English: string,
-//     Transliteration: string
-// }
+import { Card, Table } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 const Chapters = (props: any) => {
     const [data, setData] = useState([] as IChapter[]);
     const [dataError, setDataError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
+    const { t } = useTranslation();
 
     useEffect(() => {
         DataService.getChapters().then(
@@ -36,54 +31,66 @@ const Chapters = (props: any) => {
         return <div>Loading...</div>
     } else {
         return (
-            <Table striped bordered hover>
-                <thead className="tableThirukkuralThead">
-                    <tr>
-                        <th>#</th>
-                        <th>அதிகாரம்</th>
-                        <th>Chapter</th>
-                        <th>Adhigaaram</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
+            <>
                 {
-                    data.map(thirukkural => (
+                    data.map(chapter => (
+                        <>
+                            <Card className="d-block d-sm-block d-md-none">
+                                <Card.Body>
+                                    <div>
+                                        <div className="panel panel-default">
+                                            <div className="panel-body">
+                                                <div className="adhigaramProperty">
+                                                    <span className="brand adhigaramPropertyHeading">#</span>: {chapter.Index}
+                                                </div>
+                                                <div className="adhigaramProperty">
+                                                    <span className="brand adhigaramPropertyHeading">{t('ChapterInTamil')}</span>: {chapter.Tamil}
+                                                </div>
+                                                <div className="adhigaramProperty">
+                                                    <span className="brand adhigaramPropertyHeading">{t('Chapter')}</span>: {chapter.English}
+                                                </div>
+                                                <div className="adhigaramProperty">
+                                                    <span className="brand adhigaramPropertyHeading">{t('ChapterTransliteration')}</span>:  {chapter.Transliteration}
+                                                </div>
+                                                <div className="adhigaramProperty">
+                                                    <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })"><span className="brand"></span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Card.Body>
+                            </Card>
+                            <br />
+                        </>
+                    ))
+                }
+                <Table striped bordered hover size="sm" className="d-none d-md-block d-lg-block">
+                    <thead className="tableThirukkuralThead">
                         <tr>
-                            <td className="col-md-1">{thirukkural.Index}</td>
-                            <td className="col-md-3"> {thirukkural.Tamil} </td>
-                            <td className="col-md-3"> {thirukkural.English} </td>
-                            <td className="col-md-3"> {thirukkural.Transliteration} </td>
-                            <td className="col-md-2">
-                                <Link to={`/chapters/${thirukkural.Index}/kurals`}>Kurals</Link>
-                            </td>
+                            <th>#</th>
+                            <th>அதிகாரம்</th>
+                            <th>Chapter</th>
+                            <th>Adhigaaram</th>
+                            <th></th>
                         </tr>
-                    )
-                    )}
-                </tbody>
-            </Table>
-            // <table className="table table-bordered table-striped tableThirukkural visible-md visible-sm visible-lg">
-            //     <thead>
-            //         <th>#</th>
-            //         <th>அதிகாரம்</th>
-            //         <th>Chapter</th>
-            //         <th>Adhigaaram</th>
-            //         <th></th>
-            //     </thead>
-            //     {
-            //         data.map(thirukkural => (
-            //             <tr>
-            //                 <td className="col-md-1">{thirukkural.Index}</td>
-            //                 <td className="col-md-3"> {thirukkural.Tamil} </td>
-            //                 <td className="col-md-3"> {thirukkural.English} </td>
-            //                 <td className="col-md-3"> {thirukkural.Transliteration} </td>
-            //                 <td className="col-md-2">
-            //                     <Link to={`/chapters/${thirukkural.Index}/kurals`}>Kurals</Link>
-            //                 </td>
-            //             </tr>
-            //         )
-            //         )}
-            // </table>
+                    </thead>
+                    <tbody>
+                        {
+                            data.map(chapter => (
+                                <tr>
+                                    <td className="col-md-1">{chapter.Index}</td>
+                                    <td className="col-md-3"> {chapter.Tamil} </td>
+                                    <td className="col-md-3"> {chapter.English} </td>
+                                    <td className="col-md-3"> {chapter.Transliteration} </td>
+                                    <td className="col-md-2">
+                                        <Link to={`/chapters/${chapter.Index}/kurals`}>Kurals</Link>
+                                    </td>
+                                </tr>
+                            )
+                            )}
+                    </tbody>
+                </Table>
+            </>
         );
     }
 }

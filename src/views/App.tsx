@@ -39,7 +39,7 @@ const App = (props: any) => {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link href="/">{t('Kurals')}</Nav.Link>
-                <Nav.Link className="active" href="/chapters">{t('Chapters')}</Nav.Link>
+                <Nav.Link href="/chapters">{t('Chapters')}</Nav.Link>
               </Nav>
               <Nav>
                 <span className="switchLanguage" onClick={() => switchLanguage()}>{t('Language')}</span>
