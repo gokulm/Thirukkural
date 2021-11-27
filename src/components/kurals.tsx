@@ -1,7 +1,7 @@
 import { IKural } from '../common/interfaces';
 import { useTranslation } from 'react-i18next';
-import resources from '../assets/resources';
 import { Card } from 'react-bootstrap';
+import i18n from '../common/i18n';
 
 interface IProps {
     thirukkurals: IKural[]
@@ -12,7 +12,6 @@ const Kurals = (props: IProps) => {
 
     return (
         <div>
-            <br />
             {
                 props.thirukkurals.map(thirukkural => (
                     <>
@@ -34,18 +33,20 @@ const Kurals = (props: IProps) => {
                                     <div className="kuralPropertyHeading">{t('KalaignarExplanation')}:</div>
                                     <div>{thirukkural.KalaignarUrai}</div>
                                 </div>
-                                <div className="kuralProperty" ng-hide="layout.IsTamil()">
-                                    <div className="kuralPropertyHeading">{t('Couplet')}:</div>
-                                    <div dangerouslySetInnerHTML={{ __html: thirukkural.English }} />
-                                </div>
-                                <div className="kuralProperty" ng-hide="layout.IsTamil()">
-                                    <div className="kuralPropertyHeading">{t('EnglishExplanation')}:</div>
-                                    <div>{thirukkural.EnglishMeaning}</div>
-                                </div>
-                                <div className="kuralProperty" ng-hide="layout.IsTamil()">
-                                    <div className="kuralPropertyHeading">{t('Transliteration')}:</div>
-                                    <div dangerouslySetInnerHTML={{ __html: thirukkural.TamilTransliteration }} />
-                                </div>
+                                {
+                                    i18n.language === 'english' && <> <div className="kuralProperty">
+                                        <div className="kuralPropertyHeading">{t('Couplet')}:</div>
+                                        <div dangerouslySetInnerHTML={{ __html: thirukkural.English }} />
+                                    </div>
+                                        <div className="kuralProperty" ng-hide="layout.IsTamil()">
+                                            <div className="kuralPropertyHeading">{t('EnglishExplanation')}:</div>
+                                            <div>{thirukkural.EnglishMeaning}</div>
+                                        </div>
+                                        <div className="kuralProperty" ng-hide="layout.IsTamil()">
+                                            <div className="kuralPropertyHeading">{t('Transliteration')}:</div>
+                                            <div dangerouslySetInnerHTML={{ __html: thirukkural.TamilTransliteration }} />
+                                        </div></>
+                                }
                             </Card.Body>
                         </Card>
                         <br />

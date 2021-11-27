@@ -2,7 +2,9 @@ import './App.scss';
 import {
   BrowserRouter as Router,
   Switch,
-  Route} from "react-router-dom";
+  Route,
+  useLocation
+} from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { routes } from '../common/routes';
 import { Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
@@ -12,6 +14,8 @@ import { useState } from 'react';
 const App = (props: any) => {
   const { t } = useTranslation();
   const [language, setLanguage] = useState('tamil');
+  // const location = useLocation();
+  console.log('props', props);
 
   const switchLanguage = () => {
     if (language == 'tamil') {
@@ -30,15 +34,15 @@ const App = (props: any) => {
       <Router>
         <Navbar collapseOnSelect expand="lg" className="navbar-default ">
           <Container>
-            <Navbar.Brand href="/home">{t('WebsiteHeader')}</Navbar.Brand>
+            <Navbar.Brand href="/">{t('WebsiteHeader')}</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link href="/home">{t('Kurals')}</Nav.Link>
+                <Nav.Link href="/">{t('Kurals')}</Nav.Link>
                 <Nav.Link className="active" href="/chapters">{t('Chapters')}</Nav.Link>
               </Nav>
               <Nav>
-                <Nav.Link onClick={() => switchLanguage()}>{t('Language')}</Nav.Link>
+                <span className="switchLanguage" onClick={() => switchLanguage()}>{t('Language')}</span>
               </Nav>
             </Navbar.Collapse>
           </Container>
@@ -48,6 +52,7 @@ const App = (props: any) => {
         <Container>
           <Row>
             <Col>
+              <br />
               <Switch>
                 {routes.map((route, i) => (
                   <RouteWithSubRoutes key={i} {...route} />
