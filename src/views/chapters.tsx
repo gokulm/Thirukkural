@@ -32,10 +32,11 @@ const Chapters = (props: any) => {
     } else {
         return (
             <>
+                <div className="d-block d-sm-block d-md-none">
                 {
                     data.map(chapter => (
                         <>
-                            <Card className="d-block d-sm-block d-md-none">
+                            <Card>
                                 <Card.Body>
                                     <div>
                                         <div className="panel panel-default">
@@ -53,7 +54,7 @@ const Chapters = (props: any) => {
                                                     <span className="brand adhigaramPropertyHeading">{t('ChapterTransliteration')}</span>:  {chapter.Transliteration}
                                                 </div>
                                                 <div className="adhigaramProperty">
-                                                    <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })"><span className="brand"></span></a>
+                                                    {/* <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })"><span className="brand"></span></a> */}
                                                 </div>
                                             </div>
                                         </div>
@@ -64,6 +65,7 @@ const Chapters = (props: any) => {
                         </>
                     ))
                 }
+                </div>
                 <Table striped bordered hover size="sm" className="d-none d-md-block d-lg-block">
                     <thead className="tableThirukkuralThead">
                         <tr>

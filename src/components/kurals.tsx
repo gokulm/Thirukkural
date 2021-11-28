@@ -14,8 +14,8 @@ const Kurals = (props: IProps) => {
         <div>
             {
                 props.thirukkurals.map(thirukkural => (
-                    <>
-                        <Card>
+                    <div key={thirukkural.Index}>
+                        <Card >
                             <Card.Body>
                                 <div className="kuralProperty">
                                     <div className="kuralPropertyHeading">{t('Kural')} {thirukkural.Index}:</div>
@@ -50,7 +50,7 @@ const Kurals = (props: IProps) => {
                             </Card.Body>
                         </Card>
                         <br />
-                    </>
+                    </div>
                 ))
             }
         </div>

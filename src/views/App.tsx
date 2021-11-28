@@ -2,8 +2,7 @@ import './App.scss';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  useLocation
+  Route
 } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { routes } from '../common/routes';
@@ -18,7 +17,7 @@ const App = (props: any) => {
   console.log('props', props);
 
   const switchLanguage = () => {
-    if (language == 'tamil') {
+    if (language === 'tamil') {
       setLanguage('english');
       i18n.changeLanguage('english');
     }
@@ -67,8 +66,8 @@ const App = (props: any) => {
           <Container>
             <Row>
               <Col className="text-center footer">
-                <a href="https://www.gokulnath.com/#contact" target="_blank">Contact</a> ::
-                <a href="http://blogs.gokulnath.com/2010/05/15/thirukkural" target="_blank">About</a>
+                <a href="https://www.gokulnath.com/#contact" target="_blank" rel="noreferrer">Contact</a> ::
+                <a href="http://blogs.gokulnath.com/2010/05/15/thirukkural" target="_blank" rel="noreferrer">About</a>
               </Col>
             </Row>
           </Container>

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { IKural } from '../common/interfaces';
 import DataService from '../common/dataService'
 import Kurals from '../components/kurals';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
+import Pagination from 'react-responsive-pagination';
 
 interface RouteParams {
   chapterIndex?: string
@@ -13,7 +14,32 @@ const Home = (props: any) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [data, setData] = useState([] as IKural[]);
   const routeParams = useParams<RouteParams>();
-  const chapterIndices = Array.from({ length: 133 }, (_, i) => i + 1)
+  const [currentPage, setCurrentPage] = useState(1);
+  const history = useHistory();
+  // const chapterIndices = Array.from({ length: 133 }, (_, i) => i + 1)
+
+  // let active = 1;
+  // let items : any = [];
+  // for (let number = 1; number <= 133; number++) {
+  //   items.push(
+  //     <Pagination.Item key={number} active={number === active}>
+  //       {number}
+  //     </Pagination.Item>,
+  //   );
+  // }
+
+  const handlePageChange = (page: any) => {
+    setCurrentPage(page);
+    history.push(`/chapters/${page}/kurals`);
+  }
+
+  const paginationBasic = () => (
+    <Pagination
+      current={currentPage}
+      total={133}
+      onPageChange={handlePageChange}
+    />
+  );
 
   useEffect(() => {
     DataService.getThirukkurals(routeParams.chapterIndex ?? 1).then(
@@ -38,6 +64,7 @@ const Home = (props: any) => {
         {/* {chapterIndices.map(index => (
             <div>{index}</div>
           ))} */}
+        { paginationBasic() }
 
         <Kurals thirukkurals={data} />
       </div>
