@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IKural } from '../common/interfaces';
+import { IChapter, IKural } from '../common/interfaces';
 import DataService from '../common/dataService'
 import Kurals from '../components/kurals';
 import { useParams, useHistory } from 'react-router-dom';
@@ -13,36 +13,19 @@ const Home = (props: any) => {
   const [dataError, setDataError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [data, setData] = useState([] as IKural[]);
+  const [chapter, setChapter] = useState<IChapter>({} as IChapter);
   const routeParams = useParams<RouteParams>();
   const [currentPage, setCurrentPage] = useState(1);
   const history = useHistory();
-  // const chapterIndices = Array.from({ length: 133 }, (_, i) => i + 1)
-
-  // let active = 1;
-  // let items : any = [];
-  // for (let number = 1; number <= 133; number++) {
-  //   items.push(
-  //     <Pagination.Item key={number} active={number === active}>
-  //       {number}
-  //     </Pagination.Item>,
-  //   );
-  // }
 
   const handlePageChange = (page: any) => {
     setCurrentPage(page);
     history.push(`/chapters/${page}/kurals`);
   }
 
-  const paginationBasic = () => (
-    <Pagination
-      current={currentPage}
-      total={133}
-      onPageChange={handlePageChange}
-    />
-  );
-
   useEffect(() => {
-    DataService.getThirukkurals(routeParams.chapterIndex ?? 1).then(
+    let chapterIndex = routeParams.chapterIndex ?? 1;
+    DataService.getThirukkurals(chapterIndex).then(
       result => {
         setData(result.data.Data as IKural[])
         setIsLoaded(true);
@@ -52,6 +35,20 @@ const Home = (props: any) => {
         setDataError(error);
         setIsLoaded(true);
       });
+
+    DataService.getChapter(chapterIndex).then(
+      result => {
+        setChapter(result.data.Data as IChapter)
+        setIsLoaded(true);
+      },
+      error => {
+        console.error(error);
+        setDataError(error);
+        setIsLoaded(true);
+      });
+
+      setCurrentPage(+chapterIndex);
+
   }, [routeParams]);
 
   if (dataError) {
@@ -61,12 +58,14 @@ const Home = (props: any) => {
   } else {
     return (
       <div>
-        {/* {chapterIndices.map(index => (
-            <div>{index}</div>
-          ))} */}
-        { paginationBasic() }
+        <Pagination
+          previousLabel=""
+          current={currentPage}
+          total={133}
+          onPageChange={handlePageChange}
+        />
 
-        <Kurals thirukkurals={data} />
+        <Kurals thirukkurals={data} chapter={chapter} />
       </div>
     );
   }

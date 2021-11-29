@@ -1,17 +1,32 @@
-import { IKural } from '../common/interfaces';
+import { IChapter, IKural } from '../common/interfaces';
 import { useTranslation } from 'react-i18next';
 import { Card } from 'react-bootstrap';
 import i18n from '../common/i18n';
 
 interface IProps {
-    thirukkurals: IKural[]
+    thirukkurals: IKural[],
+    chapter: IChapter
 }
 
 const Kurals = (props: IProps) => {
     const { t } = useTranslation();
 
+    const getTitle = () => {
+        if(i18n.language === 'tamil')
+        {
+            return `${props.chapter.Index}. ${props.chapter.Tamil}`;
+        }
+        else
+        {
+            return `${props.chapter.Index}. ${props.chapter.English}/${props.chapter.Transliteration}`;
+        }
+    }
+
     return (
         <div>
+            <div className="thirukurralChapterHeader">
+                <h4 className="thirukurralChapterHeaderText">{ getTitle() }</h4>
+            </div>
             {
                 props.thirukkurals.map(thirukkural => (
                     <div key={thirukkural.Index}>
