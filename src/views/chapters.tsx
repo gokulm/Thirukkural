@@ -51,7 +51,7 @@ const Chapters = (props: any) => {
                                                     <span className="brand adhigaramPropertyHeading">{t('Chapter')}</span>: {chapter.English}
                                                 </div>
                                                 <div className="adhigaramProperty">
-                                                    <span className="brand adhigaramPropertyHeading">{t('ChapterTransliteration')}</span>:  {chapter.Transliteration}
+                                                    <span className="brand adhigaramPropertyHeading">{t('ChapterTransliteration')}</span>: {chapter.Transliteration}
                                                 </div>
                                                 <div className="adhigaramProperty">
                                                     {/* <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })"><span className="brand"></span></a> */}

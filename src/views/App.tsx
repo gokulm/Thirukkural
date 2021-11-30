@@ -2,17 +2,20 @@ import './App.scss';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  withRouter
 } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { routes } from '../common/routes';
 import { Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
 import i18n from '../common/i18n';
 import { useState } from 'react';
+import TopMenu from '../components/TopMenu';
 
 const App = (props: any) => {
   const { t } = useTranslation();
   const [language, setLanguage] = useState('tamil');
+  const TopMenuWithRouter = withRouter(TopMenu);
   // const location = useLocation();
   console.log('props', props);
 
@@ -31,7 +34,7 @@ const App = (props: any) => {
   return (
     <>
       <Router>
-        <Navbar collapseOnSelect expand="lg" className="navbar-default ">
+        {/* <Navbar collapseOnSelect expand="lg" className="navbar-default ">
           <Container>
             <Navbar.Brand href="/">{t('WebsiteHeader')}</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -45,7 +48,8 @@ const App = (props: any) => {
               </Nav>
             </Navbar.Collapse>
           </Container>
-        </Navbar>
+        </Navbar> */}
+        <TopMenuWithRouter />
         <div className="page-header"></div>
 
         <Container>
