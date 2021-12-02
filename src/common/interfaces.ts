@@ -1,3 +1,7 @@
+export interface IAppContext {
+    language: string
+}
+
 export interface IChapter {
     Index: number,
     Tamil: string,

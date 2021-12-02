@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { IChapter, IKural } from '../common/interfaces';
 import DataService from '../common/dataService'
-import Kurals from '../components/kurals';
 import { useParams, useHistory } from 'react-router-dom';
 import Pagination from 'react-responsive-pagination';
+import Kurals from '../components/Kurals';
 
 interface RouteParams {
   chapterIndex?: string

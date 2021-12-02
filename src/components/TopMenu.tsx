@@ -1,27 +1,35 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import i18n from '../common/i18n';
+import { AppContext } from "../common/app-context";
 
-const TopMenu = (props: any) => {
+interface IProps {
+    onSwitchLanguage(): void;
+}
+
+const TopMenu = (props: IProps) => {
     const { t } = useTranslation();
     const [language, setLanguage] = useState('tamil');
-    const { location } = props;
+    // const { location } = props;
+    const appContext = useContext(AppContext)
 
     const switchLanguage = () => {
-        if (language === 'tamil') {
-            setLanguage('english');
-            i18n.changeLanguage('english');
-        }
-        else {
-            setLanguage('tamil');
-            i18n.changeLanguage('tamil');
-        }
+        props.onSwitchLanguage();
+        // if (appContext.language === 'tamil') {
+        //     // setLanguage('english');
+        //     appContext.language = "english";
+        //     i18n.changeLanguage('english');
+        // }
+        // else {
+        //     // setLanguage('tamil');
+        //     appContext.language = "tamil";
+        //     i18n.changeLanguage('tamil');
+        // }
     }
 
     const isActiveMenu = (path: string, isExact: boolean = false): boolean => {
-        return isExact ? path === location.pathname :
-            (location.pathname as string).startsWith(path);
+        return isExact ? path === window.location.pathname :
+            (window.location.pathname as string).startsWith(path);
     }
 
     return (

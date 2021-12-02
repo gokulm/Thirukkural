@@ -2,6 +2,8 @@ import { IChapter, IKural } from '../common/interfaces';
 import { useTranslation } from 'react-i18next';
 import { Card } from 'react-bootstrap';
 import i18n from '../common/i18n';
+import { useContext } from 'react';
+import { AppContext } from '../common/app-context';
 
 interface IProps {
     thirukkurals: IKural[],
@@ -10,9 +12,11 @@ interface IProps {
 
 const Kurals = (props: IProps) => {
     const { t } = useTranslation();
+    // const [appContext, setAppContext] = useContext(AppContext)
+    const appContext = useContext(AppContext)
 
     const getTitle = () => {
-        if(i18n.language === 'tamil')
+        if(appContext.language === 'tamil')
         {
             return `${props.chapter.Index}. ${props.chapter.Tamil}`;
         }

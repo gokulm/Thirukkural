@@ -5,53 +5,39 @@ import {
   Route,
   withRouter
 } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import { routes } from '../common/routes';
-import { Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import i18n from '../common/i18n';
 import { useState } from 'react';
 import TopMenu from '../components/TopMenu';
+import { AppContext } from '../common/app-context';
+import { IAppContext } from '../common/interfaces';
 
 const App = (props: any) => {
-  const { t } = useTranslation();
-  const [language, setLanguage] = useState('tamil');
-  const TopMenuWithRouter = withRouter(TopMenu);
-  // const location = useLocation();
-  console.log('props', props);
+  // const [currentLanguage, setCurrentLanguage] = useState('tamil');
+  const [appContext, setAppContext] = useState<IAppContext>({ language: "tamil" });
+  const TopMenuWithRouter = withRouter((props: any) => TopMenu(props));
+  // console.log('props', props);
 
   const switchLanguage = () => {
-    if (language === 'tamil') {
-      setLanguage('english');
+    console.log("switching language....");
+    if (appContext.language === 'tamil') {
+      // setCurrentLanguage('english');
+      setAppContext({ ...appContext, language: "english" });
       i18n.changeLanguage('english');
     }
     else {
-      setLanguage('tamil');
+      // setCurrentLanguage('tamil');
+      setAppContext({ ...appContext, language: "tamil" });
       i18n.changeLanguage('tamil');
     }
   }
 
-
   return (
-    <>
-      <Router>
-        {/* <Navbar collapseOnSelect expand="lg" className="navbar-default ">
-          <Container>
-            <Navbar.Brand href="/">{t('WebsiteHeader')}</Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className="me-auto">
-                <Nav.Link href="/">{t('Kurals')}</Nav.Link>
-                <Nav.Link href="/chapters">{t('Chapters')}</Nav.Link>
-              </Nav>
-              <Nav>
-                <span className="switchLanguage" onClick={() => switchLanguage()}>{t('Language')}</span>
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar> */}
-        <TopMenuWithRouter />
+    <Router>
+      <AppContext.Provider value={appContext}>
+        <TopMenuWithRouter onSwitchLanguage={switchLanguage} />
         <div className="page-header"></div>
-
         <Container>
           <Row>
             <Col>
@@ -76,9 +62,8 @@ const App = (props: any) => {
             </Row>
           </Container>
         </footer>
-
-      </Router>
-    </>
+      </AppContext.Provider>
+    </Router >
   );
 }
 
