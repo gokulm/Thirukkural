@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IChapter, IKural } from '../common/interfaces';
 import DataService from '../common/dataService'
 import { useParams, useHistory } from 'react-router-dom';

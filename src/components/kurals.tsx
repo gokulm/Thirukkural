@@ -1,7 +1,6 @@
 import { IChapter, IKural } from '../common/interfaces';
 import { useTranslation } from 'react-i18next';
 import { Card } from 'react-bootstrap';
-import i18n from '../common/i18n';
 import { useContext } from 'react';
 import { AppContext } from '../common/app-context';
 
@@ -12,11 +11,10 @@ interface IProps {
 
 const Kurals = (props: IProps) => {
     const { t } = useTranslation();
-    // const [appContext, setAppContext] = useContext(AppContext)
     const appContext = useContext(AppContext)
 
     const getTitle = () => {
-        if(appContext.language === 'tamil')
+        if(appContext.IsTamil)
         {
             return `${props.chapter.Index}. ${props.chapter.Tamil}`;
         }
@@ -53,7 +51,7 @@ const Kurals = (props: IProps) => {
                                     <div>{thirukkural.KalaignarUrai}</div>
                                 </div>
                                 {
-                                    i18n.language === 'english' && <> <div className="kuralProperty">
+                                    !appContext.IsTamil && <> <div className="kuralProperty">
                                         <div className="kuralPropertyHeading">{t('Couplet')}:</div>
                                         <div dangerouslySetInnerHTML={{ __html: thirukkural.English }} />
                                     </div>

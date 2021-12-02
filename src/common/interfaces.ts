@@ -1,5 +1,5 @@
 export interface IAppContext {
-    language: string
+    IsTamil: boolean
 }
 
 export interface IChapter {

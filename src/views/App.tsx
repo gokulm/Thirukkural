@@ -14,21 +14,18 @@ import { AppContext } from '../common/app-context';
 import { IAppContext } from '../common/interfaces';
 
 const App = (props: any) => {
-  // const [currentLanguage, setCurrentLanguage] = useState('tamil');
-  const [appContext, setAppContext] = useState<IAppContext>({ language: "tamil" });
+  const [appContext, setAppContext] = useState<IAppContext>({ IsTamil: true });
   const TopMenuWithRouter = withRouter((props: any) => TopMenu(props));
   // console.log('props', props);
 
   const switchLanguage = () => {
     console.log("switching language....");
-    if (appContext.language === 'tamil') {
-      // setCurrentLanguage('english');
-      setAppContext({ ...appContext, language: "english" });
+    if (appContext.IsTamil) {
+      setAppContext({ ...appContext, IsTamil: false });
       i18n.changeLanguage('english');
     }
     else {
-      // setCurrentLanguage('tamil');
-      setAppContext({ ...appContext, language: "tamil" });
+      setAppContext({ ...appContext, IsTamil: true });
       i18n.changeLanguage('tamil');
     }
   }
@@ -49,9 +46,7 @@ const App = (props: any) => {
               </Switch>
             </Col>
           </Row>
-
         </Container>
-
         <footer>
           <Container>
             <Row>
