@@ -13,7 +13,7 @@ class DataService {
         return axios.get(`https://api.gokulnath.com/thirukkuralchapters/${chapterIndex}`);
     }
 
-    searchEnglish(searchText) {
+    static searchEnglish(searchText) {
         return axios.get(`https://api.gokulnath.com/thirukkuralsenglishsearch/${searchText}`);
     }
 }

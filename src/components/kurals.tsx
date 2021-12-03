@@ -6,7 +6,7 @@ import { AppContext } from '../common/app-context';
 
 interface IProps {
     thirukkurals: IKural[],
-    chapter: IChapter
+    chapter?: IChapter
 }
 
 const Kurals = (props: IProps) => {
@@ -14,12 +14,14 @@ const Kurals = (props: IProps) => {
     const appContext = useContext(AppContext)
 
     const getTitle = () => {
-        if(appContext.IsTamil)
-        {
+        if (!props.chapter) {
+            return ""
+        }
+
+        if (appContext.IsTamil) {
             return `${props.chapter.Index}. ${props.chapter.Tamil}`;
         }
-        else
-        {
+        else {
             return `${props.chapter.Index}. ${props.chapter.English}/${props.chapter.Transliteration}`;
         }
     }
@@ -27,7 +29,7 @@ const Kurals = (props: IProps) => {
     return (
         <div>
             <div className="thirukurralChapterHeader">
-                <h4 className="thirukurralChapterHeaderText">{ getTitle() }</h4>
+                <h4 className="thirukurralChapterHeaderText">{getTitle()}</h4>
             </div>
             {
                 props.thirukkurals.map(thirukkural => (

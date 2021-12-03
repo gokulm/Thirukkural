@@ -19,9 +19,10 @@ const TopMenu = (props: IProps) => {
                 <Navbar.Brand href="/">{t('WebsiteHeader')}</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="me-auto"> 
+                    <Nav className="me-auto">
                         <Nav.Link active={isActiveMenu("/", true) || isActiveMenu("/chapters/")} href="/">{t('Kurals')}</Nav.Link>
                         <Nav.Link active={isActiveMenu("/chapters", true)} href="/chapters">{t('Chapters')}</Nav.Link>
+                        <Nav.Link active={isActiveMenu("/search")} href="/search">{t('Search')}</Nav.Link>
                     </Nav>
                     <Nav>
                         <span className="switchLanguage" onClick={() => props.onSwitchLanguage()}>{t('Language')}</span>
