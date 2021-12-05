@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { IChapter, IKural } from '../common/interfaces';
-import DataService from '../common/dataService'
+import DataService from '../common/DataService'
 import { useParams, useHistory } from 'react-router-dom';
 import Pagination from 'react-responsive-pagination';
 import Kurals from '../components/Kurals';

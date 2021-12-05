@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import DataService from '../common/dataService'
+import DataService from '../common/DataService'
 import { Link } from "react-router-dom";
 import { IChapter } from '../common/interfaces';
 import { Card, Table } from 'react-bootstrap';

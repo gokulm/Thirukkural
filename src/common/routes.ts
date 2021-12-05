@@ -1,5 +1,5 @@
-import Chapters from "../views/chapters";
-import Home from "../views/home";
+import Chapters from "../views/Chapters";
+import Home from "../views/Home";
 import Search from "../views/Search";
 
 export const routes = [
