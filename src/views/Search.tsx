@@ -100,6 +100,12 @@ const Search = (props: any) => {
                     </Card.Body>
                 </Card>
 
+                {isLoaded &&
+                    <div>
+                        <h5>{data.length} record(s) found</h5>
+                    </div>
+                }
+
                 <Kurals thirukkurals={data} />
             </>
 
