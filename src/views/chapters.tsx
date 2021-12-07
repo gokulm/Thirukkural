@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import DataService from '../common/DataService'
 import { Link } from "react-router-dom";
 import { IChapter } from '../common/interfaces';
@@ -34,8 +34,8 @@ const Chapters = (props: any) => {
             <>
                 <div className="d-block d-sm-block d-md-none">
                 {
-                    data.map(chapter => (
-                        <>
+                    data.map((chapter, index) => (
+                        <Fragment key={index}>
                             <Card>
                                 <Card.Body>
                                     <div>
@@ -62,7 +62,7 @@ const Chapters = (props: any) => {
                                 </Card.Body>
                             </Card>
                             <br />
-                        </>
+                        </Fragment>
                     ))
                 }
                 </div>
@@ -78,8 +78,8 @@ const Chapters = (props: any) => {
                     </thead>
                     <tbody>
                         {
-                            data.map(chapter => (
-                                <tr>
+                            data.map((chapter, index) => (
+                                <tr key={index}>
                                     <td className="col-md-1">{chapter.Index}</td>
                                     <td className="col-md-3"> {chapter.Tamil} </td>
                                     <td className="col-md-3"> {chapter.English} </td>

@@ -1,5 +1,6 @@
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 interface IProps {
     onSwitchLanguage(): void;
@@ -20,9 +21,9 @@ const TopMenu = (props: IProps) => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link active={isActiveMenu("/", true) || isActiveMenu("/chapters/")} href="/">{t('Kurals')}</Nav.Link>
-                        <Nav.Link active={isActiveMenu("/chapters", true)} href="/chapters">{t('Chapters')}</Nav.Link>
-                        <Nav.Link active={isActiveMenu("/search")} href="/search">{t('Search')}</Nav.Link>
+                        <Nav.Link as={Link} active={isActiveMenu("/", true) || isActiveMenu("/chapters/")} to="/">{t('Kurals')}</Nav.Link>
+                        <Nav.Link as={Link} active={isActiveMenu("/chapters", true)} to="/chapters">{t('Chapters')}</Nav.Link>
+                        <Nav.Link as={Link} active={isActiveMenu("/search")} to="/search">{t('Search')}</Nav.Link>
                     </Nav>
                     <Nav>
                         <span className="switchLanguage" onClick={() => props.onSwitchLanguage()}>{t('Language')}</span>

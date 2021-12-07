@@ -16,7 +16,7 @@ import { IAppContext } from '../common/interfaces';
 const App = (props: any) => {
   const [appContext, setAppContext] = useState<IAppContext>({ IsTamil: true });
   const TopMenuWithRouter = withRouter((props: any) => TopMenu(props));
-  // console.log('props', props);
+  console.log('appcontext', appContext);
 
   const switchLanguage = () => {
     console.log("switching language....");
@@ -31,10 +31,10 @@ const App = (props: any) => {
   }
 
   return (
-    <Router>
-      <AppContext.Provider value={appContext}>
+    <AppContext.Provider value={appContext}>
+      <Router>
         <TopMenuWithRouter onSwitchLanguage={switchLanguage} />
-        <div className="page-header"></div>
+        {/* <div className="page-header"></div> */}
         <Container>
           <Row>
             <Col>
@@ -57,8 +57,8 @@ const App = (props: any) => {
             </Row>
           </Container>
         </footer>
-      </AppContext.Provider>
-    </Router >
+      </Router >
+    </AppContext.Provider>
   );
 }
 
