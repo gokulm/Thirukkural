@@ -106,7 +106,7 @@ const Search = (props: any) => {
                     </div>
                 }
 
-                <Kurals thirukkurals={data} />
+                <Kurals thirukkurals={data} searchText={searchText} />
             </>
 
         )

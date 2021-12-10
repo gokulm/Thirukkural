@@ -6,7 +6,8 @@ import { AppContext } from '../common/app-context';
 
 interface IProps {
     thirukkurals: IKural[],
-    chapter?: IChapter
+    chapter?: IChapter,
+    searchText?: string
 }
 
 const Kurals = (props: IProps) => {
@@ -26,6 +27,28 @@ const Kurals = (props: IProps) => {
         }
     }
 
+    const getHighlightedText = (text: string, highlight: string = "", replaceLineBreak: boolean = false) => {
+
+        if (!replaceLineBreak && !highlight)
+            return text;
+
+        // replace <br /> with \n and textWithLineBreak css will replace \n with an actual line break
+        if(replaceLineBreak)
+        {
+            text = text.replace("<br />", "\n");
+            if (!highlight)
+                return text;
+        }
+
+        // Split on highlight term and include term into parts, ignore case
+        const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
+        return <span> {parts.map((part, i) =>
+            <span key={i} style={part.toLowerCase() === highlight.toLowerCase() ? { backgroundColor: 'yellow' } : {}}>
+                {part}
+            </span>)
+        } </span>;
+    }
+
     return (
         <div>
             <div className="thirukurralChapterHeader">
@@ -38,32 +61,33 @@ const Kurals = (props: IProps) => {
                             <Card.Body>
                                 <div className="kuralProperty">
                                     <div className="kuralPropertyHeading">{t('Kural')} {thirukkural.Index}:</div>
-                                    <div dangerouslySetInnerHTML={{ __html: thirukkural.Tamil }} />
+                                    {/* <div dangerouslySetInnerHTML={{ __html: thirukkural.Tamil }} /> */}
+                                    <div className="textWithLineBreak">{getHighlightedText(thirukkural.Tamil, props.searchText, true)}</div>
                                 </div>
                                 <div className="kuralProperty">
                                     <div className="kuralPropertyHeading">{t('MuVaExplanation')}:</div>
-                                    <div>{thirukkural.MuVaUrai}</div>
+                                    <div>{getHighlightedText(thirukkural.MuVaUrai, props.searchText)}</div>
                                 </div>
                                 <div className="kuralProperty">
                                     <div className="kuralPropertyHeading">{t('SolomonPaapaiyaExplanation')}:</div>
-                                    <div>{thirukkural.SolomonPaapaiyaUrai}</div>
+                                    <div>{getHighlightedText(thirukkural.SolomonPaapaiyaUrai, props.searchText)}</div>
                                 </div>
                                 <div className="kuralProperty">
                                     <div className="kuralPropertyHeading">{t('KalaignarExplanation')}:</div>
-                                    <div>{thirukkural.KalaignarUrai}</div>
+                                    <div>{getHighlightedText(thirukkural.KalaignarUrai, props.searchText)}</div>
                                 </div>
                                 {
                                     !appContext.IsTamil && <> <div className="kuralProperty">
                                         <div className="kuralPropertyHeading">{t('Couplet')}:</div>
-                                        <div dangerouslySetInnerHTML={{ __html: thirukkural.English }} />
+                                        <div className="textWithLineBreak">{getHighlightedText(thirukkural.English, props.searchText, true)}</div>
                                     </div>
                                         <div className="kuralProperty" ng-hide="layout.IsTamil()">
                                             <div className="kuralPropertyHeading">{t('EnglishExplanation')}:</div>
-                                            <div>{thirukkural.EnglishMeaning}</div>
+                                            <div>{getHighlightedText(thirukkural.EnglishMeaning, props.searchText)}</div>
                                         </div>
                                         <div className="kuralProperty" ng-hide="layout.IsTamil()">
                                             <div className="kuralPropertyHeading">{t('Transliteration')}:</div>
-                                            <div dangerouslySetInnerHTML={{ __html: thirukkural.TamilTransliteration }} />
+                                            <div className="textWithLineBreak">{getHighlightedText(thirukkural.TamilTransliteration, props.searchText, true)}</div>
                                         </div></>
                                 }
                             </Card.Body>
