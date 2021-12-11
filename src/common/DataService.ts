@@ -5,6 +5,10 @@ class DataService {
         return axios.get(`https://api.gokulnath.com/thirukkuralchapters/${chapterIndex}/thirukkurals`);
     }
 
+    static getThirukkural(kuralIndex: any) {
+        return axios.get(`https://api.gokulnath.com/thirukkurals/${kuralIndex}`);
+    }
+
     static getChapters() {
         return axios.get(`https://api.gokulnath.com/thirukkuralchapters/`);
     }
