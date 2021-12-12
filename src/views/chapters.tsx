@@ -1,15 +1,17 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useContext, useEffect, useState } from 'react';
 import DataService from '../common/DataService'
 import { Link } from "react-router-dom";
 import { IChapter } from '../common/interfaces';
 import { Card, Table } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { AppContext } from '../common/app-context';
 
 const Chapters = (props: any) => {
     const [data, setData] = useState([] as IChapter[]);
     const [dataError, setDataError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const { t } = useTranslation();
+    const appContext = useContext(AppContext)
 
     useEffect(() => {
         DataService.getChapters().then(
@@ -33,46 +35,47 @@ const Chapters = (props: any) => {
         return (
             <>
                 <div className="d-block d-sm-block d-md-none">
-                {
-                    data.map((chapter, index) => (
-                        <Fragment key={index}>
-                            <Card>
-                                <Card.Body>
-                                    <div>
-                                        <div className="panel panel-default">
-                                            <div className="panel-body">
-                                                <div className="adhigaramProperty">
-                                                    <span className="brand adhigaramPropertyHeading">#</span>: {chapter.Index}
-                                                </div>
-                                                <div className="adhigaramProperty">
-                                                    <span className="brand adhigaramPropertyHeading">{t('ChapterInTamil')}</span>: {chapter.Tamil}
-                                                </div>
-                                                <div className="adhigaramProperty">
-                                                    <span className="brand adhigaramPropertyHeading">{t('Chapter')}</span>: {chapter.English}
-                                                </div>
-                                                <div className="adhigaramProperty">
-                                                    <span className="brand adhigaramPropertyHeading">{t('ChapterTransliteration')}</span>: {chapter.Transliteration}
-                                                </div>
-                                                <div className="adhigaramProperty">
-                                                    {/* <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })"><span className="brand"></span></a> */}
+                    {
+                        data.map((chapter, index) => (
+                            <Fragment key={index}>
+                                <Card>
+                                    <Card.Body>
+                                        <div>
+                                            <div className="panel panel-default">
+                                                <div className="panel-body">
+                                                    <div className="adhigaramProperty">
+                                                        <span className="brand adhigaramPropertyHeading">#</span>: {chapter.Index}
+                                                    </div>
+                                                    <div className="adhigaramProperty">
+                                                        <span className="brand adhigaramPropertyHeading">{t('ChapterInTamil')}</span>: {chapter.Tamil}
+                                                    </div>
+                                                    {!appContext.IsTamil && <><div className="adhigaramProperty">
+                                                        <span className="brand adhigaramPropertyHeading">{t('Chapter')}</span>: {chapter.English}
+                                                    </div>
+                                                        <div className="adhigaramProperty">
+                                                            <span className="brand adhigaramPropertyHeading">{t('ChapterTransliteration')}</span>: {chapter.Transliteration}
+                                                        </div></>
+                                                    }
+                                                    <div className="adhigaramProperty">
+                                                        {/* <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })"><span className="brand"></span></a> */}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </Card.Body>
-                            </Card>
-                            <br />
-                        </Fragment>
-                    ))
-                }
+                                    </Card.Body>
+                                </Card>
+                                <br />
+                            </Fragment>
+                        ))
+                    }
                 </div>
                 <Table striped bordered hover size="sm" className="d-none d-md-block d-lg-block">
                     <thead className="tableThirukkuralThead">
                         <tr>
                             <th>#</th>
                             <th>அதிகாரம்</th>
-                            <th>Chapter</th>
-                            <th>Adhigaaram</th>
+                            {!appContext.IsTamil && <><th>Chapter</th>
+                                <th>Adhigaaram</th></>}
                             <th></th>
                         </tr>
                     </thead>
@@ -82,10 +85,11 @@ const Chapters = (props: any) => {
                                 <tr key={index}>
                                     <td className="col-md-1">{chapter.Index}</td>
                                     <td className="col-md-3"> {chapter.Tamil} </td>
-                                    <td className="col-md-3"> {chapter.English} </td>
-                                    <td className="col-md-3"> {chapter.Transliteration} </td>
+                                    {!appContext.IsTamil && <><td className="col-md-3"> {chapter.English} </td>
+                                        <td className="col-md-3"> {chapter.Transliteration} </td></>
+                                    }
                                     <td className="col-md-2">
-                                        <Link to={`/chapters/${chapter.Index}/kurals`}>Kurals</Link>
+                                        <Link to={`/chapters/${chapter.Index}/kurals`}>{t('Kurals')}</Link>
                                     </td>
                                 </tr>
                             )

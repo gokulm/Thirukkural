@@ -1,9 +1,6 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import DataService from '../common/DataService'
 import Kurals from '../components/Kurals';
-import {
-    Link
-} from "react-router-dom";
 import { IKural } from '../common/interfaces';
 import { Card, Col, Container, Row } from 'react-bootstrap';
 import { AppContext } from '../common/app-context';
