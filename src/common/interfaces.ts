@@ -9,6 +9,9 @@ export interface IChapter {
     Transliteration: string
 }
 
+export interface ISection extends IChapter {
+}
+
 export interface IKural {
     Index: number,
     Tamil: string,

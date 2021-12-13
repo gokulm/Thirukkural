@@ -1,23 +1,23 @@
 import { Fragment, useContext, useEffect, useState } from 'react';
 import DataService from '../common/DataService'
 import { Link } from "react-router-dom";
-import { IChapter } from '../common/interfaces';
+import { ISection } from '../common/interfaces';
 import { Card, Table } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '../common/app-context';
 
-const Chapters = (props: any) => {
-    const [data, setData] = useState([] as IChapter[]);
+const Sections = (props: any) => {
+    const [data, setData] = useState([] as ISection[]);
     const [dataError, setDataError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const { t } = useTranslation();
     const appContext = useContext(AppContext)
 
     useEffect(() => {
-        DataService.getChapters().then(
+        DataService.getSections().then(
             result => {
                 // console.log(result);
-                setData(result.data.Data as IChapter[])
+                setData(result.data.Data as ISection[])
                 setIsLoaded(true);
             },
             error => {
@@ -36,7 +36,7 @@ const Chapters = (props: any) => {
             <>
                 <div className="d-block d-sm-block d-md-none">
                     {
-                        data.map((chapter, index) => (
+                        data.map((section, index) => (
                             <Fragment key={index}>
                                 <Card>
                                     <Card.Body>
@@ -44,16 +44,16 @@ const Chapters = (props: any) => {
                                             <div className="panel panel-default">
                                                 <div className="panel-body">
                                                     <div className="adhigaramProperty">
-                                                        <span className="brand adhigaramPropertyHeading">#</span>: {chapter.Index}
+                                                        <span className="brand adhigaramPropertyHeading">#</span>: {section.Index}
                                                     </div>
                                                     <div className="adhigaramProperty">
-                                                        <span className="brand adhigaramPropertyHeading">{t('ChapterInTamil')}</span>: {chapter.Tamil}
+                                                        <span className="brand adhigaramPropertyHeading">{t('ChapterInTamil')}</span>: {section.Tamil}
                                                     </div>
                                                     {!appContext.IsTamil && <><div className="adhigaramProperty">
-                                                        <span className="brand adhigaramPropertyHeading">{t('Chapter')}</span>: {chapter.English}
+                                                        <span className="brand adhigaramPropertyHeading">{t('Chapter')}</span>: {section.English}
                                                     </div>
                                                         <div className="adhigaramProperty">
-                                                            <span className="brand adhigaramPropertyHeading">{t('ChapterTransliteration')}</span>: {chapter.Transliteration}
+                                                            <span className="brand adhigaramPropertyHeading">{t('ChapterTransliteration')}</span>: {section.Transliteration}
                                                         </div></>
                                                     }
                                                     <div className="adhigaramProperty">
@@ -73,9 +73,9 @@ const Chapters = (props: any) => {
                     <thead className="tableThirukkuralThead">
                         <tr>
                             <th>#</th>
-                            <th>அதிகாரம்</th>
-                            {!appContext.IsTamil && <><th>Chapter</th>
-                                <th>Adhigaaram</th></>}
+                            <th>{t("SectionInTamil")}</th>
+                            {!appContext.IsTamil && <><th>{t("Section")}</th>
+                                <th>{t("SectionTransliteration")}</th></>}
                             <th></th>
                         </tr>
                     </thead>
@@ -101,4 +101,21 @@ const Chapters = (props: any) => {
     }
 }
 
-export default Chapters;
+export default Sections;
+
+{/* <table class="table table-bordered table-striped tableThirukkural visible-md visible-sm visible-lg">
+        <thead>
+        <th>#</th>
+        <th><span class="brand" i18n="common.SectionInTamil"></span></th>
+        <th><span class="brand" i18n="common.Section"></span></th>
+        <th><span class="brand" i18n="common.SectionTransliteration"></span></th>
+        <th></th>
+        </thead>
+        <tr ng-repeat="thirukkuralSection in vm.ThirukkuralSections">
+            <td class="col-md-1"> {{ ::thirukkuralSection.Index }}</td>
+            <td class="col-md-3"> {{ ::thirukkuralSection.Tamil }} </td>
+            <td class="col-md-3"> {{ ::thirukkuralSection.English }} </td>
+            <td class="col-md-3"> {{ ::thirukkuralSection.Transliteration }} </td>
+            <td class="col-md-8"> <a ui-sref="sectionchapters( { index: thirukkuralSection.Index })"><span class="brand" i18n="common.Chapters"></span></a> </td>
+        </tr>
+    </table> */}

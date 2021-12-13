@@ -23,6 +23,7 @@ const TopMenu = (props: IProps) => {
                     <Nav className="me-auto">
                         <Nav.Link as={Link} active={isActiveMenu("/", true) || isActiveMenu("/chapters/")} to="/">{t('Kurals')}</Nav.Link>
                         <Nav.Link as={Link} active={isActiveMenu("/chapters", true)} to="/chapters">{t('Chapters')}</Nav.Link>
+                        <Nav.Link as={Link} active={isActiveMenu("/sections", true)} to="/sections">{t('Sections')}</Nav.Link>
                         <Nav.Link as={Link} active={isActiveMenu("/search")} to="/search">{t('Search')}</Nav.Link>
                     </Nav>
                     <Nav>

@@ -2,6 +2,7 @@ import Chapters from "../views/Chapters";
 import Home from "../views/Home";
 import KuralView from "../views/KuralView";
 import Search from "../views/Search";
+import Sections from "../views/Sections";
 
 export const routes = [
     {
@@ -11,6 +12,11 @@ export const routes = [
     {
       path: "/chapters",
       component: Chapters,
+      exact: true
+    },
+    {
+      path: "/sections",
+      component: Sections,
       exact: true
     },
     {
