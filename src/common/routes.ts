@@ -25,6 +25,11 @@ export const routes = [
       exact: true
     },
     {
+      path: "/sections/:sectionIndex/chapters",
+      component: Chapters,
+      exact: true
+    },
+    {
       path: "/thirukkurals/:kuralIndex",
       component: KuralView,
       exact: true

@@ -1,30 +1,52 @@
 import { Fragment, useContext, useEffect, useState } from 'react';
 import DataService from '../common/DataService'
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { IChapter } from '../common/interfaces';
 import { Card, Table } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '../common/app-context';
+
+interface RouteParams {
+    sectionIndex?: string
+}
 
 const Chapters = (props: any) => {
     const [data, setData] = useState([] as IChapter[]);
     const [dataError, setDataError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const { t } = useTranslation();
-    const appContext = useContext(AppContext)
+    const appContext = useContext(AppContext);
+    const routeParams = useParams<RouteParams>();
 
     useEffect(() => {
-        DataService.getChapters().then(
-            result => {
-                // console.log(result);
-                setData(result.data.Data as IChapter[])
-                setIsLoaded(true);
-            },
-            error => {
-                console.log("error occurred");
-                setDataError(error);
-                setIsLoaded(true);
-            });
+        let sectionIndex = routeParams.sectionIndex;
+        if (!sectionIndex) {
+            DataService.getChapters().then(
+                result => {
+                    // console.log(result);
+                    setData(result.data.Data as IChapter[])
+                    setIsLoaded(true);
+                },
+                error => {
+                    console.log("error occurred");
+                    setDataError(error);
+                    setIsLoaded(true);
+                });
+        }
+        else {
+            DataService.getSectionChapters(sectionIndex).then(
+                result => {
+                    // console.log(result);
+                    setData(result.data.Data as IChapter[])
+                    setIsLoaded(true);
+                },
+                error => {
+                    console.log("error occurred");
+                    setDataError(error);
+                    setIsLoaded(true);
+                });
+
+        }
     });
 
     if (dataError) {
@@ -57,7 +79,7 @@ const Chapters = (props: any) => {
                                                         </div></>
                                                     }
                                                     <div className="adhigaramProperty">
-                                                        {/* <a ui-sref="thirukkuralsbychapters( { index: thirukkuralChapter.Index })"><span className="brand"></span></a> */}
+                                                        <Link to={`/chapters/${chapter.Index}/kurals`}>{t('Kurals')}</Link>
                                                     </div>
                                                 </div>
                                             </div>

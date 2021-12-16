@@ -81,15 +81,15 @@ const Sections = (props: any) => {
                     </thead>
                     <tbody>
                         {
-                            data.map((chapter, index) => (
+                            data.map((section, index) => (
                                 <tr key={index}>
-                                    <td className="col-md-1">{chapter.Index}</td>
-                                    <td className="col-md-3"> {chapter.Tamil} </td>
-                                    {!appContext.IsTamil && <><td className="col-md-3"> {chapter.English} </td>
-                                        <td className="col-md-3"> {chapter.Transliteration} </td></>
+                                    <td className="col-md-1">{section.Index}</td>
+                                    <td className="col-md-3"> {section.Tamil} </td>
+                                    {!appContext.IsTamil && <><td className="col-md-3"> {section.English} </td>
+                                        <td className="col-md-3"> {section.Transliteration} </td></>
                                     }
                                     <td className={appContext.IsTamil ? "col-md-8" : "col-md-2"}>
-                                        <Link to={`/chapters/${chapter.Index}/kurals`}>{t('Kurals')}</Link>
+                                        <Link to={`/sections/${section.Index}/chapters`}>{t('Chapters')}</Link>
                                     </td>
                                 </tr>
                             )
