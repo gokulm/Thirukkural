@@ -1,7 +1,7 @@
 import { Fragment, useContext, useEffect, useState } from 'react';
 import DataService from '../common/DataService'
 import { Link, useParams } from "react-router-dom";
-import { IChapter } from '../common/interfaces';
+import { IChapter, ISection } from '../common/interfaces';
 import { Card, Table } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '../common/app-context';
@@ -12,6 +12,7 @@ interface RouteParams {
 
 const Chapters = (props: any) => {
     const [data, setData] = useState([] as IChapter[]);
+    const [section, setSection] = useState({} as ISection);
     const [dataError, setDataError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const { t } = useTranslation();
@@ -19,6 +20,7 @@ const Chapters = (props: any) => {
     const routeParams = useParams<RouteParams>();
 
     useEffect(() => {
+        console.log("chapters useeffect");
         let sectionIndex = routeParams.sectionIndex;
         if (!sectionIndex) {
             DataService.getChapters().then(
@@ -46,8 +48,37 @@ const Chapters = (props: any) => {
                     setIsLoaded(true);
                 });
 
+            DataService.getSection(sectionIndex).then(
+                result => {
+                    setSection(result.data.Data as ISection)
+                    setIsLoaded(true);
+                },
+                error => {
+                    console.log("error occurred");
+                    setDataError(error);
+                    setIsLoaded(true);
+                });
         }
-    });
+    }, [DataService, routeParams]);
+
+    const getTitle = () => {
+        if (!section) {
+            return ""
+        }
+
+        if(!section.Index){
+            return ""
+        }
+
+        console.log("section: ", section);
+
+        if (appContext.IsTamil) {
+            return `${section.Index}. ${section.Tamil}`;
+        }
+        else {
+            return `${section.Index}. ${section.English}/${section.Transliteration}`;
+        }
+    }
 
     if (dataError) {
         return <div>Error: {dataError}</div>;
@@ -56,6 +87,9 @@ const Chapters = (props: any) => {
     } else {
         return (
             <>
+                <div className="thirukurralChapterHeader">
+                    <h4 className="thirukurralChapterHeaderText">{getTitle()}</h4>
+                </div>
                 <div className="d-block d-sm-block d-md-none">
                     {
                         data.map((chapter, index) => (
@@ -118,6 +152,7 @@ const Chapters = (props: any) => {
                             )}
                     </tbody>
                 </Table>
+                <br />
             </>
         );
     }

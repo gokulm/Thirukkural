@@ -16,6 +16,7 @@ const Kurals = (props: IProps) => {
         if (!props.chapter) {
             return ""
         }
+        console.log("chapter: ", props.chapter);
 
         if (appContext.IsTamil) {
             return `${props.chapter.Index}. ${props.chapter.Tamil}`;

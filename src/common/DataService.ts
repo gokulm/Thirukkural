@@ -17,6 +17,10 @@ class DataService {
         return axios.get(`https://api.gokulnath.com/thirukkuralsections/`);
     }
 
+    static getSection(sectionIndex: any) {
+        return axios.get(`https://api.gokulnath.com/thirukkuralsections/${sectionIndex}`);
+    }
+
     static getSectionChapters(sectionIndex: any) {
         return axios.get(`https://api.gokulnath.com/thirukkuralsections/${sectionIndex}/chapters`);
     }
