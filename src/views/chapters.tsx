@@ -7,7 +7,8 @@ import { useTranslation } from 'react-i18next';
 import { AppContext } from '../common/app-context';
 
 interface RouteParams {
-    sectionIndex?: string
+    sectionIndex?: string,
+    chapterGroupIndex?: string
 }
 
 const Chapters = (props: any) => {
@@ -22,7 +23,8 @@ const Chapters = (props: any) => {
     useEffect(() => {
         console.log("chapters useeffect");
         let sectionIndex = routeParams.sectionIndex;
-        if (!sectionIndex) {
+        let chapterGroupIndex = routeParams.chapterGroupIndex;
+        if (!sectionIndex && !chapterGroupIndex) {
             DataService.getChapters().then(
                 result => {
                     // console.log(result);
@@ -36,28 +38,56 @@ const Chapters = (props: any) => {
                 });
         }
         else {
-            DataService.getSectionChapters(sectionIndex).then(
-                result => {
-                    // console.log(result);
-                    setData(result.data.Data as IChapter[])
-                    setIsLoaded(true);
-                },
-                error => {
-                    console.log("error occurred");
-                    setDataError(error);
-                    setIsLoaded(true);
-                });
 
-            DataService.getSection(sectionIndex).then(
-                result => {
-                    setSection(result.data.Data as ISection)
-                    setIsLoaded(true);
-                },
-                error => {
-                    console.log("error occurred");
-                    setDataError(error);
-                    setIsLoaded(true);
-                });
+            if (sectionIndex) {
+                DataService.getSectionChapters(sectionIndex).then(
+                    result => {
+                        // console.log(result);
+                        setData(result.data.Data as IChapter[])
+                        setIsLoaded(true);
+                    },
+                    error => {
+                        console.log("error occurred");
+                        setDataError(error);
+                        setIsLoaded(true);
+                    });
+
+                DataService.getSection(sectionIndex).then(
+                    result => {
+                        setSection(result.data.Data as ISection)
+                        setIsLoaded(true);
+                    },
+                    error => {
+                        console.log("error occurred");
+                        setDataError(error);
+                        setIsLoaded(true);
+                    });
+                return;
+            }
+
+            if (chapterGroupIndex) {
+                console.log("getting data fro chapterGroupIndex: ", chapterGroupIndex);
+                DataService.getChapterGroupsChapters(chapterGroupIndex).then(
+                    result => {
+                        // console.log(result);
+                        setData(result.data.Data as IChapter[])
+                        setIsLoaded(true);
+                    },
+                    error => {
+                        console.log("error occurred");
+                        setDataError(error);
+                        setIsLoaded(true);
+                    });
+
+                DataService.getChapterGroup(chapterGroupIndex).then(
+                    result => {
+                        setSection(result.data.Data as ISection);
+                    },
+                    error => {
+                        console.log("error occurred");
+                        setDataError(error);
+                    });
+            }
         }
     }, [DataService, routeParams]);
 
@@ -66,7 +96,7 @@ const Chapters = (props: any) => {
             return ""
         }
 
-        if(!section.Index){
+        if (!section.Index) {
             return ""
         }
 

@@ -1,23 +1,23 @@
 import { Fragment, useContext, useEffect, useState } from 'react';
 import DataService from '../common/DataService'
 import { Link } from "react-router-dom";
-import { ISection } from '../common/interfaces';
+import { IChapterGroup, ISection } from '../common/interfaces';
 import { Card, Table } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { AppContext } from '../common/app-context';
 
-const Sections = (props: any) => {
-    const [data, setData] = useState([] as ISection[]);
+const ChapterGroups = (props: any) => {
+    const [data, setData] = useState([] as IChapterGroup[]);
     const [dataError, setDataError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const { t } = useTranslation();
     const appContext = useContext(AppContext)
 
     useEffect(() => {
-        DataService.getSections().then(
+        DataService.getChapterGroups().then(
             result => {
                 // console.log(result);
-                setData(result.data.Data as ISection[])
+                setData(result.data.Data as IChapterGroup[])
                 setIsLoaded(true);
             },
             error => {
@@ -25,7 +25,7 @@ const Sections = (props: any) => {
                 setDataError(error);
                 setIsLoaded(true);
             });
-    });
+    },[DataService]);
 
     if (dataError) {
         return <div>Error: {dataError}</div>;
@@ -36,7 +36,7 @@ const Sections = (props: any) => {
             <>
                 <div className="d-block d-sm-block d-md-none">
                     {
-                        data.map((section, index) => (
+                        data.map((chapterGroup, index) => (
                             <Fragment key={index}>
                                 <Card>
                                     <Card.Body>
@@ -44,16 +44,16 @@ const Sections = (props: any) => {
                                             <div className="panel panel-default">
                                                 <div className="panel-body">
                                                     <div className="adhigaramProperty">
-                                                        <span className="brand adhigaramPropertyHeading">#</span>: {section.Index}
+                                                        <span className="brand adhigaramPropertyHeading">#</span>: {chapterGroup.Index}
                                                     </div>
                                                     <div className="adhigaramProperty">
-                                                        <span className="brand adhigaramPropertyHeading">{t('ChapterInTamil')}</span>: {section.Tamil}
+                                                        <span className="brand adhigaramPropertyHeading">{t('ChapterInTamil')}</span>: {chapterGroup.Tamil}
                                                     </div>
                                                     {!appContext.IsTamil && <><div className="adhigaramProperty">
-                                                        <span className="brand adhigaramPropertyHeading">{t('Chapter')}</span>: {section.English}
+                                                        <span className="brand adhigaramPropertyHeading">{t('Chapter')}</span>: {chapterGroup.English}
                                                     </div>
                                                         <div className="adhigaramProperty">
-                                                            <span className="brand adhigaramPropertyHeading">{t('ChapterTransliteration')}</span>: {section.Transliteration}
+                                                            <span className="brand adhigaramPropertyHeading">{t('ChapterTransliteration')}</span>: {chapterGroup.Transliteration}
                                                         </div></>
                                                     }
                                                     <div className="adhigaramProperty">
@@ -81,15 +81,15 @@ const Sections = (props: any) => {
                     </thead>
                     <tbody>
                         {
-                            data.map((section, index) => (
+                            data.map((chapterGroup, index) => (
                                 <tr key={index}>
-                                    <td className="col-md-1">{section.Index}</td>
-                                    <td className="col-md-3"> {section.Tamil} </td>
-                                    {!appContext.IsTamil && <><td className="col-md-3"> {section.English} </td>
-                                        <td className="col-md-3"> {section.Transliteration} </td></>
+                                    <td className="col-md-1">{chapterGroup.Index}</td>
+                                    <td className="col-md-3"> {chapterGroup.Tamil} </td>
+                                    {!appContext.IsTamil && <><td className="col-md-3"> {chapterGroup.English} </td>
+                                        <td className="col-md-3"> {chapterGroup.Transliteration} </td></>
                                     }
                                     <td className={appContext.IsTamil ? "col-md-8" : "col-md-2"}>
-                                        <Link to={`/sections/${section.Index}/chapters`}>{t('Chapters')}</Link>
+                                        <Link to={`/chaptergroups/${chapterGroup.Index}/chapters`}>{t('Chapters')}</Link>
                                     </td>
                                 </tr>
                             )
@@ -101,4 +101,4 @@ const Sections = (props: any) => {
     }
 }
 
-export default Sections;
+export default ChapterGroups;

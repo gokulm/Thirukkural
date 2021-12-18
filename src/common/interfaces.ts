@@ -12,6 +12,9 @@ export interface IChapter {
 export interface ISection extends IChapter {
 }
 
+export interface IChapterGroup extends IChapter {
+}
+
 export interface IKural {
     Index: number,
     Tamil: string,

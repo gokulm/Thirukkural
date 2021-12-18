@@ -29,6 +29,18 @@ class DataService {
         return axios.get(`https://api.gokulnath.com/thirukkuralchapters/${chapterIndex}`);
     }
 
+    static getChapterGroups() {
+        return axios.get(`https://api.gokulnath.com/thirukkuralchaptergroups/`);
+    }
+
+    static getChapterGroup(chapterGroupIndex: any) {
+        return axios.get(`https://api.gokulnath.com/thirukkuralchaptergroups/${chapterGroupIndex}`);
+    }
+
+    static getChapterGroupsChapters(chapterGroupIndex: any) {
+        return axios.get(`https://api.gokulnath.com/thirukkuralchaptergroups/${chapterGroupIndex}/chapters`);
+    }
+
     static searchTamil(searchText: string, searchType: string = "Contains") {
         switch (searchType) {
             case "StartsWith":
